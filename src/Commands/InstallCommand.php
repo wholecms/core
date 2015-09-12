@@ -19,8 +19,6 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        //App\Providers\RouteServiceProvider::class,
-        //'View'      => Illuminate\Support\Facades\View::class,
         $this->info("
 \########################################################/
  \   __             __  _______    _   _    _______     /
@@ -37,7 +35,7 @@ class InstallCommand extends Command
         $isOK = $this->confirm('Veri Tabani Ayarlari Yapildimi?',false);
         if (!$isOK)
         {
-            $this->info("Veri Tabani Ayarlarini Yaptiktan Sonra Komutu Calistirin.");
+            $this->info("Veri Tabani Ayarlarini Yaptiktan Sonra Komutu Tekrar Calistirin.");
             return false;
         }
 
@@ -58,7 +56,7 @@ class InstallCommand extends Command
 
             if (trim($line)=="'View'      => Illuminate\Support\Facades\View::class,")
             {
-                $lines[] = "\t\t".'//include components aliases'.",\n";
+                $lines[] = "\t\t".'//include components aliases'."\n";
             }
 
         }
@@ -66,7 +64,7 @@ class InstallCommand extends Command
         unset($lines);
         $this->info("Providers ve Alias Anahtarlari Eklendi.");
 
-        exec("php ".base_path("artisan")." vendor:publish",$vendors);
+        exec("php ".base_path("artisan")." vendor:publish --force",$vendors);
         if (is_array($vendors))
         {
             foreach ($vendors as $vendor)
@@ -80,7 +78,7 @@ class InstallCommand extends Command
         }
         $this->info("Public Dosyalari Birlestirildi.");
 
-        $this->info("Tablolar Yüklenirken Bekleyin....");
+        $this->info("Tablolar Yuklenirken Bekleyin....");
         exec("php ".base_path("artisan")." migrate",$migrates);
         if (is_array($migrates))
         {
@@ -118,22 +116,23 @@ class InstallCommand extends Command
         {
             $this->info($seeds);
         }
-        $this->info('Veri Tabanı İçerikleri Aktarıldı');
+        $this->info('Veri Tabani İcerikleri Aktarildi');
 
 
-        $name = $this->ask('Yönetici Adı');
+		$this->info("Yonetim Paneli Icin Hesap Olusturmalisiniz");
+        $name = $this->ask('Yonetici Adi');
 
         while(1)
         {
-            $email = $this->ask('Yönetici E-Mail Adresi');
+            $email = $this->ask('Yonetici E-Mail Adresi');
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $this->info("Lütfen Geçerli Bir Mail Adresi Giriniz!");
+                $this->info("Lutfen Gecerli Bir Mail Adresi Giriniz!");
             }else
             {
                 break;
             }
         }
-        $password = $this->ask('Yönetici Şifresi');
+        $password = $this->ask('Yonetici Sifresi');
 
         $user = DB::table('users')->insert([
             'name' => $name,
@@ -146,9 +145,10 @@ class InstallCommand extends Command
             'role_id'=>'1',
         ]);
 
-        $this->info("Yönetici Başarıyla Oluşturuldu");
+        $this->info("Yonetici Basariyla Olusturuldu");
 
-        $title = $this->ask("Site Başlığı","Whole CMS");
+		$this->info("Site Ayarlarini Yapilandirmalisiniz");
+        $title = $this->ask("Site Basligi","Whole CMS");
 
         DB::table('settings')->insert([
             'title'=>$title,
@@ -172,7 +172,9 @@ Sifreniz:
 ##################################################################
                 Authors:
                 https://github.com/furkancelik
+				furkan.celik32@gmail.com
                 https://github.com/onerciller
+				onerciller@gmail.com
                 https://github.com/wholecms
 ##################################################################
 ##################################################################
