@@ -23,7 +23,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $nameSpace = $this->app->getNamespace();
+		$nameSpace = $this->app->getNamespace();
         $this->app->router->group(['namespace' => $nameSpace . 'Http\Controllers'], function()
         {
             require __DIR__.'/Http/routes.php';
@@ -35,16 +35,17 @@ class CoreServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__.'/../public' => public_path(),
-        ], 'public');
-
-        $this->publishes([
             __DIR__.'/../database/migrations/' => database_path('migrations')
         ], 'migrations');
 
         $this->publishes([
             __DIR__.'/../database/seeds/' => database_path('seeds')
         ], 'seeds');
+		
+		 $this->publishes([
+            __DIR__.'/../public' => public_path(),
+        ], 'public');
+			
     }
 
     /**
@@ -72,10 +73,15 @@ class CoreServiceProvider extends ServiceProvider
             $loader->alias('Zipper', 'Chumper\Zipper\Facades\Zipper');
             $loader->alias('Logs', 'Whole\Core\Logs\Facade\Logs');
             $loader->alias('LaravelAnalytics', 'Spatie\LaravelAnalytics\LaravelAnalyticsFacade');
-
             $loader->alias('PageRender', 'Whole\Core\Render\PageRender');
 
         });
+		
+		
+		$router = $this->app['router'];	
+		$router->middleware('is_login',\Whole\Core\Http\Middleware\IsLogin::class);
+		$router->middleware('is_admin',\Whole\Core\Http\Middleware\IsAdmin::class);
+		$router->middleware('permitted_page',\Whole\Core\Http\Middleware\PermittedPage::class);
 
     }
 
