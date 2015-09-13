@@ -134,14 +134,14 @@ class InstallCommand extends Command
         }
         $password = $this->ask('Yonetici Sifresi');
 
-        $user = DB::table('users')->insert([
+        $userID = DB::table('users')->insertGetId([
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($password)
         ]);
 
         DB::table('user_role')->insert([
-            'user_id'=>$user->id,
+            'user_id'=>$userID,
             'role_id'=>'1',
         ]);
 
