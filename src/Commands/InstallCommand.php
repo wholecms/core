@@ -92,7 +92,7 @@ class InstallCommand extends Command
         }
         $this->info("Tablolar Migrate Edildi.");
 
-        exec("cd .. && composer dump-autoload",$composers);
+        exec("cd ".base_path()." && composer dump-autoload",$composers);
         if (is_array($composers))
         {
             foreach ($composers as $composer)
@@ -116,7 +116,7 @@ class InstallCommand extends Command
         {
             $this->info($seeds);
         }
-        $this->info('Veri Tabani İcerikleri Aktarildi');
+        $this->info('Veri Tabani Icerikleri Aktarildi');
 
 
 		$this->info("Yonetim Paneli Icin Hesap Olusturmalisiniz");
