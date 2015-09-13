@@ -21,7 +21,7 @@ class PageRender {
     protected $block;
     protected $page;
 
-    public function __construct(ContentRepository $content, ComponentFileRepository $component_file, BlockRepository $block, PageRepository $page, Licanse $licanse)
+    public function __construct(ContentRepository $content, ComponentFileRepository $component_file, BlockRepository $block, PageRepository $page)
     {
         $this->content = $content;
         $this->component_file = $component_file;
