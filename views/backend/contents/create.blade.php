@@ -67,7 +67,7 @@
     <script>
 
         CKEDITOR.replace( 'editor',{
-            filebrowserBrowseUrl : "{!! URL::to('/kcfinder') !!}",
+            filebrowserBrowseUrl : "{!! URL::to('/elfinder') !!}",
             language :'tr',
             //uiColor : '#F7B42C',
             //height : 300,

@@ -85,14 +85,14 @@
                     window.KCFinder = null;
                 }
             };
-            window.open('{!! URL::to("/kcfinder") !!}', 'kcfinder_textbox',
+            window.open('{!! URL::to("/elfinder") !!}', 'kcfinder_textbox',
                     'status=0, toolbar=0, location=0, menubar=0, directories=0, ' +
                     'resizable=1, scrollbars=0, width=800, height=600'
             );
         }
 
         CKEDITOR.replace( 'editor',{
-            filebrowserBrowseUrl : "{!! URL::to('/kcfinder') !!}",
+            filebrowserBrowseUrl : "{!! URL::to('/elfinder') !!}",
             language :'tr',
             //uiColor : '#F7B42C',
             //height : 300,
@@ -101,7 +101,7 @@
         });
 
         CKEDITOR.replace( 'editor2',{
-            filebrowserBrowseUrl : "{!! URL::to('/kcfinder') !!}",
+            filebrowserBrowseUrl : "{!! URL::to('/elfinder') !!}",
             language :'tr',
             toolbarGroups: [
                 { name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
