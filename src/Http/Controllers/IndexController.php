@@ -44,6 +44,10 @@ class IndexController extends Controller
         }
 
         $master_page = Cache::get('master_page');
+		if ($master_page===null)
+		{
+			return view('index::welcome');
+		}
         $hidden_fields = $this->render->renderHiddenFields($master_page->hiddenFields);
 
         if (!Cache::has('master_page_fields'))
