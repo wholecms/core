@@ -30,6 +30,7 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         $this->loadViewsFrom(__DIR__.'/../views', 'backend');
+		$this->loadViewsFrom(__DIR__.'/../views', 'index');
         $this->publishes([
             __DIR__.'/../views' => base_path('resources/views/vendor'),
         ]);
