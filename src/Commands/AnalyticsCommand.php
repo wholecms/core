@@ -22,7 +22,7 @@ class AnalyticsCommand extends Command
         $isOK = $this->confirm('Anahtarlara Sahipmisiniz? (Degilseniz nasil alacaginiz hakkında bilgi verecegim)',false);
         if (!$isOK)
         {
-            $this->info("Simdi size nasıl ANALYTICS SITE ID, ANALYTICS CLIENT ID, ANALYTICS SERVICE EMAIL anahtarlarini alacaginizi anlatacaim.
+            $this->info("Simdi size nasil ANALYTICS SITE ID, ANALYTICS CLIENT ID, ANALYTICS SERVICE EMAIL anahtarlarini alacaginizi anlatacaim.
 
             ");
             $this->info("ANALYTICS SITE ID Anahtari icin: Google analytics'e sitenizi kaydetmeniz ve Google Analyticsden web sitenizi sectikten sonra yonetici sekmesini gelin Hesap | Mulk | Gorunum Sekmesinden Gorum sekmesindeki Ayarlari Goruntuleye tiklayin oradan Gorunum Kimligi yazan kisim ANALYTICS SITE ID deyerinizdir konsol ekrandan bu degeri giris yaparken ga:xxxxxxxx turunde giris yapmalisiniz.
@@ -36,7 +36,6 @@ class AnalyticsCommand extends Command
             ");
 
             $this->info("Yukaridaki islemleri yapip anahtarlara sahipseniz devam edebiliriz.");
-            return false;
         }
 
         $siteId = $this->ask("ANALYTICS SITE ID Degeriniz (Orn:ga:xxxxxxxx)");
