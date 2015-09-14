@@ -13,6 +13,7 @@ class CoreServiceProvider extends ServiceProvider
 
     protected $commands = [
         'Whole\Core\Commands\InstallCommand',
+        'Whole\Core\Commands\AnalyticsCommand',
     ];
 
 
@@ -23,14 +24,18 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		$nameSpace = $this->app->getNamespace();
+		    $nameSpace = $this->app->getNamespace();
         $this->app->router->group(['namespace' => $nameSpace . 'Http\Controllers'], function()
         {
             require __DIR__.'/Http/routes.php';
         });
 
+        $this->publishes([
+               __DIR__.'/../config/laravel-analytics.php' => config_path('laravel-analytics.php'),
+           ]);
+
         $this->loadViewsFrom(__DIR__.'/../views', 'backend');
-		$this->loadViewsFrom(__DIR__.'/../views', 'index');
+		    $this->loadViewsFrom(__DIR__.'/../views', 'index');
         $this->publishes([
             __DIR__.'/../views' => base_path('resources/views/vendor'),
         ]);
@@ -42,11 +47,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../database/seeds/' => database_path('seeds')
         ], 'seeds');
-		
+
 		 $this->publishes([
             __DIR__.'/../public' => public_path(),
         ], 'public');
-			
+
     }
 
     /**
@@ -77,9 +82,9 @@ class CoreServiceProvider extends ServiceProvider
             $loader->alias('PageRender', 'Whole\Core\Render\PageRender');
 
         });
-		
-		
-		$router = $this->app['router'];	
+
+
+		$router = $this->app['router'];
 		$router->middleware('is_login',\Whole\Core\Http\Middleware\IsLogin::class);
 		$router->middleware('is_admin',\Whole\Core\Http\Middleware\IsAdmin::class);
 		$router->middleware('permitted_page',\Whole\Core\Http\Middleware\PermittedPage::class);
