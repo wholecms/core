@@ -8,7 +8,6 @@
 
 namespace Whole\Core\Commands;
 
-use kcfinder\file;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +40,7 @@ class InstallCommand extends Command
 
 
         $env = base_path('.env');
-        file_put_contents($env,file_get_contents($env)."\rANALYTICS_SITE_ID=\rANALYTICS_CLIENT_ID=\rANALYTICS_SERVICE_EMAIL=");
+        file_put_contents($env,file_get_contents($env)."\rANALYTICS_SITE_ID=\rANALYTICS_CLIENT_ID=\rANALYTICS_SERVICE_EMAIL=\rANALYTICS_CERTIFICATE_PATH=");
         $this->info("ENV Dosyasi Analytics Anahtarlari Eklendi.");
 
         $app_file_path = base_path('config/app.php');
