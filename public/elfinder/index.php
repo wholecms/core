@@ -1,6 +1,4 @@
-<?php 
-require_once __DIR__."/isAdmin.php";
-?>
+<?php require_once __DIR__."/isAdmin.php"; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,6 +11,9 @@ require_once __DIR__."/isAdmin.php";
 		<!-- elFinder CSS (REQUIRED) -->
 		<link rel="stylesheet" type="text/css" href="css/elfinder.min.css">
 		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<style>
+			* { margin:0; padding:0;}
+		</style>
 		<!-- elFinder JS (REQUIRED) -->
 		<script src="js/elfinder.min.js"></script>
 		<!-- elFinder translation (OPTIONAL) -->
@@ -21,10 +22,28 @@ require_once __DIR__."/isAdmin.php";
 		<script type="text/javascript" charset="utf-8">
 			// Documentation for client options:
 			// https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+			
+			 function getUrlParam(paramName) {
+            var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i') ;
+            var match = window.location.search.match(reParam) ;
+
+            return (match && match.length > 1) ? match[1] : '' ;
+        }
 			$(document).ready(function() {
+				var funcNum = getUrlParam('CKEditorFuncNum');
 				$('#elfinder').elfinder({
 					url : 'php/connector.minimal.php'  // connector URL (REQUIRED)
-					// , lang: 'ru'                    // language (OPTIONAL)
+					 , lang: 'tr'                    // language (OPTIONAL)
+					 , getFileCallback : function(file) {						 
+							if (typeof(window.opener.KCFinder) !== 'undefined' && window.opener.KCFinder !== null) {
+								window.opener.KCFinder.callBack(file.url);
+							}
+							if (typeof(window.opener.CKEDITOR) !== 'undefined' && window.opener.CKEDITOR!== null) {
+								window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
+							}
+							window.close();
+					}
+				
 				});
 			});
 		</script>
