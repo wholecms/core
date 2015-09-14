@@ -1,7 +1,6 @@
 <?php
 
 error_reporting(0); // Set E_ALL for debuging
-
 include_once dirname(__FILE__).DIRECTORY_SEPARATOR.'elFinderConnector.class.php';
 include_once dirname(__FILE__).DIRECTORY_SEPARATOR.'elFinder.class.php';
 include_once dirname(__FILE__).DIRECTORY_SEPARATOR.'elFinderVolumeDriver.class.php';
@@ -30,12 +29,12 @@ function access($attr, $path, $data, $volume) {
 // Documentation for connector options:
 // https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options
 $opts = array(
-	// 'debug' => true,
+	//'debug' => true,
 	'roots' => array(
 		array(
 			'driver'        => 'LocalFileSystem',   // driver for accessing file system (REQUIRED)
 			'path'          => '../../upload/',         // path to files (REQUIRED)
-			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../../upload/', // URL to files (REQUIRED)
+			'URL'           => chomp_dir(dirname($_SERVER['PHP_SELF']),2) . '/upload/', // URL to files (REQUIRED)
 			'accessControl' => 'access'             // disable and hide dot starting files (OPTIONAL)
 		)
 	)
@@ -45,3 +44,16 @@ $opts = array(
 $connector = new elFinderConnector(new elFinder($opts));
 $connector->run();
 
+function chomp_dir($dir,$count)
+{
+ $dirAar = explode("/",$dir);
+ $count = count($dirAar)-$count;
+ foreach($dirAar as $k=>$v)
+ {
+	if($k>($count-1)){
+		unset($dirAar[$k]);
+	}
+ }
+ return implode("/",$dirAar);
+ 
+}
