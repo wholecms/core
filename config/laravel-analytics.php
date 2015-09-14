@@ -31,7 +31,7 @@ return
          * You need to download a p12-certifciate from the Google API console
          * Be sure to store this file in a secure location.
          */
-        'certificatePath' => storage_path('laravel-analytics/'env('ANALYTICS_CERTIFICATE_PATH')),
+        'certificatePath' => storage_path('laravel-analytics/'.env('ANALYTICS_CERTIFICATE_PATH')),
 
         /*
          * The amount of minutes the Google API responses will be cached.
