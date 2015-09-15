@@ -43,7 +43,17 @@ class TemplateRepository extends Repository
 		try
         {
             $template =  $this->model->create($this->except($data));
-            $fields = isset($data['fields']) ? $data['fields'] : [];
+			$id = $template->id;
+			if (isset($data['fields']) && count($data['fields'])>0)
+			{
+				$i = 0;
+				foreach($data['fields'] as $field=>$name)
+				{
+					$fields[$i]['template_id'] = $id;
+					$fields[$i]['name'] = $name;
+					$fields[$i]['field'] = $field;
+				$i++;}
+			}
             $template->fields()->attach($fields);
         }catch (\Exception $e)
         {

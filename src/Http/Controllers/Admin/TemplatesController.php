@@ -146,7 +146,9 @@ class TemplatesController extends Controller
 
         try{
             $folder = $this->template->find($id)->folder;
-            File::deleteDirectory(base_path('resources\views\\'.$folder));
+			File::deleteDirectory(storage_path('tmp'));
+			File::deleteDirectory(public_path('assets/'.$folder));
+            File::deleteDirectory(base_path('resources/views/'.$folder));
         }catch (\Exception $e)
         {
             Flash::error('Şablon Dosyası Silinemedi İşlem İptal Edildi');

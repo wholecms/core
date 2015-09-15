@@ -15,6 +15,6 @@ class Template extends Model
 	
 	public function fields()
     {
-		return $this->belongsToMany('Whole\Core\Models\TemplateField','template_id','id')->withPivot('template_id','name','field')->withTimestamps();
+		return $this->belongsToMany('Whole\Core\Models\Template','template_fields','template_id')->withPivot('template_id','name','field')->withTimestamps();
     }
 }
