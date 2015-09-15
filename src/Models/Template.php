@@ -12,4 +12,9 @@ class Template extends Model
     {
         return $this->hasMany('Whole\Core\Models\TemplateField','template_id','id');
     }
+	
+	public function fields()
+    {
+		return $this->belongsToMany('Whole\Core\Models\TemplateField','template_id','id')->withPivot('template_id','name','field')->withTimestamps();
+    }
 }

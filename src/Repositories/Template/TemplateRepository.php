@@ -37,6 +37,20 @@ class TemplateRepository extends Repository
         return $this->setting->first()->template;
 //        return  $this->model->where('published',1)->with('templateFields')->first();
     }
+	
+	public function create($data)
+	{
+		try
+        {
+            $template =  $this->model->create($this->except($data));
+            $fields = isset($data['fields']) ? $data['fields'] : [];
+            $template->fields()->attach($fields);
+        }catch (\Exception $e)
+        {
+            return false;
+        }
+        return $template;
+	}
 
 
 }

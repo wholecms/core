@@ -83,7 +83,7 @@ class TemplatesController extends Controller
                 return redirect()->route('admin.template.index');
             }
 
-            $message = $this->template->saveData('create',$template) ?
+            $message = $this->template->create($template) ?
                 ['success','Başarıyla Kaydedildi']:
                 ['error','Bir Hata Meydana Geldi ve Kaydedilemedi'];
             File::delete(base_path('resources/views/Template.php'));
