@@ -12,20 +12,25 @@ use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Whole\Core\Repositories\PageSidebarMenu\PageSidebarMenuRepository;
+use Whole\Core\Repositories\AllPage\AllPageRepository;
 use Whole\Core\Logs\Facade\Logs;
 class ComponentsController extends Controller
 {
     protected $component;
     protected $sidebar;
+	protected $all_page;
 
     /**
      * @param ComponentRepository $component
      * @param PageSidebarMenuRepository $sidebar
+	 * @param AllPageRepository $all_page
      */
-    public function __construct(ComponentRepository $component, PageSidebarMenuRepository $sidebar)
+    public function __construct(ComponentRepository $component, PageSidebarMenuRepository $sidebar, AllPageRepository $all_page)
     {
         $this->component = $component;
         $this->sidebar = $sidebar;
+		$this->all_page = $all_page;
+		
     }
 
 
@@ -76,22 +81,28 @@ class ComponentsController extends Controller
             if (isset($component['composer']) && count($component['composer'])>0)
             {
                 foreach($composer_file as $line)
-                {
-                    $lines[] = $line;
-                    if (count($component['composer'])>0){
-                        if (trim($line)=='"App\\\": "app/",')
-                        {
-                            foreach($component['composer'] as $composer)
-                            {
-                                $lines[] = "            ".$composer.",\r\n";
-                            }
-                        }
-                    }
+                {$ok = false;
+					if (trim($line)=='"App\\\": "app/"' || trim($line)=='"App\\\": "app/",')
+					{
+						if (count($component['composer'])>0)
+						{
+							foreach($component['composer'] as $composer)
+							{
+								$lines[] = "            ".$composer.",\r\n";
+							}
+						}
+						$lines[] = $line;
+						$ok = true;
+					}
+					else
+					{
+						if (!$ok){$lines[] = $line;}
+					}
                 }
                 file_put_contents($composer_file_path,$lines);
                 unset($lines);
-                exec("cd .. && composer update",$sonuc);
-                exec("cd .. && composer dump-autoload",$sonuc);
+                exec("cd ".base_path()." && composer update",$sonuc);
+				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
                 Logs::add('process',"Composer Update Edildi");
             }
             unset($lines);
@@ -128,10 +139,12 @@ class ComponentsController extends Controller
             if ($component['vendor'])
             {
                 exec("php ".base_path("artisan")." vendor:publish",$sonuc);
+				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
             }
 
             if ($component['migrate'])
             {
+				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
                 exec("php ".base_path("artisan")." migrate",$sonuc);
                 Logs::add('process',"DB Migrate Edildi");
             }
@@ -155,6 +168,11 @@ class ComponentsController extends Controller
             {
                 $component['sidebar']['top_id'] = isset($component['sidebar']['top_id'])?$component['sidebar']['top_id']:"10";
                 $component['sidebar']['children_menu'] = isset($component['sidebar']['children_menu'])?$component['sidebar']['children_menu']:"0";
+				
+				foreach($component['pages'] as $page)
+				{
+					$this->all_page->saveData('create',['path'=>$page]);
+				}
                 if($this->sidebar->saveData('create',$component['sidebar']))
                 {
                     Logs::add('process',"Bileşen Menüye Eklendi\n{$component['settings']['name']}");
