@@ -80,10 +80,7 @@ class IndexController extends Controller
         $content_page_fields = $this->content_page_field->getFieldDetails($content_page->id);
         $field_details = $this->render->renderFields($content_page_fields,false,$id);
 
-        return view($content_page->template->folder.'.content_page.index',compact('field_details','content_page_fields','hidden_fields'))
-            ->with('title',$page->meta_title)
-            ->with('keywords',$page->meta_keywords)
-            ->with('description',$page->meta_description);
+        return view($content_page->template->folder.'.content_page.index',compact('field_details','content_page_fields','hidden_fields','page'));
     }
 
 
