@@ -61,9 +61,9 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label("Logo Başlığı",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label("Logo Açıklaması",null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('logo_description',null,['placeholder'=>'Logo Başlığı','class'=>'form-control']) !!}
+        {!! Form::text('logo_description',null,['placeholder'=>'Logo Açıklaması','class'=>'form-control']) !!}
     </div>
 </div>
 
