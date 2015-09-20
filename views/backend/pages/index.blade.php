@@ -60,7 +60,7 @@
                                         {{ $page->component->component->name }} > {{ $page->component->name }}
                                     @elseif($page->content_type == "link")
                                         Dış Bağlantı (Link)<br />
-                                        {{ strlen($page->external_link)>20?'<a href="'.$page->external_link.'">'.substr($page->external_link,0,15).'</a>':'<a href="'.$page->external_link.'">'.$page->external_link.'</a>'}}
+                                        {!! strlen($page->external_link)>20?'<a href="'.$page->external_link.'" target="_blank">'.substr($page->external_link,0,15).'</a>':'<a href="'.$page->external_link.'">'.$page->external_link.'</a>'!!}
                                     @endif
                                 </td>
                                 <td>
