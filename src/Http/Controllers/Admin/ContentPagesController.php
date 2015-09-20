@@ -15,6 +15,7 @@ use Whole\Core\Repositories\ContentPage\ContentPageRepository;
 use Whole\Core\Repositories\ContentPage\ContentPageFieldRepository;
 use Whole\Core\Repositories\Setting\SettingRepository;
 use Whole\Core\Logs\Facade\Logs;
+use Illuminate\Support\Facades\Cache;
 class ContentPagesController extends Controller
 {
     protected $template;
@@ -80,6 +81,10 @@ class ContentPagesController extends Controller
      */
     public function store(Request $request)
     {
+		Cache::forget('_contents');
+		Cache::forget('_components');
+		Cache::forget('_blocks');
+		Cache::forget('_pages');
         return $this->content_page->create($request->all());
     }
 
@@ -124,6 +129,10 @@ class ContentPagesController extends Controller
      */
     public function update(Request $request, $id)
     {
+		Cache::forget('_contents');
+		Cache::forget('_components');
+		Cache::forget('_blocks');
+		Cache::forget('_pages');
         return $this->content_page->update($request->all(),$id);
     }
 

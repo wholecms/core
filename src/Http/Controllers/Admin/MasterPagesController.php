@@ -87,6 +87,12 @@ class MasterPagesController extends Controller
     {
         Cache::forget('master_page');
         Cache::forget('master_page_fields');
+		
+		Cache::forget('_contents');
+		Cache::forget('_components');
+		Cache::forget('_blocks');
+		Cache::forget('_pages');
+		
         return $this->master_page->create($request->all());
     }
 
@@ -101,6 +107,11 @@ class MasterPagesController extends Controller
     {
         Cache::forget('master_page');
         Cache::forget('master_page_fields');
+		
+		Cache::forget('_contents');
+		Cache::forget('_components');
+		Cache::forget('_blocks');
+		Cache::forget('_pages');
         return $this->master_page->update($request->all(),$id);
     }
 
