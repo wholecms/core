@@ -87,6 +87,7 @@ class PagesController extends Controller
 
         if ($request->get('content_type')=="content" && $request->get('content_id')=="")
         {
+			Cache::forget('_contents');
             if ($content = $this->content->newContent([
                 'title'=>$request->get('create_content_title'),
                 'title_visibility'=>$request->get('create_content_title_visibility'),
