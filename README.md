@@ -34,7 +34,7 @@ Komutunu Çalýþtýrarak Kuruluma Geçebilirsiniz.
 Yönetim paneline giriþ yaptýktan sonra Eklentiler > Þablon Yöneticisinden Þablonu Yükleyin ve Genel Yapýlandýrma Ayarlarýndan Eklemiþ Olduðunuz Þablonu Seçin.
 
 ##Yardýmlar
-* **![Kurulum Video](https://youtu.be/Mr3mkBt28IQ)**
+* **Kurulum [Video](https://youtu.be/Mr3mkBt28IQ)**
 * **Yönetim Paneli Hakkýnda**
 * **Nasýl Tema Oluþtururum?**
 * **Nasýl Modül Oluþtururum?**
