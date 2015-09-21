@@ -1,64 +1,65 @@
 #WholeCMS 
 
-Laravel için hazýrlanmýþ içerik yönetim sistemi.
+Content management system made for Laravel.
 
-Sýnýrsýzca geniþletebileceðiniz baðýmlýlýklarý olmadan oluþturacaðýnýz modüllerinizi dahil edip içerik yönetim sisteminden daha fazlasýný elde edebilirsiniz. Ýstediðiniz temaya entegre ederek kolayca kullanabileceðiniz bir sistem.
+You can expand indefinitely, without any dependencies whether to include it in your modules that you will create a content management system get more from. It's an easy system by integrating the theme you want to use.
 
-Oluþturduðunuz içeriklerinizi sürükle býrak ile temanýzýn alanlarýna ekleyerek sayfalarýnýzý inþa edebilirsiniz. 
+Drag and drop your content is created with your contact you can build your pages by adding fields.
 
-**Sýnýrlar baðýmlýlýklar yok!**
+**No boundaries and dependencies!**
 
-Birden fazla temayý tek bir sitede kullanma imkaný sunarak istediðiniz sayfada istediðiniz temayý kullanabilirsiniz.
+One site offers the possibility of using more than one theme. You can use the theme that you want on the page you want.
 
-##Kurulum
+##Setup
 
-laravel kurulumu yaptýktan sonra
+After doing a laravel installation
 
 `composer require whole/core`
 
-Komutunu çalýþtýrarak CMS Paketini kurabilirsiniz.
+By running the command, CMS Package you can install.
 
-config dizini altýnda app.php dosyasýnda providers alanýna
+under the config directory app.php providers in the field in the file
 
 `Whole\Core\CoreServiceProvider::class`
 
-Satýrýný Ekledikten Sonra Komut Satýrýnda;
+After Adding The Line On The Command Line;
 
 `php artisan whole:install`
 
-Komutunu Çalýþtýrarak Kuruluma Geçebilirsiniz. 
-(Kuruluma Geçmeden önce veritabaný yapýlandýrmasýný yaparak .env dosyasýndaki veri tabaný ile ilgili gerekli deðiþiklikleri yaptýðýnýza emin olun)
+You Can Proceed With The Installation By Running The Command.
 
-**Örnek Tema için Example Template Ýndirin**
+(By the configuration of the database before proceeding with the installation. ".env" file, make sure you do the necessary changes with respect to the database)
 
-Yönetim paneline giriþ yaptýktan sonra Eklentiler > Þablon Yöneticisinden Þablonu Yükleyin ve Genel Yapýlandýrma Ayarlarýndan Eklemiþ Olduðunuz Þablonu Seçin.
+**For example, the theme "cat template" Download**
 
-##Yardýmlar
-* **Kurulum [Video](https://youtu.be/Mr3mkBt28IQ)**
-* **Yönetim Paneli Hakkýnda**
-* **Nasýl Tema Oluþtururum?**
-* **Nasýl Modül Oluþtururum?**
+After logging in to the administration panel, "extensions > template Manager" to install the template. Select The Template That You Have Added In Global Configuration Settings.
 
-##Ekran Görüntüleri
+##Helps
+* **Setup [Video](https://youtu.be/Mr3mkBt28IQ)**
+* **About Dashboard**
+* **How to Create a Theme?**
+* **How to Create Module?**
 
-![Login Sayfasý](http://wholecms.furkancelik.com.tr/whole_picture/login.png)
+##Screenshots
+
+![Login Page](http://wholecms.furkancelik.com.tr/whole_picture/login.png)
 
 
   
-![Yonetim Paneli Anasayfasý](http://wholecms.furkancelik.com.tr/whole_picture/index.png)
+![Yonetim Panel Home](http://wholecms.furkancelik.com.tr/whole_picture/index.png)
 
   
 
-![Yeni Ýçerik Ekleme Sayfasý](http://wholecms.furkancelik.com.tr/whole_picture/content.png)
+![New Content Added Page](http://wholecms.furkancelik.com.tr/whole_picture/content.png)
 
   
 
-![Blok Detaylarý](http://wholecms.furkancelik.com.tr/whole_picture/blocks_details.png)
+![Block Details](http://wholecms.furkancelik.com.tr/whole_picture/blocks_details.png)
 
   
 
-![Master Page Ayarý](http://wholecms.furkancelik.com.tr/whole_picture/master_page.png)
+![Master Page settings](http://wholecms.furkancelik.com.tr/whole_picture/master_page.png)
   
 
 
-![Giriþ Loglarý Sayfasý](http://wholecms.furkancelik.com.tr/whole_picture/login_log.png)
+![Log Log Sheet](http://wholecms.furkancelik.com.tr/whole_picture/login_log.png)
