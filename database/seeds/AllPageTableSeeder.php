@@ -156,12 +156,12 @@ class AllPageTableSeeder extends Seeder
 
                 ],
 				[
-                    'id'=>'28',
+                    'id'=>'29',
                     'path'=>'admin/cache/clear',
 
                 ],
 				[
-                    'id'=>'28',
+                    'id'=>'30',
                     'path'=>'admin/cache/clear/*',
 
                 ],
