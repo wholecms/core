@@ -12,7 +12,7 @@
  * FrontEnd Routes
  * */
 Route::get('/',['as'=>'master_page','uses'=>'\Whole\Core\Http\Controllers\IndexController@index']);
-Route::get('/{slug}-{id}',['as'=>'content_page','uses'=>'\Whole\Core\Http\Controllers\IndexController@contentPages'])->where('id', '[0-9]+');
+Route::get('/{slug}-{id}',['as'=>'content_page','uses'=>'\Whole\Core\Http\Controllers\IndexController@contentPages'])->where(['id' => '[\d+]+', 'slug' => '[a-z0-9-]+']);
 
 
 
