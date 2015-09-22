@@ -6,7 +6,8 @@
 
 @section('content')
     <div class="row">
-        @include('backend::widgets.quick_menu')
+        @include('backend::_errors.error')
+		@include('backend::widgets.quick_menu')
         @include('backend::widgets.analytics')
         @include('backend::widgets.last_user')
     </div>
