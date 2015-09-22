@@ -36,7 +36,7 @@ After logging in to the administration panel, "extensions > template Manager" to
 
 ##Helps
 * **Setup [Video](https://youtu.be/Mr3mkBt28IQ)**
-* **About Dashboard**
+* **About Dashboard and Example [Video](https://www.youtube.com/watch?v=K7knWnjwWE0)**
 * **How to Create a Theme?**
 * **How to Create Module?**
 
