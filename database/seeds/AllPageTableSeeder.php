@@ -155,6 +155,16 @@ class AllPageTableSeeder extends Seeder
                     'path'=>'admin/analytics/*',
 
                 ],
+				[
+                    'id'=>'28',
+                    'path'=>'admin/cache/clear',
+
+                ],
+				[
+                    'id'=>'28',
+                    'path'=>'admin/cache/clear/*',
+
+                ],
             ]
         );
 

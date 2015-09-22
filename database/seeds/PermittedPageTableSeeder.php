@@ -185,6 +185,18 @@ class PermittedPageTableSeeder extends Seeder
 					'process'=>"1",
                 ],
 				[	
+					'role_id'=>"1",
+                    'path' => "admin/cache/clear",
+                    'access'=>"1",
+					'process'=>"1",
+                ],
+				[	
+					'role_id'=>"1",
+                    'path' => "admin/cache/clear/*",
+                    'access'=>"1",
+					'process'=>"1",
+                ],
+				[	
 					'role_id'=>"2",
                     'path' => "admin",
                     'access'=>"1",

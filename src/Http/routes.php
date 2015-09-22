@@ -87,6 +87,7 @@ Route::group(['middleware'=>['is_admin','permitted_page'],'prefix' => 'admin'],f
     Route::get('logs/errors',['as'=>'admin.logs.errors','uses'=>'\Whole\Core\Http\Controllers\Admin\LogsController@errors']);
     Route::get('logs/process',['as'=>'admin.logs.process','uses'=>'\Whole\Core\Http\Controllers\Admin\LogsController@process']);
     Route::delete('logs/clea',['as'=>'admin.logs.clear','uses'=>'\Whole\Core\Http\Controllers\Admin\LogsController@clear']);
+	Route::get('cache/clear',['as'=>'admin.cache.clear','uses'=>'\Whole\Core\Http\Controllers\Admin\ToolsController@clearCache']);
     Route::get('analytics',['as'=>'admin.analytics.index','uses'=>'\Whole\Core\Http\Controllers\Admin\AnalyticsController@index']);
     Route::post('analytics/active-user',['as'=>'admin.analytics.active_user','uses'=>'\Whole\Core\Http\Controllers\Admin\AnalyticsController@getActiveUser']);
 
