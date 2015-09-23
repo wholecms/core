@@ -35,9 +35,9 @@ You Can Proceed With The Installation By Running The Command.
 After logging in to the administration panel, "extensions > template Manager" to install the template. Select The Template That You Have Added In Global Configuration Settings.
 
 ##Helps
-* **Setup [Video](https://youtu.be/Mr3mkBt28IQ)**
-* **About Dashboard and Example [Video](https://www.youtube.com/watch?v=K7knWnjwWE0)**
-* **How to Create a Theme?**
+* **Setup [Video (TR)](https://youtu.be/Mr3mkBt28IQ)**
+* **About Dashboard and Example [Video (TR)](https://www.youtube.com/watch?v=K7knWnjwWE0)**
+* **How to Create a Theme? [Video (TR)](https://youtu.be/fXrqFIrBox0)**
 * **How to Create Module?**
 
 ##Screenshots

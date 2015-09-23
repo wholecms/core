@@ -36,7 +36,7 @@ Yönetim paneline giriþ yaptýktan sonra Eklentiler > Þablon Yöneticisinden Þablon
 ##Yardýmlar
 * **Kurulum [Video](https://youtu.be/Mr3mkBt28IQ)**
 * **Yönetim Paneli Hakkýnda Arayüz ve Örnek Uygulama [Video](https://www.youtube.com/watch?v=K7knWnjwWE0)**
-* **Nasýl Tema Oluþtururum?**
+* **Nasýl Tema Oluþtururum? [Video](https://youtu.be/fXrqFIrBox0)**
 * **Nasýl Modül Oluþtururum?**
 
 ##Ekran Görüntüleri
