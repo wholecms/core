@@ -167,7 +167,7 @@ class PageSidebarMenuTableSeeder extends Seeder
                 ],
                 [
                     'id' => "16",
-                    'top_id' => "14",
+                    'top_id' => "15",
                     'title' => "Kur & Kaldır",
                     'icon' => "icon-cloud-upload",
                     'route' => "admin.component.index",
@@ -177,7 +177,7 @@ class PageSidebarMenuTableSeeder extends Seeder
                 ],
                 [
                     'id' => "17",
-                    'top_id' => "14",
+                    'top_id' => "15",
                     'title' => "Şablon Yöneticisi",
                     'icon' => "icon-layers",
                     'route' => "admin.template.index",
