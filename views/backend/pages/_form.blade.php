@@ -13,6 +13,13 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label("Menü Açıklaması",null,['class'=>'col-md-2 control-label']) !!}
+    <div class="col-md-10">
+        {!! Form::text('menu_description',null,['placeholder'=>'Menü Açıklaması','class'=>'form-control']) !!}
+    </div>
+</div>
+
+<div class="form-group">
     {!! Form::label("Menü Icon",null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div class="menu_icon">{!! (isset($page) && $page->menu_icon!="")?"<i class=\"$page->menu_icon\"></i>":'' !!}</div>
