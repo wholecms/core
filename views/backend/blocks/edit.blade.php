@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Blok Düzenle" }}@endsection
+@section('title'){{ trans('whole::tr.blocks.edit_title') }}@endsection
 
 @section('page_title')
-    <h1>Blok Düzenle</h1>
+    <h1>{{ trans('whole::tr.blocks.edit_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.blocks.edit_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.block.index') }}">Bloklar</a>
+            <a href="{{ route('admin.block.index') }}">{{ trans('whole::tr.blocks.edit_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Blok Düzenle</a>
+            <a href="#">{{ trans('whole::tr.blocks.edit_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,21 +32,30 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-list-alt font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">Blok Düzenle</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::tr.blocks.edit_portlet_title') }}</span>
                     </div>
                 </div>
 
                 <div class="portlet-body form">
                     @include('backend::_errors.error')
                     {!! Form::model($block,['method' => 'put','route'=>['admin.block.update',$block->id],'class'=>'form-horizontal','role'=>'form']) !!}
-                    <div class="form-body">
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                                {!! Form::submit(trans("whole::tr.blocks.edit"),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::tr.blocks.cancel') }}</a>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="form-body">
                         @include('backend::blocks._form')
                     </div>
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit("Düzenle",['class'=>'btn blue']) !!}
-                                <a href="{{ URL::route('admin.block.index') }}" class="btn default">İptal Et</a>
+                                {!! Form::submit(trans("whole::tr.blocks.edit"),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::tr.blocks.cancel') }}</a>
                             </div>
                         </div>
                     </div>

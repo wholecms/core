@@ -1,19 +1,19 @@
 <div class="form-group">
-    {!! Form::label("Blok Adı",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.blocks.form_label_1'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('name',null,['placeholder'=>'Blok Adı','class'=>'form-control']) !!}
+        {!! Form::text('name',null,['placeholder'=>trans('whole::tr.blocks.form_label_1'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("Blok Başlığı",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.blocks.form_label_2'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('title',null,['placeholder'=>'Blok Başlığı','class'=>'form-control']) !!}
+        {!! Form::text('title',null,['placeholder'=>trans('whole::tr.blocks.form_label_2'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("Başlık Görünürlük",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.blocks.form_label_3'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div class="checkbox-list">
             <label class="checkbox-inline">
@@ -25,7 +25,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label("Listeyi Göm",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.blocks.form_label_4'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div class="checkbox-list">
             <label class="checkbox-inline">
@@ -37,7 +37,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label("Yayın",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.blocks.form_label_5'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div class="checkbox-list">
             <label class="checkbox-inline">
@@ -49,12 +49,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label("Erişim Seviyesi",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.blocks.form_label_6'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         {!! Form::select('access[]',$roles->toArray()+['0'=>'Ziyaretçi'],isset($block)?unserialize($block->access):$roles->keys()->toArray()+[$roles->count()=>0],['class'=>'form-control','multiple'=>'multiple','size'=>$roles->count()+1]) !!}
     </div>
 </div>
-
-
-
-
