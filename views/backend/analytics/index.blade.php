@@ -1,20 +1,20 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS İstatistikler" }}@endsection
+@section('title'){{ trans("whole::tr.analytics.title") }}@endsection
 
 @section('page_title')
-    <h1>İstatistikler</h1>
+    <h1>{{ trans("whole::tr.analytics.page_title") }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans("whole::tr.analytics.breadcrumb0") }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">İstatistikler</a>
+            <a href="#">{{ trans("whole::tr.analytics.breadcrumb1") }}</a>
         </li>
     </ul>
 @endsection
@@ -27,13 +27,13 @@
                 <div class="dashboard-stat2" style="height:240px;">
                     <div class="display">
                         <div class="number">
-                            <h3 style="font-size:32px;color: #AAB5BC;font-weight: 600;text-transform: uppercase;">Şu an SİTEDE</h3>
+                            <h3 style="font-size:32px;color: #AAB5BC;font-weight: 600;text-transform: uppercase;">{{ trans("whole::tr.analytics.now") }}</h3>
                             @if($active_user[0]=="true")
                                 <h3 class="loadPost font-green-sharp" style="font-size:130px;">{{ $active_user[1] }}</h3>
                             @else
                                 <h3 class="loadPost font-green-sharp" style="font-size:40px;">{{ $active_user[1] }}</h3>
                             @endif
-                            <small style="font-size: 25px;">ETKİN Kullanıcı Var</small>
+                            <small style="font-size: 25px;">{{ trans("whole::tr.analytics.active_user") }}</small>
                         </div>
                         <div class="icon">
                             <i class="icon-pie-chart"></i>
@@ -46,9 +46,9 @@
                 <div class="dashboard-stat2" style="height:110px;">
                     <div class="display">
                         <div class="number">
-                            <small>Ziyaretçi Sayısı</small>
+                            <small>{{ trans("whole::tr.analytics.visitors") }}</small>
                             <h3 class="font-green-sharp">{{ $today_and_yesterday[1]['visitors'] }}</h3>
-                            <small>Bugün</small>
+                            <small>{{ trans("whole::tr.analytics.today") }}</small>
                         </div>
                         <div class="icon">
                             <i class="icon-pie-chart"></i>
@@ -60,9 +60,9 @@
                 <div class="dashboard-stat2" style="height:110px;">
                     <div class="display">
                         <div class="number">
-                            <small>Sayfa Gösterİmİ</small>
+                            <small>{{ trans("whole::tr.analytics.page_views") }}</small>
                             <h3 class="font-green-sharp">{{ $today_and_yesterday[1]['pageViews'] }}</h3>
-                            <small>Bugün</small>
+                            <small>{{ trans("whole::tr.analytics.today") }}</small>
                         </div>
                         <div class="icon">
                             <i class="icon-pie-chart"></i>
@@ -75,9 +75,9 @@
                 <div class="dashboard-stat2" style="height:110px;">
                     <div class="display">
                         <div class="number">
-                            <small>Ziyaretçi Sayısı</small>
+                            <small>{{ trans("whole::tr.analytics.visitors") }}</small>
                             <h3 class="font-green-sharp">{{ $today_and_yesterday[0]['visitors'] }}</h3>
-                            <small>Dün</small>
+                            <small>{{ trans("whole::tr.analytics.yesterday") }}Dün</small>
                         </div>
                         <div class="icon">
                             <i class="icon-pie-chart"></i>
@@ -89,9 +89,9 @@
                 <div class="dashboard-stat2" style="height:110px;">
                     <div class="display">
                         <div class="number">
-                            <small>Sayfa Gösterİmİ</small>
+                            <small>{{ trans("whole::tr.analytics.page_views") }}</small>
                             <h3 class="font-green-sharp">{{ $today_and_yesterday[0]['pageViews'] }}</h3>
-                            <small>Dün</small>
+                            <small>{{ trans("whole::tr.analytics.yesterday") }}</small>
                         </div>
                         <div class="icon">
                             <i class="icon-pie-chart"></i>
@@ -109,7 +109,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Haftalık ZİyaretÇİ İstatİstİĞİ</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.weekly_visitors") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -124,7 +124,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Haftalık Sayfa GÖsterİm İstatİstİĞİ</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.weekly_page_views") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -140,7 +140,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Bugün Zİyaret Edİlen Sayfalar</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.today_page_visitors") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -155,7 +155,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Tüm Zİyaret Edİlen 20 Sayfa</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.all_page_visitors") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -171,7 +171,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Hangİ Sayfalardan Gelİndİ</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.page_referance") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -186,7 +186,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Tarayıcılar</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.browsers") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -202,7 +202,7 @@
                     <div class="portlet-title">
                         <div class="caption font-green-haze" style="width: 100%;">
                             <i class="icon-bar-chart  font-green-haze"></i>
-                            <span class="caption-subject bold uppercase">Anahtar Kelimeler</span>
+                            <span class="caption-subject bold uppercase">{{ trans("whole::tr.analytics.keywords") }}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -211,8 +211,8 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Anahtar Kelimi Adı</th>
-                                        <th>Oturum</th>
+                                        <th>{{ trans("whole::tr.analytics.keywords_name") }}</th>
+                                        <th>{{ trans("whole::tr.analytics.session") }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -233,7 +233,7 @@
 
         </div>
     @else
-        <h3>Google Analytics Verileri Alınamıyor!</h3>
+        <h3>{{ trans("whole::tr.analytics.not_data") }}</h3>
     @endif
 
 @endsection
@@ -295,7 +295,7 @@
                         type: 'area'
                     },
                     title: {
-                        text: 'Haftalık Sayfa Gösterim İstatistiği'
+                        text: '{{ trans("whole::tr.analytics.weekly_page_views_statistics") }}'
                     },
                     xAxis: {
                         categories: [
@@ -311,7 +311,7 @@
                     },
                     yAxis: {
                         title: {
-                            text: 'Sayfa Gösterim Sayısı'
+                            text: '{{ trans("whole::tr.analytics.page_view_count") }}'
                         }
                     },
                     tooltip: {
@@ -334,7 +334,7 @@
                     },
                     series: [
                         {
-                            name: 'Bu Hafta',
+                            name: '{{ trans("whole::tr.analytics.this_week") }}',
                             data:[
                                 @foreach($this_week as $pageViews)
                                 {{ $pageViews['pageViews']."," }}
@@ -342,7 +342,7 @@
                                 ]
                         },
                         {
-                            name: 'Geçen Hafta',
+                            name: '{{ trans("whole::tr.analytics.last_week") }}',
                             data:[
                                 @foreach($last_week as $pageViews)
                                 {{ $pageViews['pageViews']."," }}
@@ -357,7 +357,7 @@
                         type: 'area'
                     },
                     title: {
-                        text: 'Haftalık Ziyaretçi İstatistiği'
+                        text: '{{ trans("whole::tr.analytics.weekly_visitors") }}'
                     },
                     xAxis: {
                         categories: [
@@ -396,7 +396,7 @@
                     },
                     series: [
                         {
-                            name: 'Bu Hafta',
+                            name: '{{ trans("whole::tr.analytics.this_week") }}',
                             data:[
                                 @foreach($this_week as $visitors)
                                 {{ $visitors['visitors']."," }}
@@ -404,7 +404,7 @@
                                 ]
                         },
                         {
-                            name: 'Geçen Hafta',
+                            name: '{{ trans("whole::tr.analytics.last_week") }}',
                             data:[
                                 @foreach($last_week as $visitors)
                                 {{ $visitors['visitors']."," }}
@@ -434,7 +434,7 @@
                         height: 650
                     },
                     title: {
-                        text: 'Bugün Ziyaret Edilen Sayfalar'
+                        text: '{{ trans("whole::tr.analytics.today_page_visitors") }}'
                     },
                     xAxis: [{
                         categories: today_visited_pages_categories
@@ -458,7 +458,7 @@
                         }
                     },
                     series: [{
-                        name: 'Bugün',
+                        name: '{{ trans("whole::tr.analytics.today") }}',
                         data: [@foreach($today_visited_pages as $k=>$pages)
                             @if($k!=0) , @endif
                         {{ $pages['pageViews'] }}
@@ -472,7 +472,7 @@
                         height: 650
                     },
                     title: {
-                        text: 'Tüm Ziyaret Edilen Sayfalar'
+                        text: '{{ trans("whole::tr.analytics.all_pages_visitors") }}'
                     },
                     xAxis: [{
                         categories: all_visited_pages_categories
@@ -496,7 +496,7 @@
                         }
                     },
                     series: [{
-                        name: 'Tümü',
+                        name: '{{ trans("whole::tr.analytics.all") }}',
                         data: [@foreach($all_visited_pages as $k=>$pages)
                             @if($k!=0) , @endif
                         {{ $pages['pageViews'] }}
@@ -510,7 +510,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Hangi Sayfalardan Gelindi'
+                        text: '{{ trans("whole::tr.analytics.page_referance") }}'
                     },
                     xAxis: {
                         type: 'category',
@@ -525,17 +525,17 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'Sayfa Gösterim Sayısı'
+                            text: '{{ trans("whole::tr.analytics.page_view_count") }}'
                         }
                     },
                     legend: {
                         enabled: false
                     },
                     tooltip: {
-                        pointFormat: 'Sayfa Gösterim Sayısı {point.y}'
+                        pointFormat: '{{ trans("whole::tr.analytics.page_view_count") }}: {point.y}'
                     },
                     series: [{
-                        name: 'Erişim Sayısı',
+                        name: '{{ trans("whole::tr.analytics.access_count") }}',
                         data: [
                             @foreach($referrers as $k=>$referrer)
                             @if($k!=0) , @endif
@@ -564,7 +564,7 @@
                     plotShadow: false
                 },
                 title: {
-                    text: 'Tarayıcılar',
+                    text: '{{ trans("whole::tr.analytics.browsers") }}',
                     align: 'center',
                     verticalAlign: 'middle',
                     y: 40
@@ -590,7 +590,7 @@
                 },
                 series: [{
                     type: 'pie',
-                    name: 'Tarayıcı Sayfa Gösterimi',
+                    name: '{{ trans("whole::tr.analytics.browsers_page_views") }}',
                     innerSize: '50%',
                     data: [
                         @foreach($browsers as $k=>$browser)
