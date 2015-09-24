@@ -2,13 +2,13 @@
     <li class="start @if(Whole\Core\Http\Helpers\SidebarMenuHelper::isActivePath('admin')) active @endif">
         <a href="{{ route('admin.index') }}">
             <i class="icon-home"></i>
-            <span class="title">Yönetim Paneli</span>
+            <span class="title">{{ trans('whole::tr.layouts.dashboard') }}</span>
         </a>
     </li>
     <li>
         <a target="_blank" href="{{ route('master_page') }}">
             <i class="icon-globe"></i>
-            <span class="title">Siteyi Önizle</span>
+            <span class="title">{{ trans('whole::tr.layouts.preview') }}</span>
         </a>
     </li>
     {{--sidebar_menu--}}
@@ -16,27 +16,27 @@
     <li @if(Whole\Core\Http\Helpers\SidebarMenuHelper::isActivePath('admin/user,admin/user/*,admin/role,admin/role/*,admin/permitted-page,admin/permitted-page/*')) class="active" @endif >
         <a href="javascript:;">
             <i class="icon-users"></i>
-            <span class="title">Kullanıcı İşlemleri</span>
+            <span class="title">{{ trans('whole::tr.layouts.user_operations') }}</span>
             <span class="arrow "></span>
         </a>
         <ul class="sub-menu">
             <li @if(Whole\Core\Http\Helpers\SidebarMenuHelper::isActivePath('admin/user,admin/user/*')) class="active" @endif>
                 <a href="{{ route('admin.user.index') }}">
-                    Kullanıcılar</a>
+                    {{ trans('whole::tr.layouts.users') }}</a>
             </li>
             <li @if(Whole\Core\Http\Helpers\SidebarMenuHelper::isActivePath('admin/role,admin/role/*')) class="active" @endif>
                 <a href="{{ route('admin.role.index') }}">
-                    Kullanıcı Grupları</a>
+                    {{ trans('whole::tr.layouts.user_roles') }}</a>
             </li>
             <li @if(Whole\Core\Http\Helpers\SidebarMenuHelper::isActivePath('admin/permitted-page,admin/permitted-page/*')) class="active" @endif>
                 <a href="{{ route('admin.permitted_page.index') }}">
-                    Sayfa Erişim Seviyeleri</a>
+                    {{ trans('whole::tr.layouts.permitted_page') }}</a>
             </li>
         </ul>
     </li>
     <li>
         <a href="{{ route('admin.logout') }}">
             <i class="icon-power"></i>
-            <span class="title">Çıkış Yap</span></a>
+            <span class="title">{{ trans('whole::tr.layouts.logout') }}</span></a>
     </li>
 </ul>

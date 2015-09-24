@@ -1,7 +1,7 @@
 <div class="page-header-inner">
     <div class="page-logo">
         <a href="{{ route('admin.index') }}">
-            <img src="{{ URL::to('assets/backend/admin/layout4/img/logo-light.png') }}" alt="logo" class="logo-default"/>
+            <img src="{{ URL::to('assets/backend/admin/layout4/img/logo-light.png') }}" alt="WholeCMS" class="logo-default"/>
         </a>
         <div class="menu-toggler sidebar-toggler">
             <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -30,13 +30,13 @@
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
                             <a href="{{ route('admin.user.edit',$user->id) }}">
-                                <i class="icon-user"></i> Profilim </a>
+                                <i class="icon-user"></i> {{ trans('whole::tr.layouts.profile') }} </a>
                         </li>
                         <li class="divider">
                         </li>
                         <li>
                             <a href="{{ route('admin.logout') }}">
-                                <i class="icon-key"></i> Çıkış Yap </a>
+                                <i class="icon-key"></i> {{ trans('whole::tr.layouts.logout') }} </a>
                         </li>
                     </ul>
                 </li>
