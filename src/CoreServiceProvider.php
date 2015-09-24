@@ -24,8 +24,9 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		    $nameSpace = $this->app->getNamespace();
-        $this->app->router->group(['namespace' => $nameSpace . 'Http\Controllers'], function()
+		$nameSpace = $this->app->getNamespace();
+        
+		$this->app->router->group(['namespace' => $nameSpace . 'Http\Controllers'], function()
         {
             require __DIR__.'/Http/routes.php';
         });
@@ -35,10 +36,17 @@ class CoreServiceProvider extends ServiceProvider
            ]);
 
         $this->loadViewsFrom(__DIR__.'/../views', 'backend');
-		    $this->loadViewsFrom(__DIR__.'/../views', 'index');
-        $this->publishes([
+		$this->loadViewsFrom(__DIR__.'/../views', 'index');
+        
+		$this->publishes([
             __DIR__.'/../views' => base_path('resources/views/vendor'),
         ]);
+		
+		$this->loadTranslationsFrom(__DIR__.'/../translations/whole', 'whole');
+		
+		$this->publishes([
+			__DIR__.'/../translations/whole' => base_path('resources/lang/vendor/whole'),
+		]);
 
         $this->publishes([
             __DIR__.'/../database/migrations/' => database_path('migrations')
