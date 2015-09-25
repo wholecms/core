@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS İçerik Düzenle" }}@endsection
+@section('title'){{ trans('whole::tr.contents.edit_title') }}@endsection
 
 @section('page_title')
-    <h1>İçerik Düzenle</h1>
+    <h1>{{ trans('whole::tr.contents.edit_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.contents.edit_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.content.index') }}">İçerikler</a>
+            <a href="{{ route('admin.content.index') }}">{{ trans('whole::tr.contents.edit_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">İçerik Düzenle</a>
+            <a href="#">{{ trans('whole::tr.contents.edit_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,25 +32,33 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-pencil font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">İçerik Düzenle</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::tr.contents.edit_portlet_title') }}</span>
                     </div>
                 </div>
 
                 <div class="portlet-body form">
                     @include('backend::_errors.error')
                     {!! Form::model($content,['method' => 'put','route'=>['admin.content.update',$content->id],'class'=>'form-horizontal','role'=>'form']) !!}
-                    <div class="form-body">
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                                {!! Form::submit(trans('whole::tr.contents.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">{{ trans('whole::tr.contents.cancel') }}</a>
+                            </div>
+                        </div>
+                    </div>
+					<div class="form-body">
                         @include('backend::contents._form')
                     </div>
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit("Düzenle",['class'=>'btn blue']) !!}
-                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">İptal Et</a>
+                                {!! Form::submit(trans('whole::tr.contents.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">{{ trans('whole::tr.contents.cancel') }}</a>
                             </div>
                         </div>
                     </div>
-                    </form>
+                    {!! Form::close(); !!}
                 </div>
             </div>
         </div>
@@ -77,9 +85,9 @@
             enterMode : CKEDITOR.ENTER_BR
         });
 
-        CKEDITOR.protectedSource.push(/<i[^>]*><\/i>/g);
-        CKEDITOR.protectedSource.push(/<span[^>]*><\/span>/g);
-        CKEDITOR.protectedSource.push( /<\?[\s\S]*?\?>/g );
+CKEDITOR.protectedSource.push(/<i[^>]*><\/i>/g);
+CKEDITOR.protectedSource.push(/<span[^>]*><\/span>/g);
+CKEDITOR.protectedSource.push( /<\?[\s\S]*?\?>/g );
 CKEDITOR.protectedSource.push(/[^<]*(<h1>([^<]+)<\/h1>)/g);
 CKEDITOR.protectedSource.push( /<cfscript[\s\S]*?\/cfscript>/g );
 CKEDITOR.protectedSource.push( /<br[\s\S]*?\/>/g );   // BR Tags
@@ -97,11 +105,6 @@ CKEDITOR.protectedSource.push( /<cfloop[\s\S]*?\/cfloop>/g);
 CKEDITOR.protectedSource.push( /<cfset[\s\S]*?\/cfset/g);
 CKEDITOR.protectedSource.push( /<cf[\s\S]*?>/gi ) ; // ColdFusion cf tags - OPEN.
 CKEDITOR.protectedSource.push( /<\/cf[\s\S]*?>/gi ) ; // ColdFusion cf tags - CLOSE.
-
-
-
-
-
 
         //        CKEDITOR.editorConfig = function( config ) {
         //            config.language = 'es';

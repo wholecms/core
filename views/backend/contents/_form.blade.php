@@ -1,12 +1,12 @@
 <div class="form-group">
-    {!! Form::label("İçerik Başlığı",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.contents.form_label_1'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('title',null,['placeholder'=>'İçerik Başlığı','class'=>'form-control']) !!}
+        {!! Form::text('title',null,['placeholder'=>trans('whole::tr.contents.form_label_1'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("Başlık Görünürlük",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.contents.form_label_2'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div class="checkbox-list">
             <label class="checkbox-inline">
@@ -18,7 +18,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label("Yayın",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.contents.form_label_3'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div class="checkbox-list">
             <label class="checkbox-inline">
@@ -30,16 +30,16 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label("Erişim Seviyesi",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.contents.form_label_4'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::select('access[]',$roles->toArray()+['0'=>'Ziyaretçi'],isset($content)?unserialize($content->access):$roles->keys()->toArray()+[$roles->count()=>0],['class'=>'form-control','multiple'=>'multiple','size'=>$roles->count()+1]) !!}
+        {!! Form::select('access[]',$roles->toArray()+['0'=>trans('whole::tr.contents.form_option_1')],isset($content)?unserialize($content->access):$roles->keys()->toArray()+[$roles->count()=>0],['class'=>'form-control','multiple'=>'multiple','size'=>$roles->count()+1]) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("İçerik",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::tr.contents.form_label_5'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::textarea('content',null,['id'=>'editor','placeholder'=>'İçerik','class'=>'form-control']) !!}
+        {!! Form::textarea('content',null,['id'=>'editor','placeholder'=>trans('whole::tr.contents.form_label_5'),'class'=>'form-control']) !!}
     </div>
 </div>
 
