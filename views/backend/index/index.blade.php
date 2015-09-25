@@ -1,6 +1,6 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Yönetim Paneli" }}@endsection
+@section('title'){{ trans('whole::tr.contents.title') }}@endsection
 
 
 
