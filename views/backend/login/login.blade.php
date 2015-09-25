@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Whole CMS Yönetim Paneli Giriş</title>
+    <title>{{ trans('whole::tr.contents.title') }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -43,7 +43,7 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="{!! URL::to('assets/backend/admin/layout4/img/logo-big.png') !!}" alt=""/>
+        <img src="{!! URL::to('assets/backend/admin/layout4/img/logo-big.png') !!}" alt="WholeCMS"/>
     </a>
 </div>
 <!-- END LOGO -->
@@ -51,28 +51,26 @@
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
     {!! Form::open(['route'=>'admin.login.action','method'=>'post','class'=>'login-form']) !!}
-    {{--<form class="login-form" action="index.html" method="post">--}}
-        <h3 class="form-title">Giriş Yap</h3>
+        <h3 class="form-title">{{ trans('whole::tr.contents.form_title') }}</h3>
     @include('backend::_errors.error')
     <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
-			<span>
-			E-Mail adresi ve şifre boşbırakılamaz. </span>
+			<span>{{ trans('whole::tr.contents.error') }}</span>
         </div>
         <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">E-Mail Adresi</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="E-Mail Adresi" name="email"/>
+            <label class="control-label visible-ie8 visible-ie9">{{ trans('whole::tr.contents.form_label_1') }}</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="{{ trans('whole::tr.contents.form_label_1') }}" name="email"/>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Şifreniz</label>
-            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Şifreniz" name="password"/>
+            <label class="control-label visible-ie8 visible-ie9">{{ trans('whole::tr.contents.form_label_2') }}</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="{{ trans('whole::tr.contents.form_label_2') }}" name="password"/>
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-success uppercase">Giriş Yap</button>
+            <button type="submit" class="btn btn-success uppercase">{{ trans('whole::tr.contents.login') }}</button>
             <label class="rememberme check">
-                <input type="checkbox" name="remember" value="1"/>Beni Hatırla</label>
-            <a href="javascript:;" id="forget-password" class="forget-password">Şifremi Unuttum</a>
+                <input type="checkbox" name="remember" value="1"/>{{ trans('whole::tr.contents.rememberme') }}</label>
+				{{--<a href="javascript:;" id="forget-password" class="forget-password">{{ trans('whole::tr.contents.forget_password') }}</a>--}}
         </div>
         <div class="create-account">
             <p>&nbsp;</p>
@@ -81,16 +79,16 @@
     <!-- END LOGIN FORM -->
     <!-- BEGIN FORGOT PASSWORD FORM -->
     <form class="forget-form" action="index.html" method="post">
-        <h3>Şifrenizi mi Unuttunuz?</h3>
+        <h3>{{ trans('whole::tr.contents.forget_title') }}</h3>
         <p>
-            Şifrenizi Sıfırlamak İçin E-Mail Adresinizi Giriniz
+            {{ trans('whole::tr.contents.forget_content') }}
         </p>
         <div class="form-group">
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="E-Mail Adresiniz" name="email"/>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{{ trans('whole::tr.contents.form_label_1') }}" name="email"/>
         </div>
         <div class="form-actions">
-            <button type="button" id="back-btn" class="btn btn-default">Geri</button>
-            <button type="submit" class="btn btn-success uppercase pull-right">Gönder</button>
+            <button type="button" id="back-btn" class="btn btn-default">{{ trans('whole::tr.contents.back') }}</button>
+            <button type="submit" class="btn btn-success uppercase pull-right">{{ trans('whole::tr.contents.send') }}</button>
         </div>
     </form>
     <!-- END FORGOT PASSWORD FORM -->
