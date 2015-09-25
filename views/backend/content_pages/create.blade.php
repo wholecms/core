@@ -1,28 +1,28 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS İçerik Sayfası Ekle" }}@endsection
+@section('title'){{ trans('whole::tr.content_pages.create_title') }}@endsection
 
 @section('page_title')
-    <h1> İçerik Sayfası Ekle</h1>
+    <h1>{{ trans('whole::tr.content_pages.create_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.content_pages.create_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Sayfalar</a>
+            <a href="#">{{ trans('whole::tr.content_pages.create_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.content_page.index') }}">İçerik Sayfaları</a>
+            <a href="{{ route('admin.content_page.index') }}">{{ trans('whole::tr.content_pages.create_breadcrumb2') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">İçerik Sayfası Ekle</a>
+            <a href="#">{{ trans('whole::tr.content_pages.create_breadcrumb3') }}</a>
         </li>
     </ul>
 @endsection
@@ -36,15 +36,15 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="icon-doc font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> İçerik Sayfası Ekle</span>
-                        <div class="right_container_responsive"><a id="open" href="#"><i class="fa fa-cog"></i> Ayarlar</a></div>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::tr.content_pages.create_portlet_title') }}</span>
+                        <div class="right_container_responsive"><a id="open" href="#"><i class="fa fa-cog"></i> {{ trans('whole::tr.content_pages.settings') }}</a></div>
                     </div>
                 </div>
                 <div class="portlet-body">
                     @include('backend::_errors.error')
                     <div class="_flash"></div>
-                    <button type="button" style="margin:0 5px 10px 5px;" class="btn blue pull-right sendform">Kaydet</button>
-                    <a href="{!! route('admin.content_page.index') !!}" style="margin:0 5px 10px 5px;" class="btn default pull-right ">İptal</a>
+                    <button type="button" style="margin:0 5px 10px 5px;" class="btn blue pull-right sendform">{{ trans('whole::tr.content_pages.save') }}</button>
+                    <a href="{!! route('admin.content_page.index') !!}" style="margin:0 5px 10px 5px;" class="btn default pull-right ">{{ trans('whole::tr.content_pages.cancel') }}</a>
                     <div class="clearfix"></div>
 
                     <div class="page-scaffold">
@@ -62,7 +62,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> Ayarlar
+                                <i class="fa fa-comments"></i> {{ trans('whole::tr.content_pages.settings') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -74,13 +74,13 @@
                             <form role="form" class="form-horizontal">
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label class="col-md-12" for="form_control_1"><strong>Şablon Adı</strong></label>
+                                        <label class="col-md-12" for="form_control_1"><strong>{{ trans('whole::tr.content_pages.template_name') }}</strong></label>
                                         <div class="col-md-12">
                                             <input type="text" name="name" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12" for="form_control_1"><strong>Tema Seçiniz</strong></label>
+                                        <label class="col-md-12" for="form_control_1"><strong>{{ trans('whole::tr.content_pages.select_template') }}</strong></label>
                                         <div class="col-md-12">
                                             {!! Form::select('template',$templates,$select_template->id,['class'=>'form-control select_template']) !!}
                                         </div>
@@ -90,7 +90,7 @@
                                     <div class="portlet box blue" style="margin-bottom:15px;">
                                         <div class="portlet-title">
                                             <div class="caption">
-                                                <i class="fa fa-comments"></i> Alanları Gizle
+                                                <i class="fa fa-comments"></i>{{ trans('whole::tr.content_pages.hidden_fields') }}
                                             </div>
                                             <div class="tools">
                                                 <a href="javascript:;" class="expand">
@@ -113,37 +113,12 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
-                                    {{--<div class="form-group">--}}
-                                        {{--<label class="col-md-12" for="form_control_1"><strong>Alanları Gizle</strong></label>--}}
-                                        {{--<div class="col-md-12">--}}
-                                            {{--<div class="checkbox-list">--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header_top" name="field[]"> Header Top </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header_top_left" name="field[]"> Header Top Left </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header_top_right" name="field[]"> Header Top Right </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header" name="field[]"> Header </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header_left" name="field[]"> Header Left </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header_right" name="field[]"> Header Right </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="header_bottom" name="field[]"> Header Bottom </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="content_top" name="field[]"> Content Top </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="content_left" name="field[]"> Left Content </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="content_main" name="field[]"> Main Content </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="content_right" name="field[]"> Right Content </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="content_bottom" name="field[]"> Content Bottom </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="footer_top" name="field[]"> Footer Top </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="footer" name="field[]"> Footer </label></div>--}}
-                                                {{--<div class="col-md-12"><label class="checkbox-inline"><input class="checkbox-page-scaffold" type="checkbox" value="footer_bottom" name="field[]"> Footer Bottom </label></div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
                                 </div>
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <button type="submit" class="btn blue">Kaydet</button>
-                                            <a href="{!! route('admin.content_page.index') !!}" class="btn default">İptal</a>
+                                            <button type="submit" class="btn blue">{{ trans('whole::tr.content_pages.save') }}</button>
+                                            <a href="{!! route('admin.content_page.index') !!}" class="btn default">{{ trans('whole::tr.content_pages.cancel') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +127,7 @@
                                 <ol class="dd-list">
                                     <li class="dd-item dd3-item" data-type="main-content" data-data_id="0">
                                         <div class="dd-handle dd3-handle"></div>
-                                        <div class="dd3-content">İçerik</div>
+                                        <div class="dd3-content">{{ trans('whole::tr.content_pages.content') }}</div>
                                         <div class="dd-remove disabled"><a href="#"> <i class="fa fa-remove"></i> </a></div>
                                     </li>
                                 </ol>
@@ -164,7 +139,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> Bloklar
+                                <i class="fa fa-comments"></i> {{ trans('whole::tr.content_pages.blocks') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -179,7 +154,7 @@
                                             <li class="dd-item dd-item" data-type="block" data-data_id="{{ $block->id }}">
                                                 <div class="dd-handle dd3-handle"></div>
                                                 <div class="dd3-content"><a target="_blanks" href="{!! route('admin.block.edit',$block->id) !!}">{{ $block->name }}</a>
-                                                    [<a target="_blanks" href="{!! route('admin.block.show',$block->id) !!}">Özl.</a>]</div>
+                                                    [<a target="_blanks" href="{!! route('admin.block.show',$block->id) !!}">{{ trans('whole::tr.content_pages.features') }}</a>]</div>
                                                 <div class="dd-remove disabled"><a href="#"> <i class="fa fa-remove"></i> </a></div>
                                             </li>
                                         @endforeach
@@ -193,7 +168,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> İçerikler
+                                <i class="fa fa-comments"></i> {{ trans('whole::tr.content_pages.contents') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -222,7 +197,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> Modül İçeriği
+                                <i class="fa fa-comments"></i> {{ trans('whole::tr.content_pages.component') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -259,7 +234,7 @@
 
     <div id="context-menu2">
         <ul class="dropdown-menu pull-left" role="menu">
-            <li><a href="javascript:;">Bloklar</a>
+            <li><a href="javascript:;">{{ trans('whole::tr.content_pages.blocks') }}</a>
                 @if($blocks->count()>0)
                     <ul id="context-menu-block">
                         @foreach($blocks as $block)
@@ -273,7 +248,7 @@
                     </ul>
                 @endif
             </li>
-            <li><a href="javascript:;">İçerikler</a>
+            <li><a href="javascript:;">{{ trans('whole::tr.content_pages.contents') }}</a>
                 @if($contents->count()>0)
                     <ul id="context-menu-content">
                         @foreach($contents as $content)
@@ -287,7 +262,7 @@
                     </ul>
                 @endif
             </li>
-            <li><a href="javascript:;">Modül İçeriği</a>
+            <li><a href="javascript:;">{{ trans('whole::tr.content_pages.component') }}</a>
                 @if($components->count()>0)
                     <ul id="context-menu-component-file">
                         @foreach($components as $component)
@@ -302,10 +277,10 @@
                     </ul>
                 @endif
             </li>
-            <li><a href="javascript:;">Ana İçerik</a>
+            <li><a href="javascript:;">{{ trans('whole::tr.content_pages.main_content') }}</a>
             <ul id="context-menu-main-content">
                 <li data-type="main-content" data-data_id="0">
-                    <a href="#">İçerik
+                    <a href="#">{{ trans('whole::tr.content_pages.content') }}
                         <i class="list_check fa fa-plus"></i>
                     </a>
                 </li>
@@ -360,7 +335,7 @@
                             UINestable.init();
                         }else
                         {
-                            alert("Birşeyler Yanlış Gitti Doğru Temayı Seçtiğinize Emin Olun");
+                            alert("{{ trans('whole::tr.content_pages.ajax_error0') }}");
                         }
                     }
                 });
@@ -374,7 +349,7 @@
                 if($("input[name='name']").val()==""){
                     $("._flash").html('<div class="alert alert-danger">'+
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+
-                    'Şablon Adı Boş Bırakılamaz'+
+                    "{{ trans('whole::tr.content_pages.ajax_error1') }}"+
                     '</div>');
                     return false;
                 }
