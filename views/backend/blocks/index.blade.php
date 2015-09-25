@@ -1,20 +1,20 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::tr.blocks.index_title') }}@endsection
+@section('title'){{ trans('whole::blocks.index_title') }}@endsection
 
 @section('page_title')
-    <h1>{{ trans('whole::tr.blocks.index_page_title') }}</h1>
+    <h1>{{ trans('whole::blocks.index_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.blocks.index_breadcrumb0') }}</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::blocks.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">{{ trans('whole::tr.blocks.index_breadcrumb1') }}</a>
+            <a href="#">{{ trans('whole::blocks.index_breadcrumb1') }}</a>
         </li>
     </ul>
 @endsection
@@ -28,9 +28,9 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="fa fa-icon fa-list-alt font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> {{ trans('whole::tr.blocks.index_portlet_title') }} </span>
+                        <span class="caption-subject bold uppercase"> {{ trans('whole::blocks.index_portlet_title') }} </span>
                         <a class="btn green pull-right" href="{{ route('admin.block.create') }}">
-                            <i class="fa fa-plus"></i> {{ trans('whole::tr.blocks.add_new') }}
+                            <i class="fa fa-plus"></i> {{ trans('whole::blocks.add_new') }}
                         </a>
                     </div>
                 </div>
@@ -40,9 +40,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ trans('whole::tr.blocks.index_table_th1') }}</th>
-                            <th>{{ trans('whole::tr.blocks.index_table_th2') }}</th>
-                            <th>{{ trans('whole::tr.blocks.index_table_th3') }}</th>
+                            <th>{{ trans('whole::blocks.index_table_th1') }}</th>
+                            <th>{{ trans('whole::blocks.index_table_th2') }}</th>
+                            <th>{{ trans('whole::blocks.index_table_th3') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,11 +52,11 @@
                                 <td>{{ $block->name }}</td>
                                 <td>{{ $block->title }}</td>
                                 <td>
-                                    <a href="{{ route('admin.block.show',$block->id) }}" class="btn btn-warning btn-sm"> <i class="fa fa-plus"></i> {{ trans('whole::tr.blocks.features') }}</a>
-                                    <a data-status="{{ $block->title_visibility }}" data-id="{{ $block->id }}" href="#" class="update_title_visibility btn btn-link btn-sm"> <i class="{!! $block->title_visibility==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> {{ trans('whole::tr.blocks.block_title') }}</a>
-                                    <a data-status="{{ $block->status }}" data-id="{{ $block->id }}" href="#" class="update_status btn btn-link btn-sm"> <i class="fa {!! $block->status==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> {{ trans('whole::tr.blocks.block_status') }}</a>
-                                    <a href="{{ route('admin.block.edit',$block->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{ trans('whole::tr.blocks.block_edit') }}</a>
-                                    <a href="{{ route('admin.block.destroy',$block->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::tr.blocks.block_delete') }}</a>
+                                    <a href="{{ route('admin.block.show',$block->id) }}" class="btn btn-warning btn-sm"> <i class="fa fa-plus"></i> {{ trans('whole::blocks.features') }}</a>
+                                    <a data-status="{{ $block->title_visibility }}" data-id="{{ $block->id }}" href="#" class="update_title_visibility btn btn-link btn-sm"> <i class="{!! $block->title_visibility==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> {{ trans('whole::blocks.block_title') }}</a>
+                                    <a data-status="{{ $block->status }}" data-id="{{ $block->id }}" href="#" class="update_status btn btn-link btn-sm"> <i class="fa {!! $block->status==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> {{ trans('whole::blocks.block_status') }}</a>
+                                    <a href="{{ route('admin.block.edit',$block->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{ trans('whole::blocks.block_edit') }}</a>
+                                    <a href="{{ route('admin.block.destroy',$block->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::blocks.block_delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -104,7 +104,7 @@
                         }
                         else
                         {
-                            alert("{{ trans('whole::tr.blocks.ajax_error0') }}");
+                            alert("{{ trans('whole::blocks.ajax_error0') }}");
                         }
                     }
                 });

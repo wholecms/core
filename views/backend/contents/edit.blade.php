@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::tr.contents.edit_title') }}@endsection
+@section('title'){{ trans('whole::contents.edit_title') }}@endsection
 
 @section('page_title')
-    <h1>{{ trans('whole::tr.contents.edit_page_title') }}</h1>
+    <h1>{{ trans('whole::contents.edit_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.contents.edit_breadcrumb0') }}</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::contents.edit_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.content.index') }}">{{ trans('whole::tr.contents.edit_breadcrumb1') }}</a>
+            <a href="{{ route('admin.content.index') }}">{{ trans('whole::contents.edit_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">{{ trans('whole::tr.contents.edit_breadcrumb2') }}</a>
+            <a href="#">{{ trans('whole::contents.edit_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,7 +32,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-pencil font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{{ trans('whole::tr.contents.edit_portlet_title') }}</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::contents.edit_portlet_title') }}</span>
                     </div>
                 </div>
 
@@ -42,8 +42,8 @@
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit(trans('whole::tr.contents.edit'),['class'=>'btn blue']) !!}
-                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">{{ trans('whole::tr.contents.cancel') }}</a>
+                                {!! Form::submit(trans('whole::contents.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">{{ trans('whole::contents.cancel') }}</a>
                             </div>
                         </div>
                     </div>
@@ -53,8 +53,8 @@
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit(trans('whole::tr.contents.edit'),['class'=>'btn blue']) !!}
-                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">{{ trans('whole::tr.contents.cancel') }}</a>
+                                {!! Form::submit(trans('whole::contents.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.content.index') }}" class="btn default">{{ trans('whole::contents.cancel') }}</a>
                             </div>
                         </div>
                     </div>

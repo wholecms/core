@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::tr.blocks.create_title') }}@endsection
+@section('title'){{ trans('whole::blocks.create_title') }}@endsection
 
 @section('page_title')
-    <h1>{{ trans('whole::tr.blocks.create_page_title') }}</h1>
+    <h1>{{ trans('whole::blocks.create_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.blocks.create_breadcrumb0') }}</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::blocks.create_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.block.index') }}">{{ trans('whole::tr.blocks.create_breadcrumb1') }}</a>
+            <a href="{{ route('admin.block.index') }}">{{ trans('whole::blocks.create_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">{{ trans('whole::tr.blocks.create_breadcrumb2') }}</a>
+            <a href="#">{{ trans('whole::blocks.create_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,7 +32,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-list-alt font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> {{ trans('whole::tr.blocks.create_portlet_title') }}</span>
+                        <span class="caption-subject bold uppercase"> {{ trans('whole::blocks.create_portlet_title') }}</span>
                     </div>
                 </div>
 
@@ -42,8 +42,8 @@
 					<div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-2 col-md-10">
-                                    {!! Form::submit(trans('whole::tr.blocks.save'),['class'=>'btn blue']) !!}
-                                    <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::tr.blocks.cancel') }}</a>
+                                    {!! Form::submit(trans('whole::blocks.save'),['class'=>'btn blue']) !!}
+                                    <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::blocks.cancel') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +53,8 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-2 col-md-10">
-                                    {!! Form::submit(trans('whole::tr.blocks.save'),['class'=>'btn blue']) !!}
-                                    <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::tr.blocks.cancel') }}</a>
+                                    {!! Form::submit(trans('whole::blocks.save'),['class'=>'btn blue']) !!}
+                                    <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::blocks.cancel') }}</a>
                                 </div>
                             </div>
                         </div>

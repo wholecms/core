@@ -1,21 +1,21 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::tr.components.index_title') }}@endsection
+@section('title'){{ trans('whole::components.index_title') }}@endsection
 
 
 @section('page_title')
-    <h1>{{ trans('whole::tr.components.index_page_title') }}</h1>
+    <h1>{{ trans('whole::components.index_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.components.index_breadcrumb0') }}</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::components.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">{{ trans('whole::tr.components.index_breadcrumb1') }}</a>
+            <a href="#">{{ trans('whole::components.index_breadcrumb1') }}</a>
         </li>
     </ul>
 @endsection
@@ -29,9 +29,9 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="fa fa-icon fa-puzzle-piece font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">  {{ trans('whole::tr.components.index_portlet_title') }}</span>
+                        <span class="caption-subject bold uppercase">  {{ trans('whole::components.index_portlet_title') }}</span>
                         <a class="btn green pull-right" href="{{ route('admin.component.create') }}">
-                            <i class="fa fa-plus"></i>{{ trans('whole::tr.components.add_new') }}
+                            <i class="fa fa-plus"></i>{{ trans('whole::components.add_new') }}
                         </a>
                     </div>
                 </div>
@@ -41,9 +41,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ trans('whole::tr.components.index_table_th1') }}</th>
-                            <th>{{ trans('whole::tr.components.index_table_th2') }}</th>
-                            <th>{{ trans('whole::tr.components.index_table_th3') }}</th>
+                            <th>{{ trans('whole::components.index_table_th1') }}</th>
+                            <th>{{ trans('whole::components.index_table_th2') }}</th>
+                            <th>{{ trans('whole::components.index_table_th3') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,7 +53,7 @@
                                 <td>{{ $component->name }}</td>
                                 <td>{{ $component->description }}</td>
                                 <td>
-                                    <a href="{{ route('admin.component.destroy',$component->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::tr.components.delete') }}</a>
+                                    <a href="{{ route('admin.component.destroy',$component->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::components.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -30,13 +30,13 @@
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
                             <a href="{{ route('admin.user.edit',$user->id) }}">
-                                <i class="icon-user"></i> {{ trans('whole::tr.layouts.profile') }} </a>
+                                <i class="icon-user"></i> {{ trans('whole::layouts.profile') }} </a>
                         </li>
                         <li class="divider">
                         </li>
                         <li>
                             <a href="{{ route('admin.logout') }}">
-                                <i class="icon-key"></i> {{ trans('whole::tr.layouts.logout') }} </a>
+                                <i class="icon-key"></i> {{ trans('whole::layouts.logout') }} </a>
                         </li>
                     </ul>
                 </li>

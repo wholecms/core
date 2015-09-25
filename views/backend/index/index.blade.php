@@ -1,6 +1,6 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::tr.index.title') }}@endsection
+@section('title'){{ trans('whole::index.title') }}@endsection
 
 
 

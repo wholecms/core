@@ -41,10 +41,10 @@
         TableManaged.init({lengthMenu:[
             [15, 25, 50, -1],
             [15, 25, 50, "All"] // change per page values here
-        ],pageLength:"15",search:" {{ trans('whole::tr.layouts.search_table') }}: ",order:[0,'desc']});
+        ],pageLength:"15",search:" {{ trans('whole::layouts.search_table') }}: ",order:[0,'desc']});
 
         $("a[data-method='delete']").click(function(){
-            var d = confirm("{{ trans('whole::tr.layouts.want_to_delete') }}");
+            var d = confirm("{{ trans('whole::layouts.want_to_delete') }}");
             if (d == false) {
                 return false;
             }

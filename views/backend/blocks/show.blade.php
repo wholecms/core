@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::tr.blocks.show_title') }}@endsection
+@section('title'){{ trans('whole::blocks.show_title') }}@endsection
 
 @section('page_title')
-    <h1>{{ trans('whole::tr.blocks.show_page_title') }}</h1>
+    <h1>{{ trans('whole::blocks.show_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">{{ trans('whole::tr.blocks.show_breadcrumb0') }}</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::blocks.show_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.block.index') }}">{{ trans('whole::tr.blocks.show_breadcrumb1') }}</a>
+            <a href="{{ route('admin.block.index') }}">{{ trans('whole::blocks.show_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">{{ trans('whole::tr.blocks.show_breadcrumb2') }}</a>
+            <a href="#">{{ trans('whole::blocks.show_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,7 +32,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-list-alt font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{{ trans('whole::tr.blocks.show_portlet_title') }}</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::blocks.show_portlet_title') }}</span>
                     </div>
                 </div>
 
@@ -41,8 +41,8 @@
                     <div class="_flash"></div>
                     {!! Form::open(['method'=>'post','route'=>['admin.block.attribute_create',$id]]) !!}
 					<div class="text-right">
-                        <button type="submit" class="post_attribute btn blue">{{ trans('whole::tr.blocks.save') }}</button>
-                        <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::tr.blocks.cancel') }}</a>
+                        <button type="submit" class="post_attribute btn blue">{{ trans('whole::blocks.save') }}</button>
+                        <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::blocks.cancel') }}</a>
                     </div>
 					<div class="clearfix"></div>
 					
@@ -52,8 +52,8 @@
 
                     <div class="clearfix"></div>
                     <div class="text-right">
-                        <button type="submit" class="post_attribute btn blue">{{ trans('whole::tr.blocks.save') }}</button>
-                        <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::tr.blocks.cancel') }}</a>
+                        <button type="submit" class="post_attribute btn blue">{{ trans('whole::blocks.save') }}</button>
+                        <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::blocks.cancel') }}</a>
                     </div>
                     {!! Form::close() !!}
                 </div>
@@ -66,7 +66,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> {{ trans('whole::tr.blocks.pages') }}
+                                <i class="fa fa-comments"></i> {{ trans('whole::blocks.pages') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -95,7 +95,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> {{ trans('whole::tr.blocks.blocks') }}
+                                <i class="fa fa-comments"></i> {{ trans('whole::blocks.blocks') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -110,7 +110,7 @@
                                             <li class="dd-item dd-item" data-type="block" data-data_id="{{ $item->id }}">
                                                 <div class="dd-handle dd3-handle"></div>
                                                 <div class="dd3-content"><a target="_blanks" href="{!! route('admin.block.edit',$item->id) !!}">{{ $item->name  }}</a>
-                                                    [<a target="_blanks" href="{!! route('admin.block.show',$item->id) !!}">{{ trans('whole::tr.blocks.fet') }}</a>]
+                                                    [<a target="_blanks" href="{!! route('admin.block.show',$item->id) !!}">{{ trans('whole::blocks.fet') }}</a>]
                                                 </div>
                                                 <div class="dd-remove disabled"><a href="#"> <i class="fa fa-remove"></i> </a></div>
                                             </li>
@@ -125,7 +125,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> {{ trans('whole::tr.blocks.contents') }}
+                                <i class="fa fa-comments"></i> {{ trans('whole::blocks.contents') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -154,7 +154,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> {{ trans('whole::tr.blocks.components') }}
+                                <i class="fa fa-comments"></i> {{ trans('whole::blocks.components') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -221,7 +221,7 @@
             var block_detail = $.parseJSON('{!! $block->item_json !!}');
 
             if (block_detail.length>0){$("#nl_block_attribute").html('<ol class="dd-list"></ol>');
-                $("#nl_block_attribute").before('<div class="_load">{{ trans('whole::tr.blocks.loading') }}</div>');
+                $("#nl_block_attribute").before('<div class="_load">{{ trans('whole::blocks.loading') }}</div>');
                 list_block_items(block_detail,false);
                 $("._load").remove();
             }
@@ -280,7 +280,7 @@
                     {
                             location =  "{!! route('admin.block.index') !!}";
                     }
-                    btn.html("{{ trans('whole::tr.blocks.save') }}");
+                    btn.html("{{ trans('whole::blocks.save') }}");
                 }
             });
 
