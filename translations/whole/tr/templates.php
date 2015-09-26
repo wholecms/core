@@ -2,7 +2,7 @@
 return [
 	
 	'index_title' => 'Whole CMS Şablonlar',
-    'index_page_title' => '>Şablonlar',
+    'index_page_title' => 'Şablonlar',
 	
 	'create_title' => 'Whole CMS Yeni Şablon Ekle',
     'create_page_title' => 'Yeni Şablon Ekle',
@@ -31,7 +31,7 @@ return [
 	'index_table_th1' => 'Şablon Adı',
 	'index_table_th2' => 'Şablon Açıklaması',
 	'index_table_th3' => 'Yayın',
-	'index_table_th3' => 'İşlemler',
+	'index_table_th4' => 'İşlemler',
 	
 	'form_label_1'=>"Şablon Dosyası",
 ];
