@@ -39,9 +39,9 @@
                 <div class="portlet-body form">
                     @include('backend::_errors.error')
                     {!! Form::open(['method' => 'delete','route'=>['admin.logs.clear'],'class'=>'form-horizontal','role'=>'form']) !!}
-                    <div class="form-actions" style="margin: 0;padding: 0;">
+                    <div class="form-actions">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-right">
                                 {!! Form::submit(trans('whole::logs.clear'),['class'=>'btn blue']) !!}
                             </div>
                         </div>
@@ -54,9 +54,9 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="form-actions">
+                    <div class="form-actions" style="margin: 0;padding: 0;">
                         <div class="row">
-                            <div class="col-md-12 text-right">
+                            <div class="col-md-12">
                                 {!! Form::submit(trans('whole::logs.clear'),['class'=>'btn blue']) !!}
                             </div>
                         </div>
