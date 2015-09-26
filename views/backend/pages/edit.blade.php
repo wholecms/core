@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Sayfa Düzenle" }}@endsection
+@section('title'){{ trans('whole::pages.edit_title') }}@endsection
 
 @section('page_title')
-    <h1>Sayfa Düzenle</h1>
+    <h1>{{ trans('whole::pages.edit_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::pages.edit_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.page.index') }}">Sayfalar</a>
+            <a href="{{ route('admin.page.index') }}">{{ trans('whole::pages.edit_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Sayfa Düzenle</a>
+            <a href="#">{{ trans('whole::pages.edit_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,21 +32,29 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-map-signs font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">Sayfa Düzenle</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::pages.edit_portlet_title') }}</span>
                     </div>
                 </div>
 
                 <div class="portlet-body form">
                     @include('backend::_errors.error')
                     {!! Form::model($page,['method' => 'put','route'=>['admin.page.update',$page->id],'class'=>'form-horizontal','role'=>'form']) !!}
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                                {!! Form::submit(trans('whole::pages.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.page.index') }}" class="btn default">{{ trans('whole::pages.cancel') }}</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-body">
                         @include('backend::pages._form')
                     </div>
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit("Düzenle",['class'=>'btn blue']) !!}
-                                <a href="{{ URL::route('admin.page.index') }}" class="btn default">İptal Et</a>
+                                {!! Form::submit(trans('whole::pages.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.page.index') }}" class="btn default">{{ trans('whole::pages.cancel') }}</a>
                             </div>
                         </div>
                     </div>
@@ -61,18 +69,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Icon Seçiniz</h4>
+                    <h4 class="modal-title">{{ trans('whole::pages.select_icon') }}</h4>
                 </div>
                 <div class="modal-body">
-                    <h3>Bootstrap Icon</h3>
+                    <h3>{{ trans('whole::pages.bootstrap_icon') }}</h3>
                     <ul class="bootstrap_icon"></ul>
                     <div class="clearfix"></div>
-                    <h3>Font Awesome Icon</h3>
+                    <h3>{{ trans('whole::pages.font_awesome_icon') }}</h3>
                     <ul class="fontawesome_icon"></ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn default" data-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn default" data-dismiss="modal">{{ trans('whole::pages.close') }}</button>
                 </div>
             </div>
             <!-- /.modal-content -->

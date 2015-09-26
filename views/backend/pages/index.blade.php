@@ -1,20 +1,20 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Sayfalar" }}@endsection
+@section('title'){{ trans('whole::pages.index_title') }}@endsection
 
 @section('page_title')
-    <h1>Sayfalar</h1>
+    <h1>{{ trans('whole::pages.index_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::pages.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Sayfalar</a>
+            <a href="#">{{ trans('whole::pages.index_breadcrumb1') }}</a>
         </li>
     </ul>
 @endsection
@@ -28,9 +28,9 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="fa fa-icon fa-map-signs font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> Sayfalar</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::pages.index_portlet_title') }}</span>
                         <a class="btn green pull-right" href="{{ route('admin.page.create') }}">
-                            <i class="fa fa-plus"></i> Yeni Ekle
+                            <i class="fa fa-plus"></i>{{ trans('whole::pages.add_new') }}
                         </a>
                     </div>
                 </div>
@@ -40,10 +40,10 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Menü Başlığı</th>
-                            <th>İçerik Türü</th>
-                            <th>Link</th>
-                            <th>İşlemler</th>
+                            <th>{{ trans('whole::pages.index_table_th1') }}</th>
+                            <th>{{ trans('whole::pages.index_table_th2') }}</th>
+                            <th>{{ trans('whole::pages.index_table_th3') }}</th>
+                            <th>{{ trans('whole::pages.index_table_th4') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,13 +53,13 @@
                                 <td>{{ $page->menu_title }}</td>
                                 <td>
                                     @if($page->content_type == "content")
-                                        İçerik<br />
+                                        {{ trans('whole::pages.content') }}<br />
                                         <a target="_blank" href="{{ route('admin.content.edit',$page->content->id) }}">{{ $page->content->title }}</a>
                                     @elseif($page->content_type == "component")
-                                        Bileşen<br />
+                                        {{ trans('whole::pages.component') }}<br />
                                         {{ $page->component->component->name }} > {{ $page->component->name }}
                                     @elseif($page->content_type == "link")
-                                        Dış Bağlantı (Link)<br />
+                                        {{ trans('whole::pages.link') }}<br />
                                         {!! strlen($page->external_link)>20?'<a href="'.$page->external_link.'" target="_blank">'.substr($page->external_link,0,15).'</a>':'<a href="'.$page->external_link.'">'.$page->external_link.'</a>'!!}
                                     @endif
                                 </td>
@@ -67,10 +67,10 @@
                                     <input type="text" onclick="select();" style="width: 150px;" value="{{ route('content_page',[str_slug($page->menu_title),$page->id]) }}" />
                                 </td>
                                 <td>
-                                    <a data-status="{{ $page->title_visibility }}" data-id="{{ $page->id }}" href="#" class="update_title_visibility btn btn-link btn-sm"> <i class="{!! $page->title_visibility==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> Başlık</a>
-                                    <a data-status="{{ $page->status }}" data-id="{{ $page->id }}" href="#" class="update_status btn btn-link btn-sm"> <i class="fa {!! $page->status==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> Yayın</a>
-                                    <a href="{{ route('admin.page.edit',$page->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Düzenle</a>
-                                    <a href="{{ route('admin.page.destroy',$page->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> Sil</a>
+                                    <a data-status="{{ $page->title_visibility }}" data-id="{{ $page->id }}" href="#" class="update_title_visibility btn btn-link btn-sm"> <i class="{!! $page->title_visibility==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> {{ trans('whole::pages.title') }}</a>
+                                    <a data-status="{{ $page->status }}" data-id="{{ $page->id }}" href="#" class="update_status btn btn-link btn-sm"> <i class="fa {!! $page->status==1?'fa fa-eye':'fa fa-eye-slash' !!}"></i> {{ trans('whole::pages.status') }}</a>
+                                    <a href="{{ route('admin.page.edit',$page->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{ trans('whole::pages.edit') }}</a>
+                                    <a href="{{ route('admin.page.destroy',$page->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i>{{ trans('whole::pages.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -118,7 +118,7 @@
                         }
                         else
                         {
-                            alert("Bir Hata Meydana Geldi ve Güncellenemedi");
+                            alert("{{ trans('whole::pages.ajax_error0') }}");
                         }
                     }
                 });
