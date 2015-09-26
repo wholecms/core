@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Kullanıcı Grupları" }}@endsection
+@section('title'){{ trans('whole::roles.index_title') }}@endsection
 
 @section('page_title')
-    <h1>Kullanıcı Grupları<small>Tüm Kullanıcı Grupları</small></h1>
+    <h1>{{ trans('whole::roles.index_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::roles.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Kullanıcı İşlemleri</a>
+            <a href="#">{{ trans('whole::roles.index_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Kullanıcı Grupları</a>
+            <a href="#">{{ trans('whole::roles.index_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,9 +32,9 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="icon-users font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> Kullanıcı Grupları</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::roles.index_portlet_title') }}</span>
                         <a class="btn green pull-right" href="{{ route('admin.role.create') }}">
-                            <i class="fa fa-plus"></i> Yeni Ekle
+                            <i class="fa fa-plus"></i>{{ trans('whole::roles.add_new') }}
                         </a>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Grup Adı</th>
-                            <th>Erişim İzni</th>
-                            <th>İşlemler</th>
+                            <th>{{ trans('whole::roles.index_table_th1') }}</th>
+                            <th>{{ trans('whole::roles.index_table_th2') }}</th>
+                            <th>{{ trans('whole::roles.index_table_th3') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,10 +54,10 @@
                             <tr class="odd gradeX">
                                 <td>{{ $role->id }}</td>
                                 <td>{{ $role->role_name }}</td>
-                                <td>{{ $role->permits==1?"Panele Erişim İzni Var":"Panele Erişim İzni Yok" }}</td>
+                                <td>{{ $role->permits==1? trans('whole::roles.permits_on') : trans('whole::roles.permits_off') }}</td>
                                 <td>
-                                    <a href="{{ route('admin.role.edit',$role->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Düzenle</a>
-                                    <a href="{{ route('admin.role.destroy',$role->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> Sil</a>
+                                    <a href="{{ route('admin.role.edit',$role->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i>{{ trans('whole::roles.edit') }}</a>
+                                    <a href="{{ route('admin.role.destroy',$role->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i>{{ trans('whole::roles.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
