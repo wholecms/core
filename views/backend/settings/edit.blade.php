@@ -1,20 +1,20 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Ayarlar" }}@endsection
+@section('title'){{ trans('whole::settings.edit_title') }}@endsection
 
 @section('page_title')
-    <h1>Site Ayarları</h1>
+    <h1>{{ trans('whole::settings.edit_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::settings.edit_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Site Ayarları</a>
+            <a href="#">{{ trans('whole::settings.edit_breadcrumb1') }}</a>
         </li>
     </ul>
 @endsection
@@ -28,25 +28,33 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="fa fa-icon fa-cogs font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">Site Ayarları</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::settings.edit_portlet_title') }}</span>
                     </div>
                 </div>
 
                 <div class="portlet-body form">
                     @include('backend::_errors.error')
                     {!! Form::model($setting,['method' => 'put','route'=>['admin.setting.update',$setting->id],'class'=>'form-horizontal','role'=>'form']) !!}
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                                {!! Form::submit(trans('whole::settings.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.setting.index') }}" class="btn default">{{ trans('whole::settings.cancel') }}</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-body">
                         @include('backend::settings._form')
                     </div>
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit("Düzenle",['class'=>'btn blue']) !!}
-                                <a href="{{ URL::route('admin.setting.index') }}" class="btn default">İptal Et</a>
+                                {!! Form::submit(trans('whole::settings.edit'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.setting.index') }}" class="btn default">{{ trans('whole::settings.cancel') }}</a>
                             </div>
                         </div>
                     </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
