@@ -1,13 +1,12 @@
 <?php
 
 return [
-	'title'=>'Son 5 Kullanıcı',
-
-	'th_title_1'=>'Kullanıcı Adı',
-	'th_title_2'=>'Email Adresi',
-	'th_title_3'=>'Kullanıcı Grubu',
-	'th_title_4'=>'İşlemler',
-
-	'edit'=>'Düzenle',
-	'delete'=>'Sil',
+	'visitors'=>'Ziyaretçi Sayısı',
+	'today'=>'Bugün',
+	'page_views'=>'Sayfa Gösterİmİ',
+	'yesterday'=>'Dün',
+	'weekly_visitors'=>'HAFTALIK ZİYARETÇİ İSTATİSTİĞİ',
+	'number_visitors'=>'Ziyaretçi Sayısı',
+	'this_week'=>'Bu Hafta',
+	'last_week'=>'Geçen Hafta',
 ];
