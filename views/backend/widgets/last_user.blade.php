@@ -7,7 +7,7 @@
         <div class="portlet-title">
             <div class="caption font-green-haze" style="width: 100%;">
                 <i class="icon-users font-green-haze"></i>
-                <span class="caption-subject bold uppercase">Son 5 Kullanıcı</span>
+                <span class="caption-subject bold uppercase">{{ trans('whole::widgets_last_user.title') }}</span>
             </div>
         </div>
         <div class="portlet-body">
@@ -15,10 +15,10 @@
                 <table class="table table-striped table-bordered table-hover" id="">
                     <thead>
                     <tr>
-                        <th>Kullanıcı Adı</th>
-                        <th>Email Adresi</th>
-                        <th>Kullanıcı Grubu</th>
-                        <th>İşlemler</th>
+                        <th>{{ trans('whole::widgets_last_user.th_title_1') }}</th>
+                        <th>{{ trans('whole::widgets_last_user.th_title_2') }}</th>
+                        <th>{{ trans('whole::widgets_last_user.th_title_3') }}</th>
+                        <th>{{ trans('whole::widgets_last_user.th_title_4') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,8 +28,8 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ isset($user->roles->first()->role_name)?$user->roles->first()->role_name:"Grup Seçilmemiş" }}</td>
                             <td>
-                                <a href="{{ route('admin.user.edit',$user->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Düzenle</a>
-                                <a href="{{ route('admin.user.destroy',$user->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> Sil</a>
+                                <a href="{{ route('admin.user.edit',$user->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{ trans('whole::widgets_last_user.edit') }}</a>
+                                <a href="{{ route('admin.user.destroy',$user->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::widgets_last_user.delete') }}</a>
                             </td>
                         </tr>
                     @endforeach

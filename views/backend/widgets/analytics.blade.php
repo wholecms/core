@@ -6,9 +6,9 @@
         <div class="dashboard-stat2" style="height:110px;">
             <div class="display">
                 <div class="number">
-                    <small>Ziyaretçi Sayısı</small>
+                    <small>{{ trans('whole::widgets_analytics.visitors') }}</small>
                     <h3 class="font-green-sharp">{{ $analytics->todayAndYesterday()[1]['visitors'] }}</h3>
-                    <small>Bugün</small>
+                    <small>{{ trans('whole::widgets_analytics.today') }}</small>
                 </div>
                 <div class="icon">
                     <i class="icon-pie-chart"></i>
@@ -20,9 +20,9 @@
         <div class="dashboard-stat2" style="height:110px;">
             <div class="display">
                 <div class="number">
-                    <small>Sayfa Gösterİmİ</small>
+                    <small>{{ trans('whole::widgets_analytics.page_views') }}</small>
                     <h3 class="font-green-sharp">{{ $analytics->todayAndYesterday()[1]['pageViews'] }}</h3>
-                    <small>Bugün</small>
+                    <small>{{ trans('whole::widgets_analytics.today') }}</small>
                 </div>
                 <div class="icon">
                     <i class="icon-pie-chart"></i>
@@ -34,9 +34,9 @@
         <div class="dashboard-stat2" style="height:110px;">
             <div class="display">
                 <div class="number">
-                    <small>Ziyaretçi Sayısı</small>
+                    <small>{{ trans('whole::widgets_analytics.visitors') }}</small>
                     <h3 class="font-green-sharp">{{ $analytics->todayAndYesterday()[0]['visitors'] }}</h3>
-                    <small>Dün</small>
+                    <small>{{ trans('whole::widgets_analytics.yesterday') }}</small>
                 </div>
                 <div class="icon">
                     <i class="icon-pie-chart"></i>
@@ -48,9 +48,9 @@
         <div class="dashboard-stat2" style="height:110px;">
             <div class="display">
                 <div class="number">
-                    <small>Sayfa Gösterİmİ</small>
+                    <small>{{ trans('whole::widgets_analytics.page_views') }}</small>
                     <h3 class="font-green-sharp">{{ $analytics->todayAndYesterday()[0]['pageViews'] }}</h3>
-                    <small>Dün</small>
+                    <small>{{ trans('whole::widgets_analytics.yesterday') }}</small>
                 </div>
                 <div class="icon">
                     <i class="icon-pie-chart"></i>
@@ -67,7 +67,7 @@
             <div class="portlet-title">
                 <div class="caption font-green-haze" style="width: 100%;">
                     <i class="icon-users font-green-haze"></i>
-                    <span class="caption-subject bold uppercase">Haftalık ZİyaretÇİ İstatİstİĞİ</span>
+                    <span class="caption-subject bold uppercase">{{ trans('whole::widgets_analytics.weekly_visitors') }}</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -93,7 +93,7 @@
                     type: 'area'
                 },
                 title: {
-                    text: 'Haftalık Ziyaretçi İstatistiği'
+                    text: "{{ trans('whole::widgets_analytics.weekly_visitors') }}"
                 },
                 xAxis: {
                     categories: [
@@ -109,7 +109,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: 'Ziyaretçi Sayısı'
+                        text: "{{ trans('whole::widgets_analytics.number_visitors') }}"
                     }
                 },
                 tooltip: {
@@ -132,7 +132,7 @@
                 },
                 series: [
                     {
-                        name: 'Bu Hafta',
+                        name: "{{ trans('whole::widgets_analytics.this_week') }}",
                         data:[
                             @foreach($analytics->thisWeek() as $visitors)
                             {{ $visitors['visitors']."," }}
@@ -140,7 +140,7 @@
                             ]
                     },
                     {
-                        name: 'Geçen Hafta',
+                        name: "{{ trans('whole::widgets_analytics.last_week') }}",
                         data:[
                             @foreach($analytics->lastWeek() as $visitors)
                             {{ $visitors['visitors']."," }}
