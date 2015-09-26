@@ -1,6 +1,6 @@
 <?php
 return [
-	
+
 	'process_title' => 'Whole CMS Giriş Logları',
 	'process_page_title' => 'İşlem Logları',
 
