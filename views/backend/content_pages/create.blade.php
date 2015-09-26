@@ -423,7 +423,7 @@
                         {
                             location =  "{!! route('admin.content_page.index') !!}";
                         }
-                        $(".form-actions button[type='submit']").html('Kaydet');
+                        $(".form-actions button[type='submit']").html("{{ trans('whole::content_pages.save') }}");
                     }
                 });
 
