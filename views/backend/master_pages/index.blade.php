@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Ön Sayfa Ayarı" }}@endsection
+@section('title'){{ trans('whole::master_pages.index_title') }}@endsection
 
 @section('page_title')
-    <h1>Ön Sayfa Ayarı</h1>
+    <h1>{{ trans('whole::master_pages.index_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::master_pages.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Sayfalar</a>
+            <a href="#">{{ trans('whole::master_pages.index_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Ön Sayfa Ayarı</a>
+            <a href="#">{{ trans('whole::master_pages.index_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,15 +32,15 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="icon-screen-desktop font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">Ön Sayfa Ayarı</span>
-                        <div class="right_container_responsive"><a id="open" href="#"><i class="fa fa-cog"></i> Ayarlar</a></div>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::master_pages.index_portlet_title') }}</span>
+                        <div class="right_container_responsive"><a id="open" href="#"><i class="fa fa-cog"></i>{{ trans('whole::master_pages.settings') }}</a></div>
                     </div>
                 </div>
                 <div class="portlet-body">
                     @include('backend::_errors.error')
                     <div class="_flash"></div>
-                    <button type="button" style="margin:0 5px 10px 5px;" class="btn blue pull-right sendform">Kaydet</button>
-                    <a href="{!! route('admin.master_page.index') !!}" style="margin:0 5px 10px 5px;" class="btn default pull-right ">İptal</a>
+                    <button type="button" style="margin:0 5px 10px 5px;" class="btn blue pull-right sendform">{{ trans('whole::master_pages.save') }}</button>
+                    <a href="{!! route('admin.master_page.index') !!}" style="margin:0 5px 10px 5px;" class="btn default pull-right ">{{ trans('whole::master_pages.cancel') }}</a>
                     <div class="clearfix"></div>
                     <div class="page-scaffold">
                         @if(isset($master_page->template))
@@ -50,7 +50,6 @@
                         @endif
                         <div class="clearfix"></div>
                     </div><!-- page-scaffold-->
-
                 </div>
             </div>
         </div>
@@ -61,7 +60,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> Ayarlar
+                                <i class="fa fa-comments"></i> {{ trans('whole::master_pages.settings') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -72,23 +71,22 @@
                             {!! Form::open(['method'=>$type[1],'route'=>$type[0]=='store'?["admin.master_page.store"]:["admin.master_page.update",$master_page->id],'role'=>'form','class'=>'form-horizontal']) !!}
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label class="col-md-12" for="form_control_1"><strong>Şablon Adı</strong></label>
+                                        <label class="col-md-12" for="form_control_1"><strong>{{ trans('whole::master_pages.template_name') }}</strong></label>
                                         <div class="col-md-12">
                                             <input type="text" name="name" value="{!! isset($master_page->name)?$master_page->name:'' !!}" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-12" for="form_control_1"><strong>Seçilen Tema</strong></label>
+                                        <label class="col-md-12" for="form_control_1"><strong>{{ trans('whole::master_pages.select_template') }}</strong></label>
                                         <div class="col-md-12">
                                             <strong>{{ $select_template->name }}</strong>
                                             {!! Form::hidden('template',$select_template->id) !!}
-                                            {{--{!! Form::select('template',$templates,isset($master_page->template_id)?$master_page->template_id:$select_template->id,['class'=>'form-control select_template']) !!}--}}
                                         </div>
                                     </div>
                                     <div class="portlet box blue" style="margin-bottom:15px;">
                                         <div class="portlet-title">
                                             <div class="caption">
-                                                <i class="fa fa-comments"></i> Alanları Gizle
+                                                <i class="fa fa-comments"></i>{{ trans('whole::master_pages.hidden_fields') }}
                                             </div>
                                             <div class="tools">
                                                 <a href="javascript:;" class="expand">
@@ -116,8 +114,8 @@
                                 <div class="form-actions">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn blue">Kaydet</button>
-                                            <a href="{!! route('admin.master_page.index') !!}" class="btn default">İptal</a>
+                                            <button type="submit" class="btn blue">{{ trans('whole::master_pages.save') }}</button>
+                                            <a href="{!! route('admin.master_page.index') !!}" class="btn default">{{ trans('whole::master_pages.cancel') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -129,7 +127,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> Bloklar
+                                <i class="fa fa-comments"></i>{{ trans('whole::master_pages.blocks') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -144,7 +142,7 @@
                                             <li class="dd-item dd-item" data-type="block" data-data_id="{{ $block->id }}">
                                                 <div class="dd-handle dd3-handle"></div>
                                                 <div class="dd3-content"><a target="_blanks" href="{!! route('admin.block.edit',$block->id) !!}">{{ $block->name }}</a>
-                                                    [<a target="_blanks" href="{!! route('admin.block.show',$block->id) !!}">Özl.</a>]</div>
+                                                    [<a target="_blanks" href="{!! route('admin.block.show',$block->id) !!}">{{ trans('whole::master_pages.features') }}</a>]</div>
                                                 <div class="dd-remove disabled"><a href="#"> <i class="fa fa-remove"></i> </a></div>
                                             </li>
                                         @endforeach
@@ -158,7 +156,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> İçerikler
+                                <i class="fa fa-comments"></i>{{ trans('whole::master_pages.contents') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -187,7 +185,7 @@
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-comments"></i> Modül İçeriği
+                                <i class="fa fa-comments"></i>{{ trans('whole::master_pages.component') }}
                             </div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
@@ -224,7 +222,7 @@
 
     <div id="context-menu2">
         <ul class="dropdown-menu pull-left" role="menu">
-            <li><a href="javascript:;">Bloklar</a>
+            <li><a href="javascript:;">{{ trans('whole::master_pages.blocks') }}</a>
                 @if($blocks->count()>0)
                     <ul id="context-menu-block">
                         @foreach($blocks as $block)
@@ -238,7 +236,7 @@
                     </ul>
                 @endif
             </li>
-            <li><a href="javascript:;">İçerikler</a>
+            <li><a href="javascript:;">{{ trans('whole::master_pages.contents') }}</a>
                 @if($contents->count()>0)
                     <ul id="context-menu-content">
                         @foreach($contents as $content)
@@ -252,7 +250,7 @@
                     </ul>
                 @endif
             </li>
-            <li><a href="javascript:;">Modül İçeriği</a>
+            <li><a href="javascript:;">{{ trans('whole::master_pages.component') }}</a>
                 @if($components->count()>0)
                     <ul id="context-menu-component-file">
                         @foreach($components as $component)
@@ -341,7 +339,7 @@
                 if($("input[name='name']").val()==""){
                     $("._flash").html('<div class="alert alert-danger">'+
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+
-                    'Şablon Adı Boş Bırakılamaz'+
+                    "{{ trans('whole::master_pages.ajax_error0') }}""+
                     '</div>');
                     return false;
                 }
@@ -418,7 +416,7 @@
                         {
                             location =  "{!! route('admin.master_page.index') !!}";
                         }
-                        $(".form-actions button[type='submit']").html('Kaydet');
+                        $(".form-actions button[type='submit']").html("{{ trans('whole::master_pages.save') }}");
                     }
                 });
 
