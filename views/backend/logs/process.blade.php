@@ -54,9 +54,9 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="form-actions" style="margin: 0;padding: 0;">
+                    <div class="form-actions">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 text-right">
                                 {!! Form::submit(trans('whole::logs.clear'),['class'=>'btn blue']) !!}
                             </div>
                         </div>

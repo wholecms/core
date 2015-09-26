@@ -41,9 +41,9 @@
                     {!! Form::open(['method' => 'post','route'=>['admin.template.store'],'class'=>'form-horizontal','role'=>'form','files'=>true]) !!}
                     <div class="form-actions">
                         <div class="row">
-                            <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit(trans('whole::templates.save'),['class'=>'btn blue']) !!}
+                            <div class="col-md-12 text-right">
                                 <a href="{{ URL::route('admin.template.index') }}" class="btn default">{{ trans('whole::templates.cancel') }}</a>
+                                {!! Form::submit(trans('whole::templates.save'),['class'=>'btn blue']) !!}
                             </div>
                         </div>
                     </div>

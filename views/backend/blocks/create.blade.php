@@ -41,9 +41,9 @@
                     {!! Form::open(['method' => 'post','route'=>['admin.block.store'],'class'=>'form-horizontal','role'=>'form']) !!}
 					<div class="form-actions">
                             <div class="row">
-                                <div class="col-md-offset-2 col-md-10">
-                                    {!! Form::submit(trans('whole::blocks.save'),['class'=>'btn blue']) !!}
+                                <div class="col-md-12 text-right">
                                     <a href="{{ URL::route('admin.block.index') }}" class="btn default">{{ trans('whole::blocks.cancel') }}</a>
+                                    {!! Form::submit(trans('whole::blocks.save'),['class'=>'btn blue']) !!}
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

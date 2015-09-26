@@ -37,9 +37,9 @@
                     {!! Form::model($permitted_page,['method' => 'post','route'=>['admin.permitted_page.store'],'class'=>'form-horizontal','role'=>'form']) !!}
                     <div class="form-actions">
                         <div class="row">
-                            <div class="col-md-12">
-                                {!! Form::submit(trans('whole::permitted_pages.save'),['class'=>'btn blue']) !!}
+                            <div class="col-md-12 text-right">
                                 <a href="{{ URL::route('admin.permitted_page.index') }}" class="btn default">{{ trans('whole::permitted_pages.cancel') }}</a>
+                                {!! Form::submit(trans('whole::permitted_pages.save'),['class'=>'btn blue']) !!}
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

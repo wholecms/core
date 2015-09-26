@@ -45,9 +45,9 @@
                     {!! Form::model($role,['method' => 'put','route'=>['admin.role.update',$role->id],'class'=>'form-horizontal','role'=>'form']) !!}
                     <div class="form-actions">
                         <div class="row">
-                            <div class="col-md-offset-2 col-md-10">
-                                {!! Form::submit(trans('whole::roles.edit'),['class'=>'btn blue']) !!}
+                            <div class="col-md-12 text-right">
                                 <a href="{{ URL::route('admin.role.index') }}" class="btn default">{{ trans('whole::roles.cancel') }}</a>
+                                {!! Form::submit(trans('whole::roles.edit'),['class'=>'btn blue']) !!}
                             </div>
                         </div>
                     </div>

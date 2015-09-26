@@ -43,18 +43,26 @@
                 <div class="portlet-body form">
                     @include('backend::_errors.error')
                     {!! Form::open(['method' => 'post','route'=>['admin.user.store'],'class'=>'form-horizontal','role'=>'form']) !!}
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <a href="{{ URL::route('admin.user.index') }}" class="btn default">{{ trans('whole::users.cancel') }}</a>
+                                {!! Form::submit(trans('whole::users.save'),['class'=>'btn blue']) !!}
+                            </div>
+                        </div>
+                    </div>
                         <div class="form-body">
                             @include('backend::users._form')
                         </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-2 col-md-10">
-                                    {!! Form::submit(trans('whole::users.save'),['class'=>'btn blue']) !!}
-                                    <a href="{{ URL::route('admin.user.index') }}" class="btn default">{{ trans('whole::users.cancel') }}</a>
-                                </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                                {!! Form::submit(trans('whole::users.save'),['class'=>'btn blue']) !!}
+                                <a href="{{ URL::route('admin.user.index') }}" class="btn default">{{ trans('whole::users.cancel') }}</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
