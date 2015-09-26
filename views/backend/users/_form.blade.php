@@ -1,36 +1,35 @@
 <div class="form-group">
-    {!! Form::label("Adı Soyadı",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::users.form_label_1'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('name',null,['placeholder'=>'Adı Soyadı','class'=>'form-control']) !!}
+        {!! Form::text('name',null,['placeholder'=>trans('whole::users.form_label_1'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("E-Mail Adresi",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::users.form_label_2'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('email',null,['placeholder'=>'E-Mail Adresi','class'=>'form-control']) !!}
+        {!! Form::text('email',null,['placeholder'=>trans('whole::users.form_label_2'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("Şifresi",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::users.form_label_3'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::password('password',['placeholder'=>'Şifresi','class'=>'form-control']) !!}
+        {!! Form::password('password',['placeholder'=>trans('whole::users.form_label_3'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 
 <div class="form-group">
-    {!! Form::label("Şifresi (Tekrar)",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::users.form_label_4'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::password('password_confirmation',['placeholder'=>'Şifresi (Tekrar)','class'=>'form-control']) !!}
+        {!! Form::password('password_confirmation',['placeholder'=>trans('whole::users.form_label_4'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("Kullanıcı Grubu",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::users.form_label_5'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::select('role',[''=>'--Seçiniz--']+$roles->toArray(),(isset($user) && isset($user->roles->first()->id)) ? $user->roles->first()->id:null,['class'=>'form-control']) !!}
-        {{--collect([''=>'--Seçiniz--'])->merge($roles)->all()--}}
+        {!! Form::select('role',[''=>trans('whole::users.form_option_1')]+$roles->toArray(),(isset($user) && isset($user->roles->first()->id)) ? $user->roles->first()->id:null,['class'=>'form-control']) !!}
     </div>
 </div>

@@ -1,24 +1,23 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Kullanıcılar" }}@endsection
+@section('title'){{ trans('whole::users.index_title') }}@endsection
 
 @section('page_title')
-    <h1>Kullanıcılar <small>Tüm Kullanıcılar</small></h1>
+    <h1>{{ trans('whole::users.index_page_title') }}</h1>
 @endsection
-
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::users.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Kullanıcı İşlemleri</a>
+            <a href="#">{{ trans('whole::users.index_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Kullanıcılar</a>
+            <a href="#">{{ trans('whole::users.index_breadcrumb1') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,9 +31,9 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="icon-users font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> Kullanıcılar </span>
+                        <span class="caption-subject bold uppercase"> {{ trans('whole::users.index_portlet_title') }}</span>
                         <a class="btn green pull-right" href="{{ route('admin.user.create') }}">
-                            <i class="fa fa-plus"></i> Yeni Ekle
+                            <i class="fa fa-plus"></i> {{ trans('whole::users.add_new') }}
                         </a>
                     </div>
                 </div>
@@ -44,10 +43,10 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Kullanıcı Adı</th>
-                            <th>Email Adresi</th>
-                            <th>Kullanıcı Grubu</th>
-                            <th>İşlemler</th>
+                            <th>{{ trans('whole::users.index_table_th1') }}</th>
+                            <th>{{ trans('whole::users.index_table_th2') }}</th>
+                            <th>{{ trans('whole::users.index_table_th3') }}</th>
+                            <th>{{ trans('whole::users.index_table_th4') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,8 +57,8 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ isset($user->roles->first()->role_name)?$user->roles->first()->role_name:"Grup Seçilmemiş" }}</td>
                                 <td>
-                                    <a href="{{ route('admin.user.edit',$user->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> Düzenle</a>
-                                    <a href="{{ route('admin.user.destroy',$user->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> Sil</a>
+                                    <a href="{{ route('admin.user.edit',$user->id) }}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{ trans('whole::users.edit') }}</a>
+                                    <a href="{{ route('admin.user.destroy',$user->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::users.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
