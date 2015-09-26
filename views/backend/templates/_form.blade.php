@@ -1,9 +1,9 @@
 <div class="form-group">
-    {!! Form::label("Şablon Dosyası",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::templates.form_label_1'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::file('file',null,['placeholder'=>'Şablon Dosyası','class'=>'form-control']) !!}
+        {!! Form::file('file',null,['placeholder'=>trans('whole::templates.form_label_1'),'class'=>'form-control']) !!}
         <p class="help-block">
-            Şablon Dosyası
+            {{ trans('whole::templates.form_label_1') }}
         </p>
     </div>
 </div>

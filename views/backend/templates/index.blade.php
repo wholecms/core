@@ -1,24 +1,24 @@
 @extends('backend::_layouts.application')
 
-@section('title'){{ "Whole CMS Şablonlar" }}@endsection
+@section('title'){{ trans('whole::templates.index_title') }}@endsection
 
 @section('page_title')
-    <h1>Şablonlar<small>Tüm Şablonlar</small></h1>
+    <h1>{{ trans('whole::templates.index_page_title') }}</h1>
 @endsection
 
 
 @section('page_breadcrumb')
     <ul class="page-breadcrumb breadcrumb">
         <li>
-            <a href="{{ route('admin.index') }}">Yönetim Paneli</a>
+            <a href="{{ route('admin.index') }}">{{ trans('whole::templates.index_breadcrumb0') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="{{ route('admin.template.index') }}">Şablonlar</a>
+            <a href="{{ route('admin.template.index') }}">{{ trans('whole::templates.index_breadcrumb1') }}</a>
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a href="#">Tüm Şablonlar</a>
+            <a href="#">{{ trans('whole::templates.index_breadcrumb2') }}</a>
         </li>
     </ul>
 @endsection
@@ -32,9 +32,9 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze" style="width: 100%;">
                         <i class="icon-layers font-green-haze"></i>
-                        <span class="caption-subject bold uppercase"> Şablonlar</span>
+                        <span class="caption-subject bold uppercase">{{ trans('whole::templates.index_portlet_title') }}</span>
                         <a class="btn green pull-right" href="{{ route('admin.template.create') }}">
-                            <i class="fa fa-plus"></i> Yeni Ekle
+                            <i class="fa fa-plus"></i> {{ trans('whole::templates.add_new') }}
                         </a>
                     </div>
                 </div>
@@ -44,10 +44,10 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Şablon Adı</th>
-                            <th>Şablon Açıklaması</th>
-                            <th>Yayın</th>
-                            <th>İşlemler</th>
+                            <th>{{ trans('whole::templates.index_table_th1') }}</th>
+                            <th>{{ trans('whole::templates.index_table_th2') }}</th>
+                            <th>{{ trans('whole::templates.index_table_th3') }}</th>
+                            <th>{{ trans('whole::templates.index_table_th4') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,12 +59,12 @@
                                 <td>
                                     @if($setting->template!==null)
                                         @if($setting->template_id == $template->id)
-                                            Etkin Şablon
+                                            {{ trans('whole::templates.active_template') }}
                                         @endif
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.template.destroy',$template->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> Sil</a>
+                                    <a href="{{ route('admin.template.destroy',$template->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::templates.delete') }}</a>
                                 </td>
                             </tr>
                         @endforeach
