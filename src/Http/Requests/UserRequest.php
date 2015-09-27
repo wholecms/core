@@ -53,14 +53,13 @@ class UserRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => 'Adı Soyadı Alanı Boş Bırakılamaz',
-            'password.required' => 'Şifre Alanı Boş Bırakılamaz',
-            'password.confirmed' => 'Şifre Alanı Şifre Tekrar Alanı İle Aynı Değil',
-            'email.required' => 'E-Mail Alanı Boş Bırakılamaz',
-            'email.email' => 'Geçerli bir Mail Adresi Girmelisiniz',
-            'email.unique' => 'Bu E-Mail Adresi Daha Önce Kullanılmış',
-            'role.required' => 'Kullanıcı Grubu Boş Bırakıalamaz',
-
+            'name.required' => trans('whole::request.user.name'),
+            'password.required' => trans('whole::request.user.password_required'),
+            'password.confirmed' => trans('whole::request.user.password_confirmed'),
+            'email.required' => trans('whole::request.user.email_required'),
+            'email.email' => trans('whole::request.user.email_email'),
+            'email.unique' => trans('whole::request.user.email_unique'),
+            'role.required' => trans('whole::request.user.role'),
         ];
     }
 }
