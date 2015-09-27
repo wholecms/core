@@ -31,8 +31,8 @@ class ComponentRequest extends Request
     public function messages()
     {
         return [
-            'file.required' => 'Bileşen Dosyası Alanı Boş Bırakılamaz',
-            'file.mimes' => 'İzin Verilen Dosya Formatı Zip Olmalıdır',
+            'file.required' => trans('whole::request.component.file_required'),
+            'file.mimes' => trans('whole::request.component.file_mimes'),
         ];
     }
 }
