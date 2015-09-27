@@ -36,8 +36,8 @@ class ContentRequest extends Request
     public function messages()
     {
         return [
-            'title.required' => 'Başlık Alanı Boş Bırakılamaz',
-            'content.required' => 'İçerik Alanı Boş Bırakılamaz'
+            'title.required' =>trans('whole::request.content.title'),
+            'content.required' => trans('whole::request.content.content'),
         ];
     }
 }
