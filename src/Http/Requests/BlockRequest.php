@@ -32,8 +32,8 @@ class BlockRequest extends Request
     public function messages()
     {
         return [
-            'name.required'=>'Blok Adı Alanı Boş Bırakılamaz',
-            'title.required'=>'Blok Başlığı Alanı Boş Bırakılamaz',
+            'name.required'=> trans('whole::request.block.name'),
+            'title.required'=> trans('whole::request.block.title'),
         ];
     }
 }
