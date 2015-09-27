@@ -62,14 +62,15 @@ class PageRequest extends Request
 
     public function messages()
     {
+
         return [
-            'content_page_id.required'=>'Şablon Sayfası Alanı Boş Bırakılamaz',
-            'menu_title.required'=>'Menü Başlığı Alanı Boş Bırakılamaz',
-            'content_type.required'=>'Sayfa Tipi Alanı Boş Bırakılamaz',
-            'create_content_title.required' => 'Yeni İçerik İçin İçeirk Başlığı Alanı Boş Bırakılamaz',
-            'create_content_content.required' => 'Yeni İçerik İçin İçeirk Alanı Boş Bırakılamaz',
-            'component_id.required' => 'Bileşen Alanı Boş Bırakılamaz',
-            'external_link.required' => 'Dış Bağlantı (Link) Alanı Boş Bırakılamaz',
+            'content_page_id.required'=> trans('whole::request.page.content_page_id'),
+            'menu_title.required'=> trans('whole::request.page.menu_title'),
+            'content_type.required'=> trans('whole::request.page.content_type'),
+            'create_content_title.required' => trans('whole::request.page.create_content_title'),
+            'create_content_content.required' => trans('whole::request.page.create_content_content'),
+            'component_id.required' => trans('whole::request.page.component_id'),
+            'external_link.required' => trans('whole::request.page.external_link'),
         ];
     }
 }
