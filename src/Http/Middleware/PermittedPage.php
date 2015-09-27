@@ -57,7 +57,7 @@ class PermittedPage
                 {
                     if ($request->method()!="GET")
                     {
-                        Flash::warning('Sayfa Erişim Seviyeniz Bu İşlemi Gerçekleştirmenizi Engelliyor');
+                        Flash::warning(trans('whole::http.middleware.permitted_page_warning'));
                         return redirect()->back();
                     }
                 }
