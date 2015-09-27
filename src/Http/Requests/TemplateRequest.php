@@ -31,8 +31,8 @@ class TemplateRequest extends Request
     public function messages()
     {
         return [
-            'file.required' => 'Şablon Dosyası Alanı Boş Bırakılamaz',
-            'file.mimes' => 'İzin Verilen Dosya Formatı Zip Olmalıdır',
+            'file.required' => trans('whole::request.template.file_required'),
+            'file.mimes' => trans('whole::request.template.file_mimes'),
         ];
     }
 }
