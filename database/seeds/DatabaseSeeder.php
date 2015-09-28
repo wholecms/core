@@ -14,9 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call(PageSidebarMenuTableSeeder::class);
+        $this->call(PageSidebarMenuLangTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(AllPageTableSeeder::class);
-		$this->call(PermittedPageTableSeeder::class);
+        $this->call(PermittedPageTableSeeder::class);
 		
 //        Model::reguard();
 

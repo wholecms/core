@@ -23,7 +23,7 @@ class PageSidebarMenuRepository extends Repository
 
     public function all()
     {
-        return $this->model->oldest('order')->get();
+		return $this->model->oldest('order')->with('lang')->get();
     }
 
 

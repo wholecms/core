@@ -16,7 +16,6 @@ class CreateAdminPageSidebarMenusTable extends Migration
 
             $table->increments('id');
             $table->integer('top_id')->default(0);
-            $table->string('title');
             $table->string('icon');
             $table->string('route');
             $table->text('path');
