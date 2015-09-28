@@ -6,5 +6,5 @@ return [
 	'content_page'=>'Content Page<br /> manager',
 	'page_manager'=>'Page<br /> manager',
 	'users'=>'users',
-	'logout'=>'logput',
+	'logout'=>'logout',
 ];
