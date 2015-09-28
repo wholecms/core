@@ -32,8 +32,8 @@ class LogsController extends Controller
     public function clear(Request $request)
     {
         $message = Logs::clear($request->get('type'))?
-            ['success',trans('whole::http.controllers.logs_flash_1')] :
-            ['error',trans('whole::http.controllers.logs_flash_2')];
+            ['success',trans('whole::http/controllers.logs_flash_1')] :
+            ['error',trans('whole::http/controllers.logs_flash_2')];
         Flash::$message[0]($message[1]);
         return redirect()->back();
     }

@@ -55,13 +55,13 @@ class UsersController extends Controller
     {
         if ($user = $this->user->create($request->all()))
         {
-            Logs::add('process',trans("whole::http.controllers.users_log_1",['id'=>$user->id]));
-            Flash::success(trans("whole::http.controllers.users_flash_1"));
+            Logs::add('process',trans("whole::http/controllers.users_log_1",['id'=>$user->id]));
+            Flash::success(trans("whole::http/controllers.users_flash_1"));
             return redirect()->route('admin.user.index');
         }else
         {
-            Logs::add('process',trans("whole::http.controllers.users_log_2"));
-            Flash::error(trans("whole::http.controllers.users_flash_2"));
+            Logs::add('process',trans("whole::http/controllers.users_log_2"));
+            Flash::error(trans("whole::http/controllers.users_flash_2"));
             return redirect()->back();
         }
     }
@@ -101,13 +101,13 @@ class UsersController extends Controller
     {
         if ($this->user->update($request->all(),$id))
         {
-            Logs::add('process',trans("whole::http.controllers.users_log_3",['id'=>$id]));
-            Flash::success(trans("whole::http.controllers.users_flash_3"));
+            Logs::add('process',trans("whole::http/controllers.users_log_3",['id'=>$id]));
+            Flash::success(trans("whole::http/controllers.users_flash_3"));
             return redirect()->route('admin.user.index');
         }else
         {
-            Logs::add('errors',trans("whole::http.controllers.users_log_4",['id'=>$id]));
-            Flash::error(trans("whole::http.controllers.users_flash_4"));
+            Logs::add('errors',trans("whole::http/controllers.users_log_4",['id'=>$id]));
+            Flash::error(trans("whole::http/controllers.users_flash_4"));
             return redirect()->back();
         }
     }
@@ -121,15 +121,15 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $message = $this->user->delete($id) ?
-            ['success',trans("whole::http.controllers.users_flash_5")] :
-            ['error',trans("whole::http.controllers.users_flash_6")];
+            ['success',trans("whole::http/controllers.users_flash_5")] :
+            ['error',trans("whole::http/controllers.users_flash_6")];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',trans("whole::http.controllers.users_log_5",['id'=>$id]));
+            Logs::add('process',trans("whole::http/controllers.users_log_5",['id'=>$id]));
         }else
         {
-            Logs::add('errors',trans("whole::http.controllers.users_log_6",['id'=>$id]));
+            Logs::add('errors',trans("whole::http/controllers.users_log_6",['id'=>$id]));
         }
         return redirect()->route('admin.user.index');
     }

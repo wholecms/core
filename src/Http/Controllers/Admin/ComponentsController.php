@@ -103,7 +103,7 @@ class ComponentsController extends Controller
                 unset($lines);
                 exec("cd ".base_path()." && composer update",$sonuc);
 				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
-                Logs::add('process',trans('whole::http.controllers.components_log_1'));
+                Logs::add('process',trans('whole::http/controllers.components_log_1'));
             }
             unset($lines);
 
@@ -146,17 +146,17 @@ class ComponentsController extends Controller
             {
 				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
                 exec("php ".base_path("artisan")." migrate",$sonuc);
-                Logs::add('process',trans('whole::http.controllers.components_log_2'));
+                Logs::add('process',trans('whole::http/controllers.components_log_2'));
             }
 
             if (isset($component['settings']) && count($component['settings'])>0)
             {
                 $message = $this->component->create($component['settings']) ?
-                    ['success',trans('whole::http.controllers.components_flash_1')]:
-                    ['error',trans('whole::http.controllers.components_flash_2')];
+                    ['success',trans('whole::http/controllers.components_flash_1')]:
+                    ['error',trans('whole::http/controllers.components_flash_2')];
                 if ($message[0]=="success")
                 {
-                    Logs::add('process',trans('whole::http.controllers.components_log_3',['name'=>$component['settings']['name']]));
+                    Logs::add('process',trans('whole::http/controllers.components_log_3',['name'=>$component['settings']['name']]));
                 }else
                 {
                     Logs::add('errors',"Bileşen Eklenemedi");
@@ -175,10 +175,10 @@ class ComponentsController extends Controller
 				}
                 if($this->sidebar->saveData('create',$component['sidebar']))
                 {
-                    Logs::add('process',trans('whole::http.controllers.components_log_4',['name'=>$component['settings']['name']]));
+                    Logs::add('process',trans('whole::http/controllers.components_log_4',['name'=>$component['settings']['name']]));
                 }else
                 {
-                    Logs::add('errors',trans('whole::http.controllers.components_log_5',['name'=>$component['settings']['name']]));
+                    Logs::add('errors',trans('whole::http/controllers.components_log_5',['name'=>$component['settings']['name']]));
                 }
             }
 

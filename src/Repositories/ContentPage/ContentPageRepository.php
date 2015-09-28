@@ -57,7 +57,7 @@ class ContentPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false',trans('whole::http.controllers.content_pages_flash_3')];
+            return ['false',trans('whole::http/controllers.content_pages_flash_3')];
         }
 
         if (isset($data['field']) && count($data['field'])>0)
@@ -73,18 +73,18 @@ class ContentPageRepository extends Repository
             catch (\Exception $e)
             {
                 $this->model->find($content_page->id)->delete();
-                return ['false',trans('whole::http.controllers.content_pages_flash_4')];
+                return ['false',trans('whole::http/controllers.content_pages_flash_4')];
             }
         }
 
         if(!$this->content_page_field->create($data,$content_page->id))
         {
             $this->model->find($content_page->id)->delete();
-            return ['false',trans('whole::http.controllers.content_pages_flash_5')];
+            return ['false',trans('whole::http/controllers.content_pages_flash_5')];
         }
 
-        Flash::success(trans('whole::http.controllers.content_pages_flash_6'));
-        Logs::add('process',trans('whole::http.controllers.content_pages_log_3',['id'=>$content_page->id]));
+        Flash::success(trans('whole::http/controllers.content_pages_flash_6'));
+        Logs::add('process',trans('whole::http/controllers.content_pages_log_3',['id'=>$content_page->id]));
         return 'true';
 
     }
@@ -101,7 +101,7 @@ class ContentPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false',trans('whole::http.controllers.content_pages_flash_7')];
+            return ['false',trans('whole::http/controllers.content_pages_flash_7')];
         }
 
         if (isset($data['field']) && count($data['field'])>0)
@@ -120,18 +120,18 @@ class ContentPageRepository extends Repository
             catch (\Exception $e)
             {
                 //$this->model->find($content_page->id)->delete();
-                return ['false',trans('whole::http.controllers.content_pages_flash_8')];
+                return ['false',trans('whole::http/controllers.content_pages_flash_8')];
             }
         }
 
         if(!$this->content_page_field->update($data,$id))
         {
             //$this->model->find($content_page->id)->delete();
-            return ['false',trans('whole::http.controllers.content_pages_flash_9')];
+            return ['false',trans('whole::http/controllers.content_pages_flash_9')];
         }
 
-        Logs::add('process',trans("whole::http.controllers.content_pages_log_4",['id'=>$id]));
-        Flash::success(trans('whole::http.controllers.content_pages_flash_6'));
+        Logs::add('process',trans("whole::http/controllers.content_pages_log_4",['id'=>$id]));
+        Flash::success(trans('whole::http/controllers.content_pages_flash_6'));
         return 'true';
 
     }

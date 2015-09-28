@@ -24,7 +24,7 @@ class PermittedPageRepository extends Repository
         try{$this->model->where('role_id','>',0)->delete();}
         catch(\Exception $e)
         {
-            return [false,trans('whole::http.controllers.permitted_pages_flash_2')];
+            return [false,trans('whole::http/controllers.permitted_pages_flash_2')];
         }
         if (isset($data['path']))
         {
@@ -37,7 +37,7 @@ class PermittedPageRepository extends Repository
                         try{$this->model->create(['role_id'=>$role_id,'path'=>$path,'path'=>$path,'access'=>$data['access'],'process'=>$data['process']]);}
                         catch(\Exception $e)
                         {
-                            return [false,trans('whole::http.controllers.permitted_pages_flash_3')];
+                            return [false,trans('whole::http/controllers.permitted_pages_flash_3')];
                         }
                     }
                 }

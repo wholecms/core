@@ -25,7 +25,7 @@ class AnalyticsController extends Controller
             return view('backend::analytics.index',compact('this_week','last_week','today_and_yesterday','active_user','today_visited_pages','all_visited_pages','referrers','browsers','keywords'))->with('response',true);
         }catch (\Exception $e)
         {
-            Logs::add('errors',trans("whole::http.controllers.analytics_log_errors_1"));
+            Logs::add('errors',trans("whole::http/controllers.analytics_log_errors_1"));
             return view('backend::analytics.index')->with('response',false);
         }
     }
@@ -39,8 +39,8 @@ class AnalyticsController extends Controller
         }
         catch (\Exception $e)
         {
-            Logs::add('errors',trans("whole::http.controllers.analytics_log_errors_2"));
-            return ['false',trans("whole::http.controllers.analytics_active_user_limit")];
+            Logs::add('errors',trans("whole::http/controllers.analytics_log_errors_2"));
+            return ['false',trans("whole::http/controllers.analytics_active_user_limit")];
         }
     }
 }

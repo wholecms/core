@@ -57,7 +57,7 @@ class PermittedPage
                 {
                     if ($request->method()!="GET")
                     {
-                        Flash::warning(trans('whole::http.middleware.permitted_page_warning'));
+                        Flash::warning(trans('whole::http/middleware.permitted_page_warning'));
                         return redirect()->back();
                     }
                 }

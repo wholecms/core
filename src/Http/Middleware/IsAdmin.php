@@ -40,7 +40,7 @@ class IsAdmin
             return redirect()->route('admin.login');
         }else{
             if (!$this->user->find($this->auth->user()->id)->hasRole(1)){
-                Flash::error(trans('whole::http.middleware.is_admin_error'));
+                Flash::error(trans('whole::http/middleware.is_admin_error'));
                 return redirect()->route('admin.login');
             }
         }

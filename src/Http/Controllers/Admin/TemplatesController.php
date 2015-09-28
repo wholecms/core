@@ -79,23 +79,23 @@ class TemplatesController extends Controller
                 File::delete(base_path('resources/views/Template.php'));
                 File::delete(storage_path('tmp/Template.php'));
                 File::deleteDirectory(storage_path('tmp/'));
-                Flash::error(trans('whole::http.controllers.templates_flash_1'));
+                Flash::error(trans('whole::http/controllers.templates_flash_1'));
                 return redirect()->route('admin.template.index');
             }
 
             $message = $this->template->create($template) ?
-                ['success',trans('whole::http.controllers.templates_flash_2')]:
-                ['error',trans('whole::http.controllers.templates_flash_3')];
+                ['success',trans('whole::http/controllers.templates_flash_2')]:
+                ['error',trans('whole::http/controllers.templates_flash_3')];
             File::delete(base_path('resources/views/Template.php'));
             File::delete(storage_path('tmp/Template.php'));
             File::deleteDirectory(storage_path('tmp/'));
             Flash::$message[0]($message[1]);
             if ($message[0]=="success")
             {
-                Logs::add('process',trans('whole::http.controllers.templates_log_1',['name'=>$template['name']]));
+                Logs::add('process',trans('whole::http/controllers.templates_log_1',['name'=>$template['name']]));
             }else
             {
-                Logs::add('errors',trans('whole::http.controllers.templates_log_2'));
+                Logs::add('errors',trans('whole::http/controllers.templates_log_2'));
             }
             return redirect()->route('admin.template.index');
         }
@@ -151,20 +151,20 @@ class TemplatesController extends Controller
             File::deleteDirectory(base_path('resources/views/'.$folder));
         }catch (\Exception $e)
         {
-            Flash::error(trans('whole::http.controllers.templates_flash_4'));
+            Flash::error(trans('whole::http/controllers.templates_flash_4'));
             return redirect()->route('admin.template.index');
         }
 
         $message = $this->template->delete($id)?
-            ['success',trans('whole::http.controllers.templates_flash_5')] :
-            ['error',trans('whole::http.controllers.templates_flash_6')];
+            ['success',trans('whole::http/controllers.templates_flash_5')] :
+            ['error',trans('whole::http/controllers.templates_flash_6')];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',trans('whole::http.controllers.templates_log_3',['id'=>$id]));
+            Logs::add('process',trans('whole::http/controllers.templates_log_3',['id'=>$id]));
         }else
         {
-            Logs::add('errors',trans('whole::http.controllers.templates_log_4',['id'=>$id]));
+            Logs::add('errors',trans('whole::http/controllers.templates_log_4',['id'=>$id]));
         }
         return redirect()->route('admin.template.index');
     }

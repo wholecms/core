@@ -27,12 +27,12 @@ class AuthController extends Controller
         $remember = $request->get('remember');
         if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')], $remember))
         {
-            Logs::add('login',$request->get('email')." ".trans('whole::http.controllers.auth_log_1'));
+            Logs::add('login',$request->get('email')." ".trans('whole::http/controllers.auth_log_1'));
             return redirect()->route('admin.index');
         }else
         {
-            Logs::add('login',trans('whole::http.controllers.auth_log_2',['email'=>$request->get('email'),'password'=>$request->get('password')]));
-            Flash::error(trans('whole::http.controllers.auth_not_admin'));
+            Logs::add('login',trans('whole::http/controllers.auth_log_2',['email'=>$request->get('email'),'password'=>$request->get('password')]));
+            Flash::error(trans('whole::http/controllers.auth_not_admin'));
             return redirect()->route('admin.login');
         }
     }
@@ -42,7 +42,7 @@ class AuthController extends Controller
     {
         Cache::forget('role_id');
         Cache::forget('this_user');
-        Logs::add('process',trans('whole::http.controllers.auth_log_3'));
+        Logs::add('process',trans('whole::http/controllers.auth_log_3'));
         Auth::logout();
         return redirect()->route('master_page');
     }

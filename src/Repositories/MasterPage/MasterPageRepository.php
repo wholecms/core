@@ -68,7 +68,7 @@ class MasterPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false',trans('whole::http.controllers.master_pages_flash_1')];
+            return ['false',trans('whole::http/controllers.master_pages_flash_1')];
         }
         if (isset($data['field']) && count($data['field'])>0)
         {
@@ -83,7 +83,7 @@ class MasterPageRepository extends Repository
             catch (\Exception $e)
             {
                 $this->model->find($master_page->id)->delete();
-                return ['false',trans('whole::http.controllers.master_pages_flash_2')];
+                return ['false',trans('whole::http/controllers.master_pages_flash_2')];
             }
 
         }
@@ -91,10 +91,10 @@ class MasterPageRepository extends Repository
         if(!$this->master_page_field->create($data,$master_page->id))
         {
             $this->model->find($master_page->id)->delete();
-            return ['false',trans('whole::http.controllers.master_pages_flash_3')];
+            return ['false',trans('whole::http/controllers.master_pages_flash_3')];
         }
-        Logs::add('process',trans('whole::http.controllers.master_pages_log_1'));
-        Flash::success(trans('whole::http.controllers.master_pages_flash_4'));
+        Logs::add('process',trans('whole::http/controllers.master_pages_log_1'));
+        Flash::success(trans('whole::http/controllers.master_pages_flash_4'));
         return 'true';
     }
 
@@ -114,7 +114,7 @@ class MasterPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false',trans('whole::http.controllers.master_pages_flash_5')];
+            return ['false',trans('whole::http/controllers.master_pages_flash_5')];
         }
 
         if (isset($data['field']) && count($data['field'])>0)
@@ -131,7 +131,7 @@ class MasterPageRepository extends Repository
             catch (\Exception $e)
             {
                 //$this->model->find($content_page->id)->delete();
-                return ['false',trans('whole::http.controllers.master_pages_flash_6')];
+                return ['false',trans('whole::http/controllers.master_pages_flash_6')];
             }
         }
 
@@ -139,10 +139,10 @@ class MasterPageRepository extends Repository
         if(!$this->master_page_field->update($data,$id))
         {
             //$this->model->find($content_page->id)->delete();
-            return ['false',trans('whole::http.controllers.master_pages_flash_7')];
+            return ['false',trans('whole::http/controllers.master_pages_flash_7')];
         }
-        Logs::add('process',trans('whole::http.controllers.master_pages_log_2'));
-        Flash::success(trans('whole::http.controllers.master_pages_flash_4'));
+        Logs::add('process',trans('whole::http/controllers.master_pages_log_2'));
+        Flash::success(trans('whole::http/controllers.master_pages_flash_4'));
         return 'true';
 
     }

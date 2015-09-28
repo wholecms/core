@@ -51,14 +51,14 @@ class RolesController extends Controller
     {
         if ($role = $this->role->saveData("create",$request->all()))
         {
-            Logs::add('process',trans('whole::http.controllers.roles_log_1',['id'=>$role->id]));
-            Flash::success(trans('whole::http.controllers.roles_flash_1'));
+            Logs::add('process',trans('whole::http/controllers.roles_log_1',['id'=>$role->id]));
+            Flash::success(trans('whole::http/controllers.roles_flash_1'));
             return redirect()->route('admin.role.index');
         }
         else
         {
-            Logs::add('errors',trans('whole::http.controllers.roles_log_2'));
-            Flash::error(trans('whole::http.controllers.roles_flash_2'));
+            Logs::add('errors',trans('whole::http/controllers.roles_log_2'));
+            Flash::error(trans('whole::http/controllers.roles_flash_2'));
             return redirect()->back();
         }
     }
@@ -95,14 +95,14 @@ class RolesController extends Controller
     {
         if ($this->role->saveData("update",$request->all(),$id))
         {
-            Logs::add('process',trans('whole::http.controllers.roles_log_3',['id'=>$id]));
-            Flash::success(trans('whole::http.controllers.roles_flash_3'));
+            Logs::add('process',trans('whole::http/controllers.roles_log_3',['id'=>$id]));
+            Flash::success(trans('whole::http/controllers.roles_flash_3'));
             return redirect()->route('admin.role.index');
         }
         else
         {
-            Logs::add('errors',trans('whole::http.controllers.roles_log_4',['id'=>$id]));
-            Flash::error(trans('whole::http.controllers.roles_flash_4'));
+            Logs::add('errors',trans('whole::http/controllers.roles_log_4',['id'=>$id]));
+            Flash::error(trans('whole::http/controllers.roles_flash_4'));
             return redirect()->back();
         }
     }
@@ -116,15 +116,15 @@ class RolesController extends Controller
     public function destroy($id)
     {
         $message = $this->role->destroy($id) ?
-            ['success',trans('whole::http.controllers.roles_flash_5')] :
-            ['error',trans('whole::http.controllers.roles_flash_6')];
+            ['success',trans('whole::http/controllers.roles_flash_5')] :
+            ['error',trans('whole::http/controllers.roles_flash_6')];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',trans('whole::http.controllers.roles_log_5',['id'=>$id]));
+            Logs::add('process',trans('whole::http/controllers.roles_log_5',['id'=>$id]));
         }else
         {
-            Logs::add('errors',trans('whole::http.controllers.roles_log_6',['id'=>$id]));
+            Logs::add('errors',trans('whole::http/controllers.roles_log_6',['id'=>$id]));
         }
         return redirect()->route('admin.role.index');
 
