@@ -103,7 +103,7 @@ class ComponentsController extends Controller
                 unset($lines);
                 exec("cd ".base_path()." && composer update",$sonuc);
 				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
-                Logs::add('process',"Composer Update Edildi");
+                Logs::add('process',trans('whole::http.controllers.components_log_1'));
             }
             unset($lines);
 
@@ -146,17 +146,17 @@ class ComponentsController extends Controller
             {
 				exec("cd ".base_path()." && composer dump-autoload",$sonuc);
                 exec("php ".base_path("artisan")." migrate",$sonuc);
-                Logs::add('process',"DB Migrate Edildi");
+                Logs::add('process',trans('whole::http.controllers.components_log_2'));
             }
 
             if (isset($component['settings']) && count($component['settings'])>0)
             {
                 $message = $this->component->create($component['settings']) ?
-                    ['success','Başarıyla Kaydedildi']:
-                    ['error','Bir Hata Meydana Geldi ve Kaydedilemedi'];
+                    ['success',trans('whole::http.controllers.components_flash_1')]:
+                    ['error',trans('whole::http.controllers.components_flash_2')];
                 if ($message[0]=="success")
                 {
-                    Logs::add('process',"Bileşen Eklendi \n{$component['settings']['name']}");
+                    Logs::add('process',trans('whole::http.controllers.components_log_3',['name'=>$component['settings']['name']]));
                 }else
                 {
                     Logs::add('errors',"Bileşen Eklenemedi");
@@ -175,10 +175,10 @@ class ComponentsController extends Controller
 				}
                 if($this->sidebar->saveData('create',$component['sidebar']))
                 {
-                    Logs::add('process',"Bileşen Menüye Eklendi\n{$component['settings']['name']}");
+                    Logs::add('process',trans('whole::http.controllers.components_log_4',['name'=>$component['settings']['name']]));
                 }else
                 {
-                    Logs::add('errors',"Bileşen Menüye Eklenemedi!\n{$component['settings']['name']}");
+                    Logs::add('errors',trans('whole::http.controllers.components_log_5',['name'=>$component['settings']['name']]));
                 }
             }
 
@@ -186,7 +186,7 @@ class ComponentsController extends Controller
             File::deleteDirectory(base_path('components/tmp'));
             return redirect()->route('admin.component.index');
         }
-        Flash::error('Bir Hata Meydana Geldi ve Bileşen Dosyası Yüklenemedi');
+        Flash::error(trans('whole.http.controllers.components_flash_3'));
         return redirect()->route('admin.component.index');
     }
 
@@ -206,10 +206,10 @@ class ComponentsController extends Controller
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',"Bileşen Silindi \nBileşen ID:{$id}");
+            Logs::add('process',trans('whole.http.controllers.components_log_6',['id'=>$id]));
         }else
         {
-            Logs::add('errors',"Bileşen Silinemedi! \nBileşen ID:{$id}");
+            Logs::add('errors',trans('whole.http.controllers.components_log_7',['id'=>$id]));
         }
         return redirect()->route('admin.component.index');
 

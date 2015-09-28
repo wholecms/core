@@ -55,13 +55,13 @@ class PermittedPagesController extends Controller
         $save = $this->permitted_page->save($request->all());
         if ($save===true)
         {
-            Flash::success('Başarıyla Kaydedildi');
-            Logs::add('process',"Sayfa İzinleri Düzenlendi");
+            Flash::success(trans('whole::http.controllers.permitted_pages_flash_1'));
+            Logs::add('process',trans('whole::http.controllers.permitted_pages_log_1'));
             return redirect()->route('admin.permitted_page.index');
         }else
         {
             Flash::error($save[1]);
-            Logs::add('process',"Sayfa İzinleri Düzenlenemedi\n".$save[1]);
+            Logs::add('process',trans('whole::http.controllers.permitted_pages_log_2').$save[1]);
             return redirect()->route('admin.permitted_page.index');
         }
     }

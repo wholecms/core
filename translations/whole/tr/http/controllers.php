@@ -1,0 +1,152 @@
+<?php
+
+return [
+
+	'analytics_log_errors_1'=>"İstatistiklerde Beklenmeyen Hata! \nBir Veri Çekilememiş Olabilir \nAnalytics Yapılandırılmasının Doğru Olduğuna Emin Olun.",
+	'analytics_log_errors_2'=>"Anlık İstatistiklerde Beklenmeyen Hata! \nGünlük Veri İstek Limiti Aşıldı.\nAnlık Veriler Çekilemiyor",
+	'analytics_active_user_limit'=>"Günlük İstek Limiti Aşıldı",
+
+
+	'auth_log_1'=>"Başarıyla Giriş Yaptı.",
+	'auth_log_2'=>"Giriş Yapılamadı! \n Bilgiler:\nEmail: :email \nŞifre: :password",
+	'auth_not_admin'=>"Yönetici Bulunamadı!",
+	'auth_log_3'=>"Kullanıcı Çıkış Yaptı",
+
+	'blocks_log_1'=>"Yeni Blok Eklendi \nBlok ID: :id",
+	'blocks_flash_1'=>"Başarıyla Kaydedildi",
+	'blocks_log_2'=>"Blok Eklerken Hata Meydana Geldi! \n",
+	'blocks_flash_2'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'blocks_log_3'=>"Blok Başarıyla Düzenlendi \nBlok ID: :id",
+	'blocks_flash_3'=>"Başarıyla Düzenlendi",
+	'blocks_log_4'=>"Blok Düzenlerken Hata Meydana Geldi \nBlok ID: :id",
+	'blocks_flash_4'=>"Bir Hata Meydana Geldi ve Düzenlenemedi",
+	'blocks_flash_5'=>"Başarıyla Silindi",
+	'blocks_flash_6'=>"Bir Hata Meydana Geldi ve Silinemedi",
+	'blocks_log_5'=>"Blok Başarıyla Silindi \nBlok ID: :id",
+	'blocks_log_6'=>"Blok Silinemedi \nBlok ID: :id",
+
+	'components_log_1'=>"Composer Update Edildi",
+	'components_log_2'=>"DB Migrate Edildi",
+	'components_log_3'=>"Bileşen Eklendi \n :name",
+	'components_flash_1'=>"Başarıyla Kaydedildi",
+	'components_flash_2'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'components_log_4'=>"Bileşen Menüye Eklendi\n :name",
+	'components_log_5'=>"Bileşen Menüye Eklenemedi!\n :name",
+	'components_flash_3'=>"Bir Hata Meydana Geldi ve Bileşen Dosyası Yüklenemedi",
+	'components_log_6'=>"Bileşen Silindi \nBileşen ID: :id",
+	'components_log_7'=>"Bileşen Silinemedi! \nBileşen ID: :id",
+
+
+
+	'content_pages_flash_1'=>"Başarıyla Silindi",
+	'content_pages_flash_2'=>"Bir Hata Meydana Geldi ve Silinemedi",
+	'content_pages_flash_3'=>"Bir Hata Meydana Geldi ve İçerik Sayfası Kaydedilemedi",
+	'content_pages_flash_4'=>"Bir Hata Meydana Geldi ve İçerik Alanları Kaydedilemedi İşleminiz İptal Edildi",
+	'content_pages_flash_5'=>"Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Eklenemedi İşleminiz İptal Edildi",
+	'content_pages_flash_6'=>"Başarıyla Kaydedildi",
+	'content_pages_flash_7'=>'Bir Hata Meydana Geldi ve İçerik Sayfası Güncellenemedi',
+	'content_pages_flash_8'=>'Bir Hata Meydana Geldi ve İçerik Alanları Güncellenemedi İşleminiz İptal Edildi',
+	'content_pages_flash_9'=>'Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Güncellenemedi İşleminiz İptal Edildi',
+	'content_pages_log_1'=>"İçerik Sayfası Silindi\n ID: :id",
+	'content_pages_log_2'=>"İçerik Sayfası Silinemedi\n ID: :id",
+	'content_pages_log_3'=>"İçerik Sayfası Oluşturuldu\n ID: :id",
+	'content_pages_log_4'=>"İçerik Sayfası Düzenlendi\n ID: :id",
+
+	'contents_flash_1'=>"Başarıyla Kaydedildi",
+	'contents_flash_2'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'contents_flash_3'=>"Başarıyla Düzenlendi",
+	'contents_flash_4'=>"Bir Hata Meydana Geldi ve Düzenlenemedi",
+	'contents_flash_5'=>"Başarıyla Silindi",
+	'contents_flash_6'=>"Bir Hata Meydana Geldi ve Silinemdi",
+	'contents_log_1'=>"İçerik Oluşturuldu\n ID: :id",
+	'contents_log_2'=>"İçerik Eklenemedi!",
+	'contents_log_3'=>"İçerik Düzenlendi\n ID: :id",
+	'contents_log_4'=>"İçerik Düzenlenemedi!\n ID: :id",
+	'contents_log_5'=>"İçerik Silindi \nID: :id",
+	'contents_log_6'=>"İçerik Silinemedi! \nID: :id",
+
+
+
+	'logs_flash_1'=>"Başarıyla Temizlendi",
+	'logs_flash_2'=>"Bir Hata Meydana Geldi ve Temizlenemedi",
+
+	'master_pages_log_1'=>"Master Page Oluşturuldu",
+	'master_pages_log_2'=>"Master Page Güncellendi",
+	'master_pages_flash_1'=>"Bir Hata Meydana Geldi ve İçerik Sayfası Kaydedilemedi",
+	'master_pages_flash_2'=>"Bir Hata Meydana Geldi ve İçerik Alanları Kaydedilemedi İşleminiz İptal Edildi",
+	'master_pages_flash_3'=>"Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Eklenemedi İşleminiz İptal Edildi",
+	'master_pages_flash_4'=>"Başarıyla Kaydedildi",
+	'master_pages_flash_5'=>"Bir Hata Meydana Geldi ve İçerik Sayfası Güncellenemedi",
+	'master_pages_flash_6'=>"Bir Hata Meydana Geldi ve İçerik Alanları Güncellenemedi İşleminiz İptal Edildi",
+	'master_pages_flash_7'=>"Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Güncellenemedi İşleminiz İptal Edildi",
+
+	'pages_log_1'=>"Sayfa Oluşturuldu\nID: :id",
+	'pages_log_2'=>"Sayfa Oluşturulamadı",
+	'pages_log_3'=>"Sayfa Güncellendi\nID: :id",
+	'pages_log_4'=>"Sayfa Güncellenemedi! \nID: :id",
+	'pages_log_5'=>"Sayfa Silindi\nID: :id",
+	'pages_log_6'=>"Sayfa Silinemedi\nID: :id",
+	'pages_flash_1'=>"İçerik Eklenemedi ve İşlem İptal Edildi Önce Yeni İçerik Ekleyerek Sayfayı Oluşturmayı Deneyebilirsiniz",
+	'pages_flash_2'=>"Başarıyla Kaydedildi",
+	'pages_flash_3'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'pages_flash_4'=>"İçerik Eklenemedi ve İşlem İptal Edildi Önce Yeni İçerik Ekleyerek Sayfayı Oluşturmayı Deneyebilirsiniz",
+	'pages_flash_5'=>"Başarıyla Kaydedildi",
+	'pages_flash_6'=>"Başarıyla Silindi",
+	'pages_flash_7'=>"Bir Hata Meydana Geldi ve Silinemedi",
+
+	'permitted_pages_log_1'=>"Sayfa İzinleri Düzenlendi",
+	'permitted_pages_log_2'=>"Sayfa İzinleri Düzenlenemedi\n",
+	'permitted_pages_flash_1'=>"Başarıyla Kaydedildi",
+	'permitted_pages_flash_2'=>"Bir Hata Meydana Geldi ve Sayfalar Senkronize Edilemedi İşleminiz İptal Edildi",
+	'permitted_pages_flash_3'=>"Bir Hata Meydana Geldi ve Erişim Sayfası Eklenemedi İşleminiz İptal Edildi.",
+
+
+
+	'roles_flash_1'=>"Başarıyla Kaydedildi",
+	'roles_flash_2'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'roles_flash_3'=>"Başarıyla Düzenlendi",
+	'roles_flash_4'=>"Bir Hata Meydana Geldi ve Düzenlenemedi",
+	'roles_flash_5'=>"Başarıyla Silindi",
+	'roles_flash_6'=>"Bir Hata Meydana Geldi ve Silinemedi",
+	'roles_log_1'=>"Kullanıcı Grubu Eklendi.\nID: :id",
+	'roles_log_2'=>"Kullanıcı Grubu Eklenemdi!",
+	'roles_log_3'=>"Kullanıcı Grubu Düzenlendi.\nID: :id",
+	'roles_log_4'=>"Kullanıcı Grubu Düzenlenemdi!.\nID: :id",
+	'roles_log_5'=>"Kullanıcı Grubu Silindi\nID: :id",
+	'roles_log_6'=>"Kullanıcı Grubu Silinemedi! \nID: :id",
+
+	'settings_flash_1'=>"Başarıyla Düzenlendi",
+	'settings_flash_2'=>"Bir Hata Meydana Geldi ve Düzenlenemedi",
+	'settings_log_1'=>"Site Ayarları Düzenlendi",
+	'settings_log_2'=>"Site Ayarları Güncellenemedi!",
+
+	'templates_flash_1'=>"Tema Dosyası Yüklendi ama Dizinler Tasinamadi! Tüm İşlemleriniz İptal Edildi.",
+	'templates_flash_2'=>"Başarıyla Kaydedildi",
+	'templates_flash_3'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'templates_flash_4'=>"Şablon Dosyası Silinemedi İşlem İptal Edildi",
+	'templates_flash_5'=>"Başarıyla Silindi",
+	'templates_flash_6'=>"Bir Hata Meydana Geldi ve Silinemedi",
+	'templates_log_1'=>"Şablon Eklendi\n :name",
+	'templates_log_2'=>"Şablon Eklenemedi!",
+	'templates_log_3'=>"Şablon Silindi\nID: :id",
+	'templates_log_4'=>"Şablon Silinemedi!\nID: :id",
+
+	'tools_flash_1'=>"Ön Bellek Başarıyla Temizlendi",
+	'tools_log_1'=>"Ön Bellek Temizlendi",
+
+	'users_flash_1'=>"Başarıyla Kaydedildi",
+	'users_flash_2'=>"Bir Hata Meydana Geldi ve Kaydedilemedi",
+	'users_flash_3'=>"Başarıyla Düzenlendi",
+	'users_flash_4'=>"Bir Hata Meydana Geldi ve Düzenlenemedi",
+	'users_flash_5'=>"Başarıyla Silindi",
+	'users_flash_6'=>"Bir Hata Meydana Geldi ve Silinemedi",
+	'users_log_1'=>"Kullanıcı Eklendi.\nID: :id",
+	'users_log_2'=>"Kullanıcı Eklenemdi!",
+	'users_log_3'=>"Kullanıcı Düzenlendi.\nID: :id",
+	'users_log_4'=>"Kullanıcı Düzenlenemedi.\nID: :id",
+	'users_log_5'=>"Kullanıcı Silindi\nID: :id",
+	'users_log_6'=>"Kullanıcı Silinemedi!\nID: :id",
+
+
+
+];

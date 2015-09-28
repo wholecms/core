@@ -78,14 +78,14 @@ class BlocksController extends Controller
         $data['access'] = serialize($data['access']);
         if ($block = $this->block->saveData('create',$data))
         {
-            Logs::add('process',"Yeni Blok Eklendi \nBlok ID:{$block->id}");
-            Flash::success('Başarıyla Kaydedildi');
+            Logs::add('process',trans("whole::http.controllers.blocks_log_1",['id'=>$block->id]));
+            Flash::success(trans("whole::http.controllers.blocks_flash_1"));
             return redirect()->route('admin.block.index');
         }
         else
         {
-            Logs::add('errors',"Blok Eklerken Hata Meydana Geldi! \n");
-            Flash::error('Bir Hata Meydana Geldi ve Kaydedilemedi');
+            Logs::add('errors',trans("whole::http.controllers.blocks_log_2"));
+            Flash::error(trans("whole::http.controllers.blocks_flash_1"));
             return redirect()->back();
         }
     }
@@ -134,14 +134,14 @@ class BlocksController extends Controller
         $data['access'] = serialize($data['access']);
         if ($this->block->saveData('update',$data,$id))
         {
-            Logs::add('process',"Blok Başarıyla Düzenlendi \nBlok ID:{$id}");
-            Flash::success('Başarıyla Düzenlendi');
+            Logs::add('process',trans("whole::http.controllers.blocks_log_3",['id'=>$id]));
+            Flash::success(trans("whole::http.controllers.blocks_flash_3"));
             return redirect()->route('admin.block.index');
         }
         else
         {
-            Logs::add('errors',"Blok Düzenlerken Hata Meydana Geldi \nBlok ID:{$id}");
-            Flash::error('Bir Hata Meydana Geldi ve Düzenlenemedi');
+            Logs::add('errors',trans("whole::http.controllers.blocks_log_4",['id'=>$id]));
+            Flash::error(trans("whole::http.controllers.blocks_flash_4"));
             return redirect()->back();
         }
     }
@@ -157,14 +157,14 @@ class BlocksController extends Controller
     {
         Cache::forget('_blocks');
         $message = $this->block->delete($id) ?
-            ['success','Başarıyla Silindi'] :
-            ['error','Bir Hata Meydana Geldi ve Silinemedi'];
+            ['success',trans("whole::http.controllers.blocks_flash_5")] :
+            ['error',trans("whole::http.controllers.blocks_flash_6")];
         if($message[0]=="success")
         {
-            Logs::add('process',"Blok Başarıyla Silindi \nBlok ID:{$id}");
+            Logs::add('process',trans("whole::http.controllers.blocks_log_5",['id'=>$id]));
         }else
         {
-            Logs::add('errors',"Blok Silinemedi \nBlok ID:{$id}");
+            Logs::add('errors',trans("whole::http.controllers.blocks_log_6",['id'=>$id]));
         }
         Flash::$message[0]($message[1]);
         return redirect()->route('admin.block.index');

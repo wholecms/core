@@ -57,7 +57,7 @@ class ContentPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false','Bir Hata Meydana Geldi ve İçerik Sayfası Kaydedilemedi'];
+            return ['false',trans('whole::http.controllers.content_pages_flash_3')];
         }
 
         if (isset($data['field']) && count($data['field'])>0)
@@ -73,18 +73,18 @@ class ContentPageRepository extends Repository
             catch (\Exception $e)
             {
                 $this->model->find($content_page->id)->delete();
-                return ['false','Bir Hata Meydana Geldi ve İçerik Alanları Kaydedilemedi İşleminiz İptal Edildi'];
+                return ['false',trans('whole::http.controllers.content_pages_flash_4')];
             }
         }
 
         if(!$this->content_page_field->create($data,$content_page->id))
         {
             $this->model->find($content_page->id)->delete();
-            return ['false','Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Eklenemedi İşleminiz İptal Edildi'];
+            return ['false',trans('whole::http.controllers.content_pages_flash_5')];
         }
 
-        Flash::success('Başarıyla Kaydedildi');
-        Logs::add('process',"İçerik Sayfası Oluşturuldu\n ID:{$content_page->id}");
+        Flash::success(trans('whole::http.controllers.content_pages_flash_6'));
+        Logs::add('process',trans('whole::http.controllers.content_pages_log_3',['id'=>$content_page->id]));
         return 'true';
 
     }
@@ -101,7 +101,7 @@ class ContentPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false','Bir Hata Meydana Geldi ve İçerik Sayfası Güncellenemedi'];
+            return ['false',trans('whole::http.controllers.content_pages_flash_7')];
         }
 
         if (isset($data['field']) && count($data['field'])>0)
@@ -120,18 +120,18 @@ class ContentPageRepository extends Repository
             catch (\Exception $e)
             {
                 //$this->model->find($content_page->id)->delete();
-                return ['false','Bir Hata Meydana Geldi ve İçerik Alanları Güncellenemedi İşleminiz İptal Edildi'];
+                return ['false',trans('whole::http.controllers.content_pages_flash_8')];
             }
         }
 
         if(!$this->content_page_field->update($data,$id))
         {
             //$this->model->find($content_page->id)->delete();
-            return ['false','Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Güncellenemedi İşleminiz İptal Edildi'];
+            return ['false',trans('whole::http.controllers.content_pages_flash_9')];
         }
 
-        Logs::add('process',"İçerik Sayfası Düzenlendi\n ID:{$id}");
-        Flash::success('Başarıyla Kaydedildi');
+        Logs::add('process',trans("whole::http.controllers.content_pages_log_4",['id'=>$id]));
+        Flash::success(trans('whole::http.controllers.content_pages_flash_6'));
         return 'true';
 
     }

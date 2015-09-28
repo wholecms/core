@@ -68,7 +68,7 @@ class MasterPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false','Bir Hata Meydana Geldi ve İçerik Sayfası Kaydedilemedi'];
+            return ['false',trans('whole::http.controllers.master_pages_flash_1')];
         }
         if (isset($data['field']) && count($data['field'])>0)
         {
@@ -83,7 +83,7 @@ class MasterPageRepository extends Repository
             catch (\Exception $e)
             {
                 $this->model->find($master_page->id)->delete();
-                return ['false','Bir Hata Meydana Geldi ve İçerik Alanları Kaydedilemedi İşleminiz İptal Edildi'];
+                return ['false',trans('whole::http.controllers.master_pages_flash_2')];
             }
 
         }
@@ -91,10 +91,10 @@ class MasterPageRepository extends Repository
         if(!$this->master_page_field->create($data,$master_page->id))
         {
             $this->model->find($master_page->id)->delete();
-            return ['false','Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Eklenemedi İşleminiz İptal Edildi'];
+            return ['false',trans('whole::http.controllers.master_pages_flash_3')];
         }
-        Logs::add('process',"Master Page Oluşturuldu");
-        Flash::success('Başarıyla Kaydedildi');
+        Logs::add('process',trans('whole::http.controllers.master_pages_log_1'));
+        Flash::success(trans('whole::http.controllers.master_pages_flash_4'));
         return 'true';
     }
 
@@ -114,7 +114,7 @@ class MasterPageRepository extends Repository
         }
         catch (\Exception $e)
         {
-            return ['false','Bir Hata Meydana Geldi ve İçerik Sayfası Güncellenemedi'];
+            return ['false',trans('whole::http.controllers.master_pages_flash_5')];
         }
 
         if (isset($data['field']) && count($data['field'])>0)
@@ -131,7 +131,7 @@ class MasterPageRepository extends Repository
             catch (\Exception $e)
             {
                 //$this->model->find($content_page->id)->delete();
-                return ['false','Bir Hata Meydana Geldi ve İçerik Alanları Güncellenemedi İşleminiz İptal Edildi'];
+                return ['false',trans('whole::http.controllers.master_pages_flash_6')];
             }
         }
 
@@ -139,10 +139,10 @@ class MasterPageRepository extends Repository
         if(!$this->master_page_field->update($data,$id))
         {
             //$this->model->find($content_page->id)->delete();
-            return ['false','Bir Hata Meydana Geldi ve İçerik Alan Detaylarınız Güncellenemedi İşleminiz İptal Edildi'];
+            return ['false',trans('whole::http.controllers.master_pages_flash_7')];
         }
-        Logs::add('process',"Master Page Güncellendi");
-        Flash::success('Başarıyla Kaydedildi');
+        Logs::add('process',trans('whole::http.controllers.master_pages_log_2'));
+        Flash::success(trans('whole::http.controllers.master_pages_flash_4'));
         return 'true';
 
     }

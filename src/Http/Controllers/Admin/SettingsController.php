@@ -51,15 +51,15 @@ class SettingsController extends Controller
     {
         Cache::forget('settings');
         $message = $this->setting->saveData('update',$request->all(),$id) ?
-            ['success','Başarıyla Düzenlendi'] :
-            ['error','Bir Hata Meydana Geldi ve Düzenlenemedi'];
+            ['success',trans('whole::http.controllers.settings_flash_1')] :
+            ['error',trans('whole::http.controllers.settings_flash_2')];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',"Site Ayarları Düzenlendi");
+            Logs::add('process',trans('whole::http.controllers.settings_log_1'));
         }else
         {
-            Logs::add('errors',"Site Ayarları Güncellenemedi!");
+            Logs::add('errors',trans('whole::http.controllers.settings_log_2'));
         }
         return redirect()->route('admin.setting.index');
     }

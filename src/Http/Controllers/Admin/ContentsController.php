@@ -62,14 +62,14 @@ class ContentsController extends Controller
         $data['access'] = serialize($request->get('access'));
         if ($content = $this->content->saveData('create',$data))
         {
-            Logs::add('process',"İçerik Oluşturuldu\n ID:{$content->id}");
-            Flash::success('Başarıyla Kaydedildi');
+            Logs::add('process',trans("whole::http.controllers.contents_log_1",['id'=>$content->id]));
+            Flash::success(trans("whole::http.controllers.contents_flash_1"));
             return redirect()->route('admin.content.index');
         }
         else
         {
-            Logs::add('errors',"İçerik Eklenemedi!");
-            Flash::error('Bir Hata Meydana Geldi ve Kaydedilemedi');
+            Logs::add('errors',trans("whole::http.controllers.contents_log_2"));
+            Flash::error(trans("whole::http.controllers.contents_flash_2"));
             return redirect()->back();
         }
     }
@@ -111,14 +111,14 @@ class ContentsController extends Controller
         $data['access'] = serialize($request->get('access'));
         if ($this->content->saveData('update',$data,$id))
         {
-            Logs::add('process',"İçerik Düzenlendi\n ID:{$id}");
-            Flash::success('Başarıyla Düzenlendi');
+            Logs::add('process',trans("whole::http.controllers.contents_log_3",['id'=>$id]));
+            Flash::success(trans("whole::http.controllers.contents_flash_3"));
             return redirect()->route('admin.content.index');
         }
         else
         {
-            Logs::add('errors',"İçerik Düzenlenemedi!\n ID:{$id}");
-            Flash::error('Bir Hata Meydana Geldi ve Düzenlenemedi');
+            Logs::add('errors',trans("whole::http.controllers.contents_log_4",['id'=>$id]));
+            Flash::error(trans("whole::http.controllers.contents_flash_4"));
             return redirect()->back();
         }
 
@@ -134,15 +134,15 @@ class ContentsController extends Controller
     {
         Cache::forget('_contents');
         $message = $this->content->delete($id) ?
-            ['success','Başarıyla Silindi'] :
-            ['error','Bir Hata Meydana Geldi ve Silinemdi'];
+            ['success',trans("whole::http.controllers.contents_flash_5")] :
+            ['error',trans("whole::http.controllers.contents_flash_6")];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',"İçerik Silindi \nID:{$id}");
+            Logs::add('process',trans("whole::http.controllers.contents_log_5",['id'=>$id]));
         }else
         {
-            Logs::add('errors',"İçerik Silinemedi! \nID:{$id}");
+            Logs::add('errors',trans("whole::http.controllers.contents_log_6",['id'=>$id]));
         }
         return redirect()->route('admin.content.index');
 

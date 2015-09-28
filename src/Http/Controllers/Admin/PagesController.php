@@ -99,21 +99,21 @@ class PagesController extends Controller
             }
             else
             {
-                Flash::error('İçerik Eklenemedi ve İşlem İptal Edildi Önce Yeni İçerik Ekleyerek Sayfayı Oluşturmayı Deneyebilirsiniz');
+                Flash::error(trans("whole::http.controllers.pages_flash_1"));
                 return redirect()->route('admin.page.index');
             }
         }
         $data['access'] = serialize($data['access']);
         if ($page = $this->page->saveData("create",$data))
         {
-            Logs::add('process',"Sayfa Oluşturuldu\nID:{$page->id}");
-            Flash::success('Başarıyla Kaydedildi');
+            Logs::add('process',trans("whole::http.controllers.pages_log_1",['id'=>$page->id]));
+            Flash::success(trans("whole::http.controllers.pages_flash_2"));
             return redirect()->route('admin.page.index');
         }
         else
         {
-            Logs::add('errors',"Sayfa Oluşturulamadı");
-            Flash::error('Bir Hata Meydana Geldi ve Kaydedilemedi');
+            Logs::add('errors',trans("whole::http.controllers.pages_log_2"));
+            Flash::error(trans("whole::http.controllers.pages_flash_3"));
             return redirect()->back();
         }
     }
@@ -182,21 +182,21 @@ class PagesController extends Controller
             }
             else
             {
-                Flash::error('İçerik Eklenemedi ve İşlem İptal Edildi Önce Yeni İçerik Ekleyerek Sayfayı Oluşturmayı Deneyebilirsiniz');
+                Flash::error(trans("whole::http.controllers.pages_flash_4"));
                 return redirect()->route('admin.page.index');
             }
         }
         $data['access'] = serialize($data['access']);
         if ($this->page->saveData("update",$data,$id))
         {
-            Logs::add('process',"Sayfa Güncellendi\nID:{$id}");
-            Flash::success('Başarıyla Kaydedildi');
+            Logs::add('process',trans("whole::http.controllers.pages_log_3",['id'=>$id]));
+            Flash::success(trans("whole::http.controllers.pages_flash_5"));
             return redirect()->route('admin.page.index');
         }
         else
         {
-            Logs::add('errors',"Sayfa Güncellenemedi! \nID:{$id}");
-            Flash::error('Bir Hata Meydana Geldi ve Kaydedilemedi');
+            Logs::add('errors',trans("whole::http.controllers.pages_log_4",['id'=>$id]));
+            Flash::error(trans("whole::http.controllers.pages_flash_3"));
             return redirect()->back();
         }
     }
@@ -211,15 +211,15 @@ class PagesController extends Controller
     {
         Cache::forget('_pages');
         $message = $this->page->delete($id) ?
-            ['success','Başarıyla Silindi'] :
-            ['error','Bir Hata Meydana Geldi ve Silinemedi'];
+            ['success',trans("whole::http.controllers.pages_flash_6")] :
+            ['error',trans("whole::http.controllers.pages_flash_7")];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',"Sayfa Silindi\nID:{$id}");
+            Logs::add('process',trans("whole::http.controllers.pages_log_5",['id'=>$id]));
         }else
         {
-            Logs::add('errors',"Sayfa Silinemedi\nID:{$id}");
+            Logs::add('errors',trans("whole::http.controllers.pages_log_6",['id'=>$id]));
         }
         return redirect()->route('admin.page.index');
     }

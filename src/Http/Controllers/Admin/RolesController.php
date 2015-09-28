@@ -51,14 +51,14 @@ class RolesController extends Controller
     {
         if ($role = $this->role->saveData("create",$request->all()))
         {
-            Logs::add('process',"Kullanıcı Grubu Eklendi.\nID:{$role->id}");
-            Flash::success('Başarıyla Kaydedildi');
+            Logs::add('process',trans('whole::http.controllers.roles_log_1',['id'=>$role->id]));
+            Flash::success(trans('whole::http.controllers.roles_flash_1'));
             return redirect()->route('admin.role.index');
         }
         else
         {
-            Logs::add('errors',"Kullanıcı Grubu Eklenemdi!");
-            Flash::error('Bir Hata Meydana Geldi ve Kaydedilemedi');
+            Logs::add('errors',trans('whole::http.controllers.roles_log_2'));
+            Flash::error(trans('whole::http.controllers.roles_flash_2'));
             return redirect()->back();
         }
     }
@@ -95,14 +95,14 @@ class RolesController extends Controller
     {
         if ($this->role->saveData("update",$request->all(),$id))
         {
-            Logs::add('process',"Kullanıcı Grubu Düzenlendi.\nID:{$id}");
-            Flash::success('Başarıyla Düzenlendi');
+            Logs::add('process',trans('whole::http.controllers.roles_log_3',['id'=>$id]));
+            Flash::success(trans('whole::http.controllers.roles_flash_3'));
             return redirect()->route('admin.role.index');
         }
         else
         {
-            Logs::add('errors',"Kullanıcı Grubu Düzenlenemdi!.\nID:{$id}");
-            Flash::error('Bir Hata Meydana Geldi ve Düzenlenemedi');
+            Logs::add('errors',trans('whole::http.controllers.roles_log_4',['id'=>$id]));
+            Flash::error(trans('whole::http.controllers.roles_flash_4'));
             return redirect()->back();
         }
     }
@@ -116,15 +116,15 @@ class RolesController extends Controller
     public function destroy($id)
     {
         $message = $this->role->destroy($id) ?
-            ['success','Başarıyla Silindi'] :
-            ['error','Bir Hata Meydana Geldi ve Silinemedi'];
+            ['success',trans('whole::http.controllers.roles_flash_5')] :
+            ['error',trans('whole::http.controllers.roles_flash_6')];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',"Kullanıcı Grubu Silindi\nID:{$id}");
+            Logs::add('process',trans('whole::http.controllers.roles_log_5',['id'=>$id]));
         }else
         {
-            Logs::add('errors',"Kullanıcı Grubu Silinemedi! \nID:{$id}");
+            Logs::add('errors',trans('whole::http.controllers.roles_log_6',['id'=>$id]));
         }
         return redirect()->route('admin.role.index');
 

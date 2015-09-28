@@ -14,8 +14,8 @@ class ToolsController extends Controller
 	public function clearCache()
 	{
 		Cache::flush();
-		Logs::add('process',"Ön Bellek Temizlendi");
-		Flash::success('Ön Bellek Başarıyla Temizlendi');
+		Logs::add('process',trans('whole::http.controllers.tools_log_1'));
+		Flash::success(trans('whole::http.controllers.tools_flash_1'));
 		return redirect()->route('admin.index');
 	}
 }

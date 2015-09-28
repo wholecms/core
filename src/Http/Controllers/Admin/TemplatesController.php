@@ -79,23 +79,23 @@ class TemplatesController extends Controller
                 File::delete(base_path('resources/views/Template.php'));
                 File::delete(storage_path('tmp/Template.php'));
                 File::deleteDirectory(storage_path('tmp/'));
-                Flash::error('Tema Dosyası Yüklendi ama Dizinler Tasinamadi! Tüm İşlemleriniz İptal Edildi.');
+                Flash::error(trans('whole::http.controllers.templates_flash_1'));
                 return redirect()->route('admin.template.index');
             }
 
             $message = $this->template->create($template) ?
-                ['success','Başarıyla Kaydedildi']:
-                ['error','Bir Hata Meydana Geldi ve Kaydedilemedi'];
+                ['success',trans('whole::http.controllers.templates_flash_2')]:
+                ['error',trans('whole::http.controllers.templates_flash_3')];
             File::delete(base_path('resources/views/Template.php'));
             File::delete(storage_path('tmp/Template.php'));
             File::deleteDirectory(storage_path('tmp/'));
             Flash::$message[0]($message[1]);
             if ($message[0]=="success")
             {
-                Logs::add('process',"Şablon Eklendi\n{$template['name']}");
+                Logs::add('process',trans('whole::http.controllers.templates_log_1',['name'=>$template['name']]));
             }else
             {
-                Logs::add('errors',"Şablon Eklenemedi!");
+                Logs::add('errors',trans('whole::http.controllers.templates_log_2'));
             }
             return redirect()->route('admin.template.index');
         }
@@ -151,20 +151,20 @@ class TemplatesController extends Controller
             File::deleteDirectory(base_path('resources/views/'.$folder));
         }catch (\Exception $e)
         {
-            Flash::error('Şablon Dosyası Silinemedi İşlem İptal Edildi');
+            Flash::error(trans('whole::http.controllers.templates_flash_4'));
             return redirect()->route('admin.template.index');
         }
 
         $message = $this->template->delete($id)?
-            ['success','Başarıyla Silindi'] :
-            ['error','Bir Hata Meydana Geldi ve Silinemedi'];
+            ['success',trans('whole::http.controllers.templates_flash_5')] :
+            ['error',trans('whole::http.controllers.templates_flash_6')];
         Flash::$message[0]($message[1]);
         if ($message[0]=="success")
         {
-            Logs::add('process',"Şablon Silindi\nID:{$id}");
+            Logs::add('process',trans('whole::http.controllers.templates_log_3',['id'=>$id]));
         }else
         {
-            Logs::add('errors',"Şablon Silinemedi!\nID:{$id}");
+            Logs::add('errors',trans('whole::http.controllers.templates_log_4',['id'=>$id]));
         }
         return redirect()->route('admin.template.index');
     }

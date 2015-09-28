@@ -25,7 +25,7 @@ class AnalyticsController extends Controller
             return view('backend::analytics.index',compact('this_week','last_week','today_and_yesterday','active_user','today_visited_pages','all_visited_pages','referrers','browsers','keywords'))->with('response',true);
         }catch (\Exception $e)
         {
-            Logs::add('errors',"İstatistiklerde Beklenmeyen Hata! \nBir Veri Çekilememiş Olabilir \nAnalytics Yapılandırılmasının Doğru Olduğuna Emin Olun.");
+            Logs::add('errors',trans("whole::http.controllers.analytics_log_errors_1"));
             return view('backend::analytics.index')->with('response',false);
         }
     }
@@ -39,8 +39,8 @@ class AnalyticsController extends Controller
         }
         catch (\Exception $e)
         {
-            Logs::add('errors',"Anlık İstatistiklerde Beklenmeyen Hata! \nGünlük Veri İstek Limiti Aşıldı.\nAnlık Veriler Çekilemiyor");
-            return ['false',"Günlük İstek Limiti Aşıldı"];
+            Logs::add('errors',trans("whole::http.controllers.analytics_log_errors_2"));
+            return ['false',trans("whole::http.controllers.analytics_active_user_limit")];
         }
     }
 }

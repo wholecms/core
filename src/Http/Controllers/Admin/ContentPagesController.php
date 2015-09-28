@@ -145,14 +145,14 @@ class ContentPagesController extends Controller
     public function destroy($id)
     {
         $message = $this->content_page->delete($id) ?
-            ['success','Başarıyla Silindi'] :
-            ['error','Bir Hata Meydana Geldi ve Silinemedi'];
+            ['success',trans("whole.http.controllers.content_pages_flash_1")] :
+            ['error',trans("whole.http.controllers.content_pages_flash_2")];
         if ($message[0]=="success")
         {
-            Logs::add('process',"İçerik Sayfası Silindi\n ID:{$id}");
+            Logs::add('process',trans("whole.http.controllers.content_pages_log_1",['id'=>$id]));
         }else
         {
-            Logs::add('errors',"İçerik Sayfası Silinemedi\n ID:{$id}");
+            Logs::add('errors',trans("whole.http.controllers.content_pages_log_2",['id'=>$id]));
         }
         Flash::$message[0]($message[1]);
         return back();
