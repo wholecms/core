@@ -31,8 +31,8 @@ class ComponentRequest extends Request
     public function messages()
     {
         return [
-            'file.required' => trans('whole::request.component.file_required'),
-            'file.mimes' => trans('whole::request.component.file_mimes'),
+            'file.required' => trans('whole::request/component.file_required'),
+            'file.mimes' => trans('whole::request/component.file_mimes'),
         ];
     }
 }

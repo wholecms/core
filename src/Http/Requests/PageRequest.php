@@ -64,13 +64,13 @@ class PageRequest extends Request
     {
 
         return [
-            'content_page_id.required'=> trans('whole::request.page.content_page_id'),
-            'menu_title.required'=> trans('whole::request.page.menu_title'),
-            'content_type.required'=> trans('whole::request.page.content_type'),
-            'create_content_title.required' => trans('whole::request.page.create_content_title'),
-            'create_content_content.required' => trans('whole::request.page.create_content_content'),
-            'component_id.required' => trans('whole::request.page.component_id'),
-            'external_link.required' => trans('whole::request.page.external_link'),
+            'content_page_id.required'=> trans('whole::request/page.content_page_id'),
+            'menu_title.required'=> trans('whole::request/page.menu_title'),
+            'content_type.required'=> trans('whole::request/page.content_type'),
+            'create_content_title.required' => trans('whole::request/page.create_content_title'),
+            'create_content_content.required' => trans('whole::request/page.create_content_content'),
+            'component_id.required' => trans('whole::request/page.component_id'),
+            'external_link.required' => trans('whole::request/page.external_link'),
         ];
     }
 }

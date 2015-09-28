@@ -53,13 +53,13 @@ class UserRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => trans('whole::request.user.name'),
-            'password.required' => trans('whole::request.user.password_required'),
-            'password.confirmed' => trans('whole::request.user.password_confirmed'),
-            'email.required' => trans('whole::request.user.email_required'),
-            'email.email' => trans('whole::request.user.email_email'),
-            'email.unique' => trans('whole::request.user.email_unique'),
-            'role.required' => trans('whole::request.user.role'),
+            'name.required' => trans('whole::request/user.name'),
+            'password.required' => trans('whole::request/user.password_required'),
+            'password.confirmed' => trans('whole::request/user.password_confirmed'),
+            'email.required' => trans('whole::request/user.email_required'),
+            'email.email' => trans('whole::request/user.email_email'),
+            'email.unique' => trans('whole::request/user.email_unique'),
+            'role.required' => trans('whole::request/user.role'),
         ];
     }
 }

@@ -36,8 +36,8 @@ class ContentRequest extends Request
     public function messages()
     {
         return [
-            'title.required' =>trans('whole::request.content.title'),
-            'content.required' => trans('whole::request.content.content'),
+            'title.required' =>trans('whole::request/content.title'),
+            'content.required' => trans('whole::request/content.content'),
         ];
     }
 }

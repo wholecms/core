@@ -31,8 +31,8 @@ class TemplateRequest extends Request
     public function messages()
     {
         return [
-            'file.required' => trans('whole::request.template.file_required'),
-            'file.mimes' => trans('whole::request.template.file_mimes'),
+            'file.required' => trans('whole::request/template.file_required'),
+            'file.mimes' => trans('whole::request/template.file_mimes'),
         ];
     }
 }

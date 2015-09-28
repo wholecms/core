@@ -32,8 +32,8 @@ class BlockRequest extends Request
     public function messages()
     {
         return [
-            'name.required'=> trans('whole::request.block.name'),
-            'title.required'=> trans('whole::request.block.title'),
+            'name.required'=> trans('whole::request/block.name'),
+            'title.required'=> trans('whole::request/block.title'),
         ];
     }
 }

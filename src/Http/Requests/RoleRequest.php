@@ -34,7 +34,7 @@ class RoleRequest extends Request
     public function messages()
     {
         return [
-            'role_name.required' => trans('whole::request.role.role_name'),
+            'role_name.required' => trans('whole::request/role.role_name'),
         ];
     }
 }
