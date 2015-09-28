@@ -5,7 +5,7 @@ return [
     'profile' => 'My profile',
     'logout' => 'Logout',
 	'dashboard' => 'Dashboard Panel',
-	'preview' => 'Site Pewview',
+	'preview' => 'Site Preview',
 	'user_operations' => 'User Processes',
 	'users' => 'Users',
 	'user_roles' => 'User Role',
