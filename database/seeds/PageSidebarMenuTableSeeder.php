@@ -41,7 +41,7 @@ class PageSidebarMenuTableSeeder extends Seeder
                     'title' => "Sayfalar",
                     'icon' => "icon-docs",
                     'route' => "#",
-                    'path' => "admin/setting,admin/setting/*",
+                    'path' => "",
                     'order' => "3",
                     'children_menu'=>'1',
                 ],
@@ -115,7 +115,7 @@ class PageSidebarMenuTableSeeder extends Seeder
                     'order' => "6",
                     'children_menu'=>'1',
                 ],
-				[
+                [
                     'id' => "11",
                     'top_id' => "9",
                     'title' => "Ön Belleği Temizle",
