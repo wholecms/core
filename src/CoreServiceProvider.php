@@ -14,6 +14,7 @@ class CoreServiceProvider extends ServiceProvider
     protected $commands = [
         'Whole\Core\Commands\InstallCommand',
         'Whole\Core\Commands\AnalyticsCommand',
+        'Whole\Core\Commands\CreateAdminCommand',
     ];
 
 
