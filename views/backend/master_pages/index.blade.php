@@ -339,7 +339,7 @@
                 if($("input[name='name']").val()==""){
                     $("._flash").html('<div class="alert alert-danger">'+
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+
-                    "{{ trans('whole::master_pages.ajax_error0') }}""+
+                    "{{ trans('whole::master_pages.ajax_error0') }}"+
                     '</div>');
                     return false;
                 }
