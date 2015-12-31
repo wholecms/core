@@ -144,6 +144,7 @@ class PageRender {
                         $field = $_fields[$page_field['field']][] = ['type'=>$field_details['type'],'data_id'=>$field_details['data_id'],'data'=>[]];
                         switch ($field_details['type']) {
                             case "content":
+								$_contents[$field['data_id']]['content'] =  $this->reContent($_contents[$field['data_id']]['content']);
                                 $_fields[$page_field['field']][$i]['data'] = $_contents[$field['data_id']];
                                 break;
                             case "component-file":
@@ -218,4 +219,15 @@ class PageRender {
         }
         return $branch;
     }
+	
+	
+	public function reContent($content)
+	{
+		preg_match_all('/\{\{(.*?)\}\}/i',$content,$new_content);
+		foreach($new_content[1] as $v)
+		{	
+			$content = preg_replace("/{{ ".trim($v)." }}/i",view($v),$content);
+		}
+		return $content;
+	}
 }
