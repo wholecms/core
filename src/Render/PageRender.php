@@ -123,6 +123,7 @@ class PageRender {
                                 $_blocks[$i]['block_detail'][$j]['data'] = $_pages[$detay['data_id']];
                                 break;
                             case "content":
+                                $_contents[$detay['data_id']]['content'] = $this->reContent($_contents[$detay['data_id']]['content']);
                                 $_blocks[$i]['block_detail'][$j]['data'] = $_contents[$detay['data_id']];
                                 break;
                             case "component-file":
@@ -144,7 +145,7 @@ class PageRender {
                         $field = $_fields[$page_field['field']][] = ['type'=>$field_details['type'],'data_id'=>$field_details['data_id'],'data'=>[]];
                         switch ($field_details['type']) {
                             case "content":
-								$_contents[$field['data_id']]['content'] =  $this->reContent($_contents[$field['data_id']]['content']);
+                                $_contents[$field['data_id']]['content'] =  $this->reContent($_contents[$field['data_id']]['content']);
                                 $_fields[$page_field['field']][$i]['data'] = $_contents[$field['data_id']];
                                 break;
                             case "component-file":
@@ -163,6 +164,10 @@ class PageRender {
                             case "main-content":
                                 if($content_page_id!==null)
                                 {
+                                    if (isset($_pages[$content_page_id]['content']))
+                                    {
+                                        $_pages[$content_page_id]['content']['content'] = $this->reContent($_pages[$content_page_id]['content']['content']);
+                                    }
                                     $_fields[$page_field['field']][$i]['data'] = $_pages[$content_page_id];
                                 }
                                 break;
