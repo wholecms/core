@@ -28,7 +28,8 @@ return [
 	
 	'index_table_th1' => 'Bileşen Adı',
 	'index_table_th2' => 'Bileşen Açıklaması',
-	'index_table_th3' => 'İşlemler',
+	'index_table_th3' => 'Dosyalar',
+	'index_table_th4' => 'İşlemler',
 	
 	
 	'form_label_1'=>"Bileşen Dosyası",

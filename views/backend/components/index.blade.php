@@ -43,8 +43,8 @@
                             <th>#</th>
                             <th>{{ trans('whole::components.index_table_th1') }}</th>
                             <th>{{ trans('whole::components.index_table_th2') }}</th>
-                            <th>Dosyalar</th>
                             <th>{{ trans('whole::components.index_table_th3') }}</th>
+                            <th>{{ trans('whole::components.index_table_th4') }}</th>
                         </tr>
                         </thead>
                         <tbody>

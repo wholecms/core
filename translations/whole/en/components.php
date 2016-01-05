@@ -27,7 +27,8 @@ return [
 
 	'index_table_th1' => 'Component Name',
 	'index_table_th2' => 'Component Description',
-	'index_table_th3' => 'Processes',
+	'index_table_th3' => 'Files',
+	'index_table_th4' => 'Processes',
 
 	'form_label_1'=>"Component File",
 
