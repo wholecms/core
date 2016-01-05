@@ -40,7 +40,7 @@ class ComponentsController extends MainController
      */
     public function index()
     {
-        $components = $this->component->all();
+        $components = $this->component->allFile();
         return view('backend::components.index',compact('components'));
     }
 

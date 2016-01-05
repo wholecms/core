@@ -43,6 +43,7 @@
                             <th>#</th>
                             <th>{{ trans('whole::components.index_table_th1') }}</th>
                             <th>{{ trans('whole::components.index_table_th2') }}</th>
+                            <th>Dosyalar</th>
                             <th>{{ trans('whole::components.index_table_th3') }}</th>
                         </tr>
                         </thead>
@@ -52,6 +53,14 @@
                                 <td>{{ $component->id }}</td>
                                 <td>{{ $component->name }}</td>
                                 <td>{{ $component->description }}</td>
+                                <td>
+                                    @foreach($component->file as $file)
+                                        <div class="row" style="margin-bottom:5px;">
+                                            <div class="col-md-4 text-right">{{$file->pivot->name}}:</div>
+                                            <div class="col-md-8 text-left"><input style="width:100%" type="text" value="{{ "{{ ".$component->folder.".".$file->pivot->file }} }}" onclick="select();" /> </div>
+                                        </div>
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a href="{{ route('admin.component.destroy',$component->id) }}" class="btn btn-danger btn-sm" data-method="delete"> <i class="fa fa-trash"></i> {{ trans('whole::components.delete') }}</a>
                                 </td>
