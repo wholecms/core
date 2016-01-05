@@ -11,6 +11,7 @@ use Whole\Core\Repositories\Component\ComponentFileRepository;
 use Whole\Core\Repositories\Block\BlockRepository;
 use Whole\Core\Repositories\Page\PageRepository;
 use Illuminate\Support\Facades\Cache;
+use Whole\Core\Repositories\Setting\SettingRepository;
 
 class PageRender {
 
@@ -20,18 +21,26 @@ class PageRender {
     protected $component_file;
     protected $block;
     protected $page;
+    protected $setting;
+    protected $id;
 
-    public function __construct(ContentRepository $content, ComponentFileRepository $component_file, BlockRepository $block, PageRepository $page)
+    public function __construct(ContentRepository $content, ComponentFileRepository $component_file, BlockRepository $block, PageRepository $page, SettingRepository $setting)
     {
         $this->content = $content;
         $this->component_file = $component_file;
         $this->block= $block;
         $this->page = $page;
+        $this->setting = $setting;
+
     }
 
 
     public function renderFields($page_fields,$isCollect=true,$content_page_id=null)
     {
+        if(isset($content_page_id))
+        {
+            $this->id = $content_page_id;
+        }
 
         if (!Cache::has('_contents'))
         {
@@ -120,6 +129,7 @@ class PageRender {
                                 $_blocks[$i]['block_detail'][$j]['data'] = &$_blocks[$detay['data_id']];
                                 break;
                             case "page":
+                                $_pages[$detay['data_id']]['menu_title'] = $this->reContent($_pages[$detay['data_id']]['menu_title']);
                                 $_blocks[$i]['block_detail'][$j]['data'] = $_pages[$detay['data_id']];
                                 break;
                             case "content":
@@ -226,13 +236,101 @@ class PageRender {
     }
 	
 	
-	public function reContent($content)
+	public function reContent($text)
 	{
-		preg_match_all('/\{\{(.*?)\}\}/i',$content,$new_content);
-		foreach($new_content[1] as $v)
-		{	
-			$content = preg_replace("/{{ ".trim($v)." }}/i",view($v),$content);
-		}
-		return $content;
+
+        preg_match_all('/\{\{ components::(.*?)\}\}/i',$text,$view);
+        preg_match_all('/\{\{ date(.*?)\}\}/i',$text,$date);
+        preg_match_all('/\{\{ session.(.*?)\}\}/i',$text,$session);
+        preg_match_all('/\{\{ auth.(.*?)\}\}/i',$text,$auth);
+        preg_match_all('/\{\{ content::(.*?)::(.*?) }\}/i',$text,$content);
+        preg_match_all('/\{\{ page::(.*?)::(.*?) }\}/i',$text,$page);
+        preg_match_all('/\{\{ settings::(.*?) }\}/i',$text,$settings);
+
+
+        if (count($settings[1])>0)
+        {
+            foreach($settings[1] as $v)
+            {
+                $text = preg_replace("/{{ settings::".trim($v)." }}/i",$this->reContent($this->setting->first()->{trim($v)}),$text);
+            }
+        }
+
+
+        if (count($page[1])>0)
+        {
+            foreach($page[1] as $k=>$v)
+            {
+                if($v=="this"){
+                    preg_match_all("/(.*?):(.*?):/i",$page[2][$k],$default_text);
+                    $default_text = $default_text[2][0];
+                    if (isset($this->id))
+                    {
+                        $default_text = $this->page->find($this->id)->{explode(":",$page[2][$k])[0]};
+                    }
+                    $text = preg_replace("/{{ page::".trim($v)."::".$page[2][$k]." }}/i",$this->reContent($default_text),$text);
+                }
+                else{
+                    $text = preg_replace("/{{ page::".trim($v)."::".$page[2][$k]." }}/i",$this->reContent($this->page->find($v)->{$page[2][$k]}),$text);
+                }
+            }
+        }
+
+        if (count($content[1])>0)
+        {
+            foreach($content[1] as $k=>$v)
+            {
+                $text = preg_replace("/{{ content::".trim($v)."::".$content[2][$k]." }}/i",$this->reContent($this->content->find($v)->{$content[2][$k]}),$text);
+            }
+        }
+
+
+        if (count($auth[1])>0)
+        {
+            foreach($auth[1] as $v)
+            {
+                if(\Auth::user()===null)
+                {
+                    $default_text = isset(explode(":",trim($v))[1]) ? explode(":",trim($v))[1]:"";
+                }else
+                {
+                    $default_text = \Auth::user()->{explode(":",trim($v))[0]};
+                }
+                $text = preg_replace("/{{ auth.".trim($v)." }}/i",$default_text,$text);
+            }
+
+        }
+
+        if (count($session[1])>0)
+        {
+            foreach($session[1] as $v)
+            {
+                $text = preg_replace("/{{ session.".trim($v)." }}/i",session(trim($v)),$text);
+            }
+        }
+
+
+        if (count($date[1])>0)
+        {
+            foreach($date[1] as $v)
+            {
+                $v = trim(preg_replace("/\((.*?)\)/i","$1",$v));
+                $text = preg_replace("#{{ ".preg_quote("date($v)")." }}#i",date($v),$text);
+            }
+        }
+
+
+
+        if (count($view[1])>0)
+        {
+            foreach($view[1] as $v)
+            {
+                $text = preg_replace("/{{ components::".trim($v)." }}/i",view('components::'.trim($v)),$text);
+            }
+        }
+
+
+
+		return $text;
 	}
 }
