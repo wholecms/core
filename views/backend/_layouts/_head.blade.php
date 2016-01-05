@@ -21,7 +21,7 @@
     {!! Html::style('assets/backend/global/plugins/uniform/css/uniform.default.css') !!}
     {!! Html::style('assets/backend/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
     @yield('include_css')
-    {!! Html::style('assets/backend/global/css/components-md.css') !!}
+    {!! Html::style('assets/backend/global/css/components-md.min.css') !!}
     {!! Html::style('assets/backend/global/css/plugins-md.css') !!}
     {!! Html::style('assets/backend/admin/layout4/css/layout.css') !!}
     {!! Html::style('assets/backend/admin/layout4/css/themes/light.css') !!}
