@@ -2,11 +2,11 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class IndexController extends MainController
 {
     public function index()
     {

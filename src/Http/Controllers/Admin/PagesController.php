@@ -2,21 +2,20 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Role\RoleRepository;
 use Whole\Core\Repositories\Page\PageRepository;
 use Whole\Core\Repositories\ContentPage\ContentPageRepository;
 use Whole\Core\Repositories\Content\ContentRepository;
 use Whole\Core\Repositories\Component\ComponentRepository;
 use Whole\Core\Http\Requests\PageRequest;
-use Illuminate\Support\Facades\Cache;
 use Whole\Core\Logs\Facade\Logs;
 
-class PagesController extends Controller
+class PagesController extends MainController
 {
     protected $page;
     protected $role;
@@ -70,7 +69,7 @@ class PagesController extends Controller
      */
     public function store(PageRequest $request)
     {
-        Cache::forget('_pages');
+        $this->itemsClearCache();
         $data = $request->all();
 
         switch ($request->get('content_type')) {
@@ -87,7 +86,6 @@ class PagesController extends Controller
 
         if ($request->get('content_type')=="content" && $request->get('content_id')=="")
         {
-			Cache::forget('_contents');
             if ($content = $this->content->newContent([
                 'title'=>$request->get('create_content_title'),
                 'title_visibility'=>$request->get('create_content_title_visibility'),
@@ -154,7 +152,7 @@ class PagesController extends Controller
      */
     public function update(PageRequest $request, $id)
     {
-        Cache::forget('_pages');
+        $this->itemsClearCache();
         $data = $request->all();
 
         switch ($request->get('content_type')) {
@@ -209,7 +207,7 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        Cache::forget('_pages');
+        $this->itemsClearCache();
         $message = $this->page->delete($id) ?
             ['success',trans("whole::http/controllers.pages_flash_6")] :
             ['error',trans("whole::http/controllers.pages_flash_7")];
@@ -230,7 +228,7 @@ class PagesController extends Controller
      */
     public function ajaxUpdate(Request $request)
     {
-        Cache::forget('_pages');
+        $this->itemsClearCache();
         return $this->page->find($request->get('id'))
             ->update([$request->get('type')=>$request->get('status')]) ?
             "true" :

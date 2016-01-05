@@ -2,11 +2,11 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Block\BlockRepository;
 use Whole\Core\Repositories\Role\RoleRepository;
 use Whole\Core\Http\Requests\BlockRequest;
@@ -14,9 +14,8 @@ use Whole\Core\Repositories\Component\ComponentRepository;
 use Whole\Core\Repositories\Content\ContentRepository;
 use Whole\Core\Repositories\Page\PageRepository;
 use Whole\Core\Repositories\Block\BlockDetailRepository;
-use Illuminate\Support\Facades\Cache;
 use Whole\Core\Logs\Facade\Logs;
-class BlocksController extends Controller
+class BlocksController extends MainController
 {
     protected $block;
     protected $role;
@@ -73,7 +72,7 @@ class BlocksController extends Controller
      */
     public function store(BlockRequest $request)
     {
-        Cache::forget('_blocks');
+        $this->itemsClearCache();
         $data = $request->all();
         $data['access'] = serialize($data['access']);
         if ($block = $this->block->saveData('create',$data))
@@ -129,7 +128,7 @@ class BlocksController extends Controller
      */
     public function update(BlockRequest $request, $id)
     {
-        Cache::forget('_blocks');
+        $this->itemsClearCache();
         $data = $request->all();
         $data['access'] = serialize($data['access']);
         if ($this->block->saveData('update',$data,$id))
@@ -155,7 +154,7 @@ class BlocksController extends Controller
      */
     public function destroy($id)
     {
-        Cache::forget('_blocks');
+        $this->itemsClearCache();
         $message = $this->block->delete($id) ?
             ['success',trans("whole::http/controllers.blocks_flash_5")] :
             ['error',trans("whole::http/controllers.blocks_flash_6")];
@@ -177,7 +176,7 @@ class BlocksController extends Controller
      */
     public function ajaxUpdate(Request $request)
     {
-        Cache::forget('_blocks');
+        $this->itemsClearCache();
         return $this->block->find($request->get('id'))
             ->update([$request->get('type')=>$request->get('status')]) ?
             "true" :
@@ -186,7 +185,7 @@ class BlocksController extends Controller
 
     public function attributeCreate(Request $request,$id)
     {
-        Cache::forget('_blocks');
+        $this->itemsClearCache();
         return $this->block_detail->create($request->all(),$id);
     }
 }

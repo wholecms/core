@@ -2,17 +2,17 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\PermittedPage\PermittedPageRepository;
 use Whole\Core\Repositories\PermittedPage\AllPageRepository;
 use Whole\Core\Repositories\Role\RoleRepository;
 use Whole\Core\Logs\Facade\Logs;
 
-class PermittedPagesController extends Controller
+class PermittedPagesController extends MainController
 {
     protected $permitted_page;
     protected $all_page;

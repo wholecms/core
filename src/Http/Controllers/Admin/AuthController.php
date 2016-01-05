@@ -3,15 +3,14 @@
 namespace Whole\Core\Http\Controllers\Admin;
 
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Whole\Core\Logs\Facade\Logs;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
-use Illuminate\Support\Facades\Cache;
 
-class AuthController extends Controller
+class AuthController extends MainController
 {
 
 
@@ -22,8 +21,7 @@ class AuthController extends Controller
 
     public function loginAction(Request $request)
     {
-        Cache::forget('role_id');
-        Cache::forget('this_user');
+        $this->userClearCache();
         $remember = $request->get('remember');
         if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')], $remember))
         {
@@ -40,8 +38,7 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Cache::forget('role_id');
-        Cache::forget('this_user');
+        $this->userClearCache();
         Logs::add('process',trans('whole::http/controllers.auth_log_3'));
         Auth::logout();
         return redirect()->route('master_page');

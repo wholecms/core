@@ -2,18 +2,18 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Whole\Core\Http\Requests\TemplateRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Template\TemplateRepository;
 use Whole\Core\Repositories\Setting\SettingRepository;
 use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\File;
 use Whole\Core\Logs\Facade\Logs;
 
-class TemplatesController extends Controller
+class TemplatesController extends MainController
 {
     protected $template;
     protected $setting;

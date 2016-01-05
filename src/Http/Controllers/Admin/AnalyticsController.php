@@ -2,13 +2,13 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Spatie\LaravelAnalytics\LaravelAnalyticsFacade as LaravelAnalytics;
 use Whole\Core\Logs\Facade\Logs;
-class AnalyticsController extends Controller
+class AnalyticsController extends MainController
 {
     public function index()
     {

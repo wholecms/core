@@ -2,17 +2,16 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Setting\SettingRepository;
 use Whole\Core\Repositories\Template\TemplateRepository;
-use Illuminate\Support\Facades\Cache;
 use Whole\Core\Logs\Facade\Logs;
 
-class SettingsController extends Controller
+class SettingsController extends MainController
 {
     protected $setting;
     protected $template;
@@ -49,7 +48,7 @@ class SettingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cache::forget('settings');
+        $this->settingsClearCache();
         $message = $this->setting->saveData('update',$request->all(),$id) ?
             ['success',trans('whole::http/controllers.settings_flash_1')] :
             ['error',trans('whole::http/controllers.settings_flash_2')];

@@ -2,18 +2,17 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\MasterPage\MasterPageRepository;
 use Whole\Core\Repositories\MasterPage\MasterPageFieldRepository;
 use Whole\Core\Repositories\Template\TemplateRepository;
 use Whole\Core\Repositories\Block\BlockRepository;
 use Whole\Core\Repositories\Content\ContentRepository;
 use Whole\Core\Repositories\Component\ComponentRepository;
-use Illuminate\Support\Facades\Cache;
-class MasterPagesController extends Controller
+class MasterPagesController extends MainController
 {
     protected $master_page;
     protected $master_page_field;
@@ -85,14 +84,7 @@ class MasterPagesController extends Controller
      */
     public function store(Request $request)
     {
-        Cache::forget('master_page');
-        Cache::forget('master_page_fields');
-		
-		Cache::forget('_contents');
-		Cache::forget('_components');
-		Cache::forget('_blocks');
-		Cache::forget('_pages');
-		
+        $this->itemsClearCache();
         return $this->master_page->create($request->all());
     }
 
@@ -105,13 +97,7 @@ class MasterPagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Cache::forget('master_page');
-        Cache::forget('master_page_fields');
-		
-		Cache::forget('_contents');
-		Cache::forget('_components');
-		Cache::forget('_blocks');
-		Cache::forget('_pages');
+        $this->itemsClearCache();
         return $this->master_page->update($request->all(),$id);
     }
 

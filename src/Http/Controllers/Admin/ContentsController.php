@@ -2,17 +2,16 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Content\ContentRepository;
 use Whole\Core\Repositories\Role\RoleRepository;
 use Whole\Core\Http\Requests\ContentRequest;
-use Illuminate\Support\Facades\Cache;
 use Whole\Core\Logs\Facade\Logs;
-class ContentsController extends Controller
+class ContentsController extends MainController
 {
     protected $content;
     protected $role;
@@ -57,7 +56,7 @@ class ContentsController extends Controller
      */
     public function store(ContentRequest $request)
     {
-        Cache::forget('_contents');
+        $this->itemsClearCache();
         $data = $request->all();
         $data['access'] = serialize($request->get('access'));
         if ($content = $this->content->saveData('create',$data))
@@ -106,7 +105,7 @@ class ContentsController extends Controller
      */
     public function update(ContentRequest $request, $id)
     {
-        Cache::forget('_contents');
+        $this->itemsClearCache();
         $data = $request->all();
         $data['access'] = serialize($request->get('access'));
         if ($this->content->saveData('update',$data,$id))
@@ -132,7 +131,7 @@ class ContentsController extends Controller
      */
     public function destroy($id)
     {
-        Cache::forget('_contents');
+        $this->itemsClearCache();
         $message = $this->content->delete($id) ?
             ['success',trans("whole::http/controllers.contents_flash_5")] :
             ['error',trans("whole::http/controllers.contents_flash_6")];
@@ -154,7 +153,7 @@ class ContentsController extends Controller
      */
     public function ajaxUpdate(Request $request)
     {
-        Cache::forget('_contents');
+        $this->itemsClearCache();
         return $this->content->find($request->get('id'))
             ->update([$request->get('type')=>$request->get('status')]) ?
             "true" :

@@ -2,19 +2,18 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Component\ComponentRepository;
 use Whole\Core\Http\Requests\ComponentRequest;
 use Chumper\Zipper\Facades\Zipper;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Whole\Core\Repositories\PageSidebarMenu\PageSidebarMenuRepository;
 use Whole\Core\Repositories\AllPage\AllPageRepository;
 use Whole\Core\Logs\Facade\Logs;
-class ComponentsController extends Controller
+class ComponentsController extends MainController
 {
     protected $component;
     protected $sidebar;
@@ -62,7 +61,7 @@ class ComponentsController extends Controller
      */
     public function store(ComponentRequest $request)
     {
-        Cache::forget('_components');
+        $this->itemsClearCache();
         ini_set('max_execution_time', 0);
 
         File::delete(base_path('components/Component.php'));
@@ -198,7 +197,7 @@ class ComponentsController extends Controller
      */
     public function destroy($id)
     {
-        Cache::forget('_components');
+        $this->itemsClearCache();
         #TODO:Composer Remove işlemlerini yaptırt;
         $message = $this->component->delete($id) ?
             ['success','Başarıyla Silindi']:

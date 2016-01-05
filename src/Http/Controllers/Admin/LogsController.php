@@ -2,14 +2,14 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Whole\Core\Logs\Facade\Logs;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-class LogsController extends Controller
+class LogsController extends MainController
 {
     public function login()
     {

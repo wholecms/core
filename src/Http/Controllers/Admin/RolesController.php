@@ -2,16 +2,16 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Http\Requests\RoleRequest;
 use Whole\Core\Repositories\Role\RoleRepository;
 use Whole\Core\Logs\Facade\Logs;
 
 
-class RolesController extends Controller
+class RolesController extends MainController
 {
     protected $role;
 

@@ -2,11 +2,10 @@
 
 namespace Whole\Core\Http\Controllers\Admin;
 
+use Whole\Core\Http\Controllers\Admin\MainController;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Whole\Core\Repositories\Template\TemplateRepository;
 use Whole\Core\Repositories\Block\BlockRepository;
 use Whole\Core\Repositories\Content\ContentRepository;
@@ -15,8 +14,7 @@ use Whole\Core\Repositories\ContentPage\ContentPageRepository;
 use Whole\Core\Repositories\ContentPage\ContentPageFieldRepository;
 use Whole\Core\Repositories\Setting\SettingRepository;
 use Whole\Core\Logs\Facade\Logs;
-use Illuminate\Support\Facades\Cache;
-class ContentPagesController extends Controller
+class ContentPagesController extends MainController
 {
     protected $template;
     protected $block;
@@ -81,10 +79,7 @@ class ContentPagesController extends Controller
      */
     public function store(Request $request)
     {
-		Cache::forget('_contents');
-		Cache::forget('_components');
-		Cache::forget('_blocks');
-		Cache::forget('_pages');
+        $this->itemsClearCache();
         return $this->content_page->create($request->all());
     }
 
@@ -129,10 +124,7 @@ class ContentPagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-		Cache::forget('_contents');
-		Cache::forget('_components');
-		Cache::forget('_blocks');
-		Cache::forget('_pages');
+        $this->itemsClearCache();
         return $this->content_page->update($request->all(),$id);
     }
 
@@ -144,6 +136,7 @@ class ContentPagesController extends Controller
      */
     public function destroy($id)
     {
+        $this->itemsClearCache();
         $message = $this->content_page->delete($id) ?
             ['success',trans("whole.http.controllers.content_pages_flash_1")] :
             ['error',trans("whole.http.controllers.content_pages_flash_2")];
@@ -165,7 +158,6 @@ class ContentPagesController extends Controller
      */
     public function selectTemplate(Request $request)
     {
-//        $this->template->find($request->get('id'))
         return $this->template->templateFields($request->get('id'))?:"false";
     }
 }
