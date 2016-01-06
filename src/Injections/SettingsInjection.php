@@ -37,7 +37,8 @@ class SettingsInjection
                 $setting->logo_title = $this->page_render->reContent($setting->logo_title);
                 $setting->logo_description = $this->page_render->reContent($setting->logo_description);
                 $setting->copyright = $this->page_render->reContent($setting->copyright);
-
+                $setting->admin_title = $this->page_render->reContent($setting->admin_title);
+                $setting->admin_footer = $this->page_render->reContent($setting->admin_footer);
                 return $setting;
             });
         }
