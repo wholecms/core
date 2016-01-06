@@ -32,5 +32,14 @@ return [
 	'form_label_13'=>"Copyright Metni",
 	'form_label_14'=>"Google Analytics Kodu",
 
+	'form_label_15'=>"Admin Başlığı",
+	'form_label_16'=>"Admin Footer Metni",
+	'form_label_17'=>"Admin Logo",
+	'form_label_18'=>"Admin Login Logo",
+
 	'form_option_1'=>"--Seçiniz--",
+
+	'tabs_1' => "Genel Ayarlar",
+	'tabs_2' => "Admin Sayfası Ayarları",
+
 ];

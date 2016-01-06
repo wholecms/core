@@ -1,20 +1,20 @@
 <div class="form-group">
-    {!! Form::label("Admin Başlığı",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::settings.form_label_15'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('admin_title',null,['placeholder'=>"Yönetim Paneli Başlığı",'class'=>'form-control']) !!}
+        {!! Form::text('admin_title',null,['placeholder'=>trans('whole::settings.form_label_15'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label("Admin Footer Metni",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::settings.form_label_16'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
-        {!! Form::text('admin_footer',null,['placeholder'=>"Yönetim Paneli Footer Metni",'class'=>'form-control']) !!}
+        {!! Form::text('admin_footer',null,['placeholder'=>trans('whole::settings.form_label_16'),'class'=>'form-control']) !!}
     </div>
 </div>
 
 
 <div class="form-group">
-    {!! Form::label("Admin Logo",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::settings.form_label_17'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div>
             <img id="imagesfile" onclick="openKCFinder(this,'admin_logo','admin_logo_img','admin_logo_remove_btn')" class="img-thumbnail admin_logo_img" src="{!! $setting->admin_logo!=''?$setting->admin_logo:url('assets/backend/admin/layout4/img/logo-light.png') !!}" />
@@ -26,7 +26,7 @@
 
 
 <div class="form-group">
-    {!! Form::label("Admin Login Logo",null,['class'=>'col-md-2 control-label']) !!}
+    {!! Form::label(trans('whole::settings.form_label_18'),null,['class'=>'col-md-2 control-label']) !!}
     <div class="col-md-10">
         <div>
             <img id="imagesfile" onclick="openKCFinder(this,'admin_login_logo','admin_login_logo_img','admin_login_logo_remove_btn')" class="img-thumbnail admin_login_logo_img" src="{!! $setting->admin_login_logo!=''?$setting->admin_login_logo:url('assets/backend/admin/layout4/img/logo-big.png') !!}" />

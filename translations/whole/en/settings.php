@@ -32,5 +32,13 @@ return [
 	'form_label_13'=>"Copyright Text",
 	'form_label_14'=>"Google Analytics Code",
 
+	'form_label_15'=>"Admin Title",
+	'form_label_16'=>"Admin Footer Text",
+	'form_label_17'=>"Admin Logo",
+	'form_label_18'=>"Admin Login Logo",
+
 	'form_option_1'=>"--Select--",
+
+	'tabs_1' => "General Settings",
+	'tabs_2' => "Admin Settings",
 ];

@@ -44,31 +44,31 @@
                         </div>
                     </div>
 
-<div class="tabbable-line">
-    <ul class="nav nav-tabs ">
-        <li class="active">
-            <a href="#tab_15_1" data-toggle="tab"> Genel Ayarlar</a>
-        </li>
-        <li>
-            <a href="#tab_15_2" data-toggle="tab">Admin Sayfası Ayarları</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane active" id="tab_15_1">
-            <div class="form-body">
-                @include('backend::settings._general_form')
-            </div>
-        </div>
-        <div class="tab-pane" id="tab_15_2">
-            <div class="form-body">
-                @include('backend::settings._admin_form')
-            </div>          
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs ">
+                            <li class="active">
+                                <a href="#tab_15_1" data-toggle="tab">{{ trans('whole::settings.tabs_1') }}</a>
+                            </li>
+                            <li>
+                                <a href="#tab_15_2" data-toggle="tab">{{ trans('whole::settings.tabs_2') }}</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_15_1">
+                                <div class="form-body">
+                                    @include('backend::settings._general_form')
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_15_2">
+                                <div class="form-body">
+                                    @include('backend::settings._admin_form')
+                                </div>
 
-        </div>
-    </div>
-</div>
+                            </div>
+                        </div>
+                    </div>
 
-                    
+
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
