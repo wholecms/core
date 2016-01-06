@@ -1,3 +1,4 @@
+@inject('settings', 'Whole\Core\Injections\SettingsInjection')
 @include('backend::_layouts._head')
 <body class="page-md page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo {{ !isset($slide_close) ? '' : 'page-sidebar-closed page-sidebar-closed-hide-logo' }}">
 <div class="page-header md-shadow-z-1-i navbar navbar-fixed-top">

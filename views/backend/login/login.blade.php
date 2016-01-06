@@ -1,3 +1,4 @@
+@inject('settings', 'Whole\Core\Injections\SettingsInjection')
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -7,7 +8,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>{{ trans('whole::login.title') }}</title>
+    <title>{{ trans('whole::login.title',['title'=>($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS']) }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -43,7 +44,11 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="index.html">
-        <img src="{!! URL::to('assets/backend/admin/layout4/img/logo-big.png') !!}" alt="WholeCMS"/>
+        @if($settings->get()->admin_login_logo=="")
+            <img src="{!! URL::to('assets/backend/admin/layout4/img/logo-big.png') !!}" alt="{{ ($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS' }}"/>
+        @else
+            <img src="{!! $settings->get()->admin_login_logo !!}" alt="{{ ($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS' }}"/>
+        @endif
     </a>
 </div>
 <!-- END LOGO -->
@@ -94,7 +99,11 @@
     <!-- END FORGOT PASSWORD FORM -->
 </div>
 <div class="copyright">
-    {{ date("Y") }} &copy; Whole CMS
+    @if($settings->get()->admin_footer=="")
+        {{ date("Y") }} &copy; Whole CMS
+    @else
+        {{ $settings->get()->admin_footer }}
+    @endif
 </div>
 <!-- END LOGIN -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

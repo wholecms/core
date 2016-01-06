@@ -1,7 +1,11 @@
 <div class="page-header-inner">
     <div class="page-logo">
         <a href="{{ route('admin.index') }}">
-            <img src="{{ URL::to('assets/backend/admin/layout4/img/logo-light.png') }}" alt="WholeCMS" class="logo-default"/>
+            @if($settings->get()->admin_logo=="")
+                <img class="logo-default" src="{{ URL::to('assets/backend/admin/layout4/img/logo-light.png') }}" alt="{{ ($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS' }}"/>
+            @else
+                <img class="logo-default" src="{!! $settings->get()->admin_logo !!}" alt="{{ ($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS' }}"/>
+            @endif
         </a>
         <div class="menu-toggler sidebar-toggler">
             <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->

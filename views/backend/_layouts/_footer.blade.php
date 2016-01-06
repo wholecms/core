@@ -1,6 +1,10 @@
 <div class="page-footer">
     <div class="page-footer-inner">
-        {{ date("Y") }} &copy; Whole CMS
+        @if($settings->get()->admin_footer=="")
+            {{ date("Y") }} &copy; Whole CMS
+        @else
+            {{ $settings->get()->admin_footer }}
+        @endif
     </div>
     <div class="scroll-to-top">
         <i class="icon-arrow-up"></i>
