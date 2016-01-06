@@ -1,6 +1,7 @@
+@inject('settings', 'Whole\Core\Injections\SettingsInjection')
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::components.index_title') }}@endsection
+@section('title'){{ trans('whole::components.index_title',['title'=>($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS']) }}@endsection
 
 
 @section('page_title')

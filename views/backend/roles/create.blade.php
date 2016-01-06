@@ -1,6 +1,7 @@
+@inject('settings', 'Whole\Core\Injections\SettingsInjection')
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::roles.create_title') }}@endsection
+@section('title'){{ trans('whole::roles.create_title',['title'=>($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS']) }}@endsection
 
 @section('page_title')
     <h1>{{ trans('whole::roles.create_page_title') }}</h1>

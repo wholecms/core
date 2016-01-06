@@ -1,6 +1,7 @@
+@inject('settings', 'Whole\Core\Injections\SettingsInjection')
 @extends('backend::_layouts.application')
 
-@section('title'){{ trans('whole::logs.login_title') }}@endsection
+@section('title'){{ trans('whole::logs.login_title',['title'=>($settings->get()->admin_title!="") ? $settings->get()->admin_title : 'Whole CMS']) }}@endsection
 
 @section('page_title')
     <h1>{{ trans('whole::logs.login_page_title') }}</h1>
