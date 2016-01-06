@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'title' => 'Whole CMS Dashboard Panel Login',
+	'title' => ':title Dashboard Panel Login',
 	'form_title' => 'Login',
 	'error' => 'E-mail address and password cannot be left blank.',
 	

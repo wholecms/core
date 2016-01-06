@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'title' => 'Whole CMS Yönetim Paneli Giriş',
+	'title' => ':title Yönetim Paneli Girişi',
 	'form_title' => 'Giriş Yap',
 	'error' => 'E-Mail adresi ve şifre boşbırakılamaz.',
 	
