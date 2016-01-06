@@ -43,9 +43,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-body">
-                        @include('backend::settings._form')
-                    </div>
+
+<div class="tabbable-line">
+    <ul class="nav nav-tabs ">
+        <li class="active">
+            <a href="#tab_15_1" data-toggle="tab"> Genel Ayarlar</a>
+        </li>
+        <li>
+            <a href="#tab_15_2" data-toggle="tab">Admin Sayfası Ayarları</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab_15_1">
+            <div class="form-body">
+                @include('backend::settings._general_form')
+            </div>
+        </div>
+        <div class="tab-pane" id="tab_15_2">
+            <div class="form-body">
+                @include('backend::settings._admin_form')
+            </div>          
+
+        </div>
+    </div>
+</div>
+
+                    
                     <div class="form-actions">
                         <div class="row">
                             <div class="col-md-offset-2 col-md-10">
@@ -80,6 +103,20 @@
                 $(this).hide();
                 $("input[name='favicon']").val("");
                 $(".favicon_img").attr('src',"https://placeholdit.imgix.net/~text?txtsize=17&bg=efefef&txtclr=aaaaaa%26amp%3Btext%3Dresim%2Byok&txt=Resim+Yok&w=64&h=64");
+            });
+
+
+            $(".admin_logo_remove_btn").click(function(){
+                $(this).hide();
+                $("input[name='admin_logo']").val("");
+                $(".admin_logo_img").attr('src',"{{url('assets/backend/admin/layout4/img/logo-light.png')}}");
+            });
+
+
+            $(".admin_login_logo_remove_btn").click(function(){
+                $(this).hide();
+                $("input[name='admin_login_logo']").val("");
+                $(".admin_login_logo_img").attr('src',"{{url('assets/backend/admin/layout4/img/logo-big.png')}}");
             });
 
         });
