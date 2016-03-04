@@ -7,7 +7,7 @@
  * Time: 22:24
  */
 
-namespace Whole\Core\Repositories\PageSidebarMenuLang;
+namespace Whole\Core\Repositories\PageSidebarMenu;
 use Whole\Core\Repositories\Repository;
 use Whole\Core\Models\PageSidebarMenuLang;
 
