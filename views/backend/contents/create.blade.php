@@ -73,7 +73,7 @@
 @endsection
 
 @section('footer')
-    <script>
+    <script type="text/javascript">
 
         CKEDITOR.replace( 'editor',{
             filebrowserBrowseUrl : "{!! URL::to('/elfinder') !!}",
@@ -81,14 +81,37 @@
             //uiColor : '#F7B42C',
             //height : 300,
             toolbarCanCollapse : true,
+            allowedContent : true,
+//            allowedContent : true,
             enterMode : CKEDITOR.ENTER_BR
         });
 
-//        CKEDITOR.editorConfig = function( config ) {
-//            config.language = 'es';
-//            config.uiColor = '#F7B42C';
-//            config.height = 300;
-//            config.toolbarCanCollapse = true;
-//        };
+CKEDITOR.protectedSource.push(/<i[^>]*><\/i>/g);
+CKEDITOR.protectedSource.push(/<span[^>]*><\/span>/g);
+CKEDITOR.protectedSource.push( /<\?[\s\S]*?\?>/g );
+CKEDITOR.protectedSource.push(/[^<]*(<h1>([^<]+)<\/h1>)/g);
+CKEDITOR.protectedSource.push( /<cfscript[\s\S]*?\/cfscript>/g );
+CKEDITOR.protectedSource.push( /<br[\s\S]*?\/>/g );   // BR Tags
+CKEDITOR.protectedSource.push( /<img[\s\S]*?\/>/g );   // IMG Tags
+CKEDITOR.protectedSource.push( /{exp:[\s\S]*?{\/exp:[^\}]+}/g );    // Expression Engine style server side code
+CKEDITOR.protectedSource.push( /{.*?}/g);
+CKEDITOR.protectedSource.push( /<tex[\s\S]*?\/tex>/g);
+CKEDITOR.protectedSource.push( /<object[\s|\S]+?<\/object>/g); // Protects <OBJECT> tags
+CKEDITOR.protectedSource.push( /<style[\s\S]*?\/style>/g); // Protects <STYLE> tags
+CKEDITOR.protectedSource.push( /<cfoutput[\s\S]*?\/cfoutput>/g); // Protects <CFOUTPUT> tags
+CKEDITOR.protectedSource.push( /<pre[\s\S]*?\/pre>/g);
+CKEDITOR.protectedSource.push( /<code[\s\S]*?\/code>/g);
+CKEDITOR.protectedSource.push( /<cfinclude[\s\S]*?\/cfinclude>/g);
+CKEDITOR.protectedSource.push( /<cfloop[\s\S]*?\/cfloop>/g);
+CKEDITOR.protectedSource.push( /<cfset[\s\S]*?\/cfset/g);
+CKEDITOR.protectedSource.push( /<cf[\s\S]*?>/gi ) ; // ColdFusion cf tags - OPEN.
+CKEDITOR.protectedSource.push( /<\/cf[\s\S]*?>/gi ) ; // ColdFusion cf tags - CLOSE.
+
+        //        CKEDITOR.editorConfig = function( config ) {
+        //            config.language = 'es';
+        //            config.uiColor = '#F7B42C';
+        //            config.height = 300;
+        //            config.toolbarCanCollapse = true;
+        //        };
     </script>
 @endsection
