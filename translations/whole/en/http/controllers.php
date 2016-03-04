@@ -35,6 +35,9 @@ return [
 	'components_flash_3'=>"An error occurred, file load and the component",
 	'components_log_6'=>"The Component Was Deleted \nComponent ID: :id",
 	'components_log_7'=>"The Component Could Not Be Deleted! \nComponent ID: :id",
+	
+	'components_log_8'=>"Menu Language Features Added Components\n :name",
+	'components_log_9'=>"Menu Language Features Added Component failed!\n :name",
 
 
 

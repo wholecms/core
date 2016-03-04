@@ -35,6 +35,9 @@ return [
 	'components_flash_3'=>"Bir Hata Meydana Geldi ve Bileşen Dosyası Yüklenemedi",
 	'components_log_6'=>"Bileşen Silindi \nBileşen ID: :id",
 	'components_log_7'=>"Bileşen Silinemedi! \nBileşen ID: :id",
+	
+	'components_log_8'=>"Bileşenin Menü Dil Özellikleri Eklendi\n :name",
+	'components_log_9'=>"Bileşenin Menü Dil Özellikleri Eklenemedi!\n :name",
 
 
 

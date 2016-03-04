@@ -11,23 +11,27 @@ use Whole\Core\Http\Requests\ComponentRequest;
 use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Support\Facades\File;
 use Whole\Core\Repositories\PageSidebarMenu\PageSidebarMenuRepository;
+use Whole\Core\Repositories\PageSidebarMenu\PageSidebarMenuLangRepository;
 use Whole\Core\Repositories\AllPage\AllPageRepository;
 use Whole\Core\Logs\Facade\Logs;
 class ComponentsController extends MainController
 {
     protected $component;
     protected $sidebar;
+	protected $sidebar_lang;
 	protected $all_page;
 
     /**
      * @param ComponentRepository $component
      * @param PageSidebarMenuRepository $sidebar
+	 * @param PageSidebarMenuLangRepository $sidebar_lang
 	 * @param AllPageRepository $all_page
      */
-    public function __construct(ComponentRepository $component, PageSidebarMenuRepository $sidebar, AllPageRepository $all_page)
+    public function __construct(ComponentRepository $component, PageSidebarMenuRepository $sidebar,PageSidebarMenuLangRepository $sidebar_lang, AllPageRepository $all_page)
     {
         $this->component = $component;
         $this->sidebar = $sidebar;
+		$this->sidebar_lang = $sidebar_lang;
 		$this->all_page = $all_page;
 		
     }
@@ -172,13 +176,26 @@ class ComponentsController extends MainController
 				{
 					$this->all_page->saveData('create',['path'=>$page]);
 				}
-                if($this->sidebar->saveData('create',$component['sidebar']))
+                if($sidebar_menu = $this->sidebar->saveData('create',$component['sidebar']))
                 {
                     Logs::add('process',trans('whole::http/controllers.components_log_4',['name'=>$component['settings']['name']]));
                 }else
                 {
                     Logs::add('errors',trans('whole::http/controllers.components_log_5',['name'=>$component['settings']['name']]));
                 }
+				
+				foreach($component['sidebar_lang'] as $sidebar_menu_lang)
+				{
+					$sidebar_menu_lang['admin_page_sidebar_menu_id'] = $sidebar_menu->id;
+					if($this->sidebar_lang->saveData('create',$sidebar_menu_lang))
+					{
+						Logs::add('process',trans('whole::http/controllers.components_log_8',['name'=>$component['settings']['name']]));
+					}else
+					{
+						Logs::add('errors',trans('whole::http/controllers.components_log_9',['name'=>$component['settings']['name']]));
+					}
+				}
+				
             }
 
             File::delete(base_path('components/Component.php'));
