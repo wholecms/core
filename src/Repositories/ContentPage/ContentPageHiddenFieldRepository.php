@@ -19,9 +19,9 @@ class ContentPageHiddenFieldRepository extends Repository
         $this->model = $content_page_hidden_field;
     }
 
-    public function deleteAll()
+    public function deleteAll($content_page_id)
     {
-        $this->model->where('content_page_id','>','0')->delete();
+        $this->model->where('content_page_id',$content_page_id)->delete();
     }
 
 }

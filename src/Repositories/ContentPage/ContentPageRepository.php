@@ -97,7 +97,7 @@ class ContentPageRepository extends Repository
         try
         {
             $content_page = $this->model->find($id)->update(['template_id'=>$data['template'],'name'=>$data['name']]);
-            $this->content_page_hidden_field->deleteAll();
+            $this->content_page_hidden_field->deleteAll($id);
         }
         catch (\Exception $e)
         {
