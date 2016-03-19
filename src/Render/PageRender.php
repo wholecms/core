@@ -130,6 +130,7 @@ class PageRender {
                                 break;
                             case "page":
                                 $_pages[$detay['data_id']]['menu_title'] = $this->reContent($_pages[$detay['data_id']]['menu_title']);
+								$_pages[$detay['data_id']]['external_link'] = $this->reContent($_pages[$detay['data_id']]['external_link']);
                                 $_blocks[$i]['block_detail'][$j]['data'] = $_pages[$detay['data_id']];
                                 break;
                             case "content":
@@ -246,7 +247,20 @@ class PageRender {
         preg_match_all('/\{\{ content::(.*?)::(.*?) }\}/i',$text,$content);
         preg_match_all('/\{\{ page::(.*?)::(.*?) }\}/i',$text,$page);
         preg_match_all('/\{\{ settings::(.*?) }\}/i',$text,$settings);
+		preg_match_all('/\{\{ route::(.*?) }\}/i',$text,$route);
 
+
+		
+		
+		
+        if (count($route[1])>0)
+        {
+            foreach($route[1] as $v)
+            {
+                $text = preg_replace("/{{ route::".trim($v)." }}/i",route(trim($v)),$text);
+            }
+        }
+		
 
         if (count($settings[1])>0)
         {
