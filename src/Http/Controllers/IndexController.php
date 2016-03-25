@@ -67,6 +67,14 @@ class IndexController extends Controller
     public function contentPages($slug,$id)
     {
 
+        return $this->componentPage($slug,$id);
+    }
+
+
+
+    public function componentPage($slug,$id,$data=null)
+    {
+
         if (!($page = $this->page->find($id)))
         {
             return abort(404);
@@ -80,7 +88,7 @@ class IndexController extends Controller
         $content_page_fields = $this->content_page_field->getFieldDetails($content_page->id);
         $field_details = $this->render->renderFields($content_page_fields,false,$id);
 
-        return view($content_page->template->folder.'.content_page.index',compact('field_details','content_page_fields','hidden_fields','page'));
+        return view($content_page->template->folder.'.content_page.index',compact('field_details','content_page_fields','hidden_fields','page'))->with('data',(object) $data);
     }
 
 
