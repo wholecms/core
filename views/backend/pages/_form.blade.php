@@ -201,9 +201,18 @@
     <div class="form-group">
         {!! Form::label(trans('whole::pages.form_label_23'),null,['class'=>'col-md-2 control-label']) !!}
         <div class="col-md-10">
-            {!! Form::select('component_id',[''=>trans('whole::pages.form_option_1')]+$components->toArray(),null,['class'=>'select2_category form-control','data-placeholder'=>trans('whole::pages.form_label_23')]) !!}
+            {!! Form::select('component_id',[''=>trans('whole::pages.form_option_1')]+$components->toArray(),null,['class'=>'select_component select2_category form-control','data-placeholder'=>trans('whole::pages.form_label_23')]) !!}
         </div>
     </div>
+
+	@if(isset($page) && $page->route!="")
+	  <div class="clear_route form-group">
+		{!! Form::label("",null,['class'=>'col-md-2 control-label']) !!}
+		<div class="col-md-10">
+			{!!$page->route!!}		 
+		</div>
+	    </div>
+	@endif
 </div>
 
 <div class="content_type_is_link" @unless(isset($page) && $page->content_type=="link")style="display: none;"@endunless>

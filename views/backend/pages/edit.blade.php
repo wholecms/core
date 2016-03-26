@@ -177,6 +177,24 @@
                 }
             });
 
+	$(".select_component").change(function(){
+
+	var id = $(this).val();
+	var token = $('meta[name="csrf-token"]').attr('content');
+	$(".clear_route").remove();
+	$.ajax({
+	  method: "POST",
+	  url: "{{ route('admin.page.ajax_select_component_page') }}",
+	  data: { id: id, _token:token },
+	  success:function(response){
+	     if(response){
+	console.log(response);
+	$(".content_type_is_component").append("<div class=\"clear_route form-group\"><label class=\"col-md-2 control-label\">&nbsp;</label><div class=\"col-md-10\">"+unescape(response)+"</div></div>");
+		}
+	  }
+	})
+
+	});
             $(".create_content").click(function(){
                 $("select[name='content_id']").val('').trigger('change');
                 $(".create_content_form , a.cancel_content_form").show();

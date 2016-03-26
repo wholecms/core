@@ -38,13 +38,14 @@ class CreatePagesTable extends Migration
             $table->string('content_type',10);
             $table->string('content_title');
 
-            $table->integer('content_id')->unsigned()->nullable();;
+            $table->integer('content_id')->unsigned()->nullable();
             $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
 
-            $table->integer('component_id')->unsigned()->nullable();;
+            $table->integer('component_id')->unsigned()->nullable();
             $table->foreign('component_id')->references('id')->on('component_file')->onDelete('cascade');
 
-            $table->string('external_link')->nullable();;
+            $table->string('external_link')->nullable();
+	    $table->string('route')->nullable();
 
             $table->timestamps();
         });

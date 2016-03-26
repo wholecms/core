@@ -28,3 +28,16 @@ if ( ! function_exists('day_localize'))
         return $days['locale']['D'][array_search($day,$days[$is]['D'])];
     }
 }
+
+
+
+
+if ( ! function_exists('route_input_render'))
+{
+
+    function route_input_render($v,$route_aar,$this_id=null)
+    { if($this_id==null){$this_id = $v;}
+        return "".($v=="content_page"?"<input type=\"hidden\" name=\"route[name]\" value=\"".$route_aar."\" />":"")."<input ".($v=="content_page"?"readonly":"")." class=\"form-control\" style=\"width:100px;display:inline;\" type=\"text\" name=\"route[{$v}]\" value=\"".($v=="content_page"?"this.id":$this_id)."\"/>";
+
+    }
+}

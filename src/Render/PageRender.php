@@ -130,6 +130,25 @@ class PageRender {
                                 break;
                             case "page":
                                 $_pages[$detay['data_id']]['menu_title'] = $this->reContent($_pages[$detay['data_id']]['menu_title']);
+
+if($_pages[$detay['data_id']]['route']!=""){
+$_route_aar =  (array) json_decode($_pages[$detay['data_id']]['route']);
+//dump($_route_aar);
+$_j = 0;
+$_params = [];
+	foreach($_route_aar as $k=>$v){
+		if($_j>0){
+		
+		$_params[$k] = $k=="content_page"?$_pages[$detay['data_id']]['content_page_id']:$v;
+		}$_j++;
+	}
+
+$_pages[$detay['data_id']]['route'] = route($_route_aar['name'],$_params);
+}
+else{
+$_pages[$detay['data_id']]['route'] = route('content_page',[str_slug($_pages[$detay['data_id']]['menu_title']),$_pages[$detay['data_id']]['id']]);
+
+}
 								$_pages[$detay['data_id']]['external_link'] = $this->reContent($_pages[$detay['data_id']]['external_link']);
                                 $_blocks[$i]['block_detail'][$j]['data'] = $_pages[$detay['data_id']];
                                 break;
@@ -161,6 +180,7 @@ class PageRender {
                                 break;
                             case "component-file":
                                 $_fields[$page_field['field']][$i]['data'] = $_components[$field['data_id']];
+//dump($_components[$field['data_id']]);
                                 break;
                             case "block":
                                 foreach($_blocks[$field['data_id']]['block_detail'] as $j=>$block_detail)
@@ -247,12 +267,10 @@ class PageRender {
         preg_match_all('/\{\{ content::(.*?)::(.*?) }\}/i',$text,$content);
         preg_match_all('/\{\{ page::(.*?)::(.*?) }\}/i',$text,$page);
         preg_match_all('/\{\{ settings::(.*?) }\}/i',$text,$settings);
+		
 		preg_match_all('/\{\{ route::(.*?) }\}/i',$text,$route);
 
 
-		
-		
-		
         if (count($route[1])>0)
         {
             foreach($route[1] as $v)
@@ -261,8 +279,9 @@ class PageRender {
             }
         }
 		
-
-        if (count($settings[1])>0)
+		
+		
+		if (count($settings[1])>0)
         {
             foreach($settings[1] as $v)
             {

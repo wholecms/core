@@ -27,6 +27,7 @@ class CreateComponentsTable extends Migration
             $table->integer('component_id')->unsigned()->index();
             $table->foreign("component_id")->references('id')->on('components')->onDelete('cascade');
             $table->string("file");
+	    $table->string("route");
             $table->timestamps();
         });
 

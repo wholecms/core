@@ -12,6 +12,7 @@ use Whole\Core\Repositories\Page\PageRepository;
 use Whole\Core\Repositories\ContentPage\ContentPageRepository;
 use Whole\Core\Repositories\Content\ContentRepository;
 use Whole\Core\Repositories\Component\ComponentRepository;
+use Whole\Core\Repositories\Component\ComponentFileRepository;
 use Whole\Core\Http\Requests\PageRequest;
 use Whole\Core\Logs\Facade\Logs;
 
@@ -22,18 +23,20 @@ class PagesController extends MainController
     protected $content_page;
     protected $content;
     protected $component;
+    protected $component_file;
 
     /**
      * @param PageRepository $page
      * @param RoleRepository $role
      */
-    public function __construct(PageRepository $page, RoleRepository $role, ContentPageRepository $content_page, ContentRepository $content, ComponentRepository $component)
+    public function __construct(PageRepository $page, RoleRepository $role, ContentPageRepository $content_page, ContentRepository $content, ComponentRepository $component,ComponentFileRepository $component_file)
     {
         $this->page = $page;
         $this->role = $role;
         $this->content_page = $content_page;
         $this->content = $content;
         $this->component = $component;
+   	$this->component_file = $component_file;
     }
 
     /**
@@ -71,16 +74,17 @@ class PagesController extends MainController
     {
         $this->itemsClearCache();
         $data = $request->all();
+	$data['route'] = json_encode($request->get('route'));
 
         switch ($request->get('content_type')) {
             case "content":
-                unset($data['component_id'],$data['external_link']);
+                unset($data['component_id'],$data['external_link'],$data['route']);
                 break;
             case "component":
                 unset($data['content_id'],$data['external_link']);
                 break;
             case "link":
-                unset($data['content_id'],$data['component_id']);
+                unset($data['content_id'],$data['component_id'],$data['route']);
                 break;
         }
 
@@ -136,6 +140,22 @@ class PagesController extends MainController
     public function edit($id)
     {
         $page = $this->page->find($id);
+	if($page->route!=""){
+	  $route_aar = (array) json_decode($page->route);
+	  $route = [];
+	  foreach($route_aar as $k=>$v){
+	    $route[] = $k;
+	  }
+
+	  foreach($route as $k=>$v){
+		if ($k>0){ 
+			$params[$v] = route_input_render($v,$route_aar[$route[0]],$route_aar[$v]);
+			/*$params[$v] = "".($v=="content_page"?"<input type=\"hidden\" name=\"route[name]\" value=\"".$route_aar[$route[0]]."\" />":"")."<input ".($v=="content_page"?"readonly":"")." class=\"form-control\" style=\"width:100px;display:inline;\" type=\"text\" name=\"route[{$v}]\" value=\"".($v=="content_page"?"this.id":$route_aar[$v])."\"/>";*/
+			}
+	  }
+	   $page->route = urldecode(route($route_aar[$route[0]],$params));
+
+	}
         $components = $this->component->allComponentAndFilesLists('file','id');
         $contents = $this->content->all()->lists('title','id');
         $roles = $this->role->all()->lists('role_name','id');
@@ -154,16 +174,17 @@ class PagesController extends MainController
     {
         $this->itemsClearCache();
         $data = $request->all();
+	$data['route'] = json_encode($request->get('route'));
 
         switch ($request->get('content_type')) {
             case "content":
-                $data['component_id'] = $data['external_link'] = null;
+                $data['component_id'] = $data['external_link'] = $data['route'] = null;
                 break;
             case "component":
                 $data['content_id'] = $data['external_link'] = null;
                 break;
             case "link":
-                $data['content_id'] = $data['component_id'] = null;
+                $data['content_id'] = $data['component_id'] = $data['route'] = null;
                 break;
         }
 
@@ -233,5 +254,27 @@ class PagesController extends MainController
             ->update([$request->get('type')=>$request->get('status')]) ?
             "true" :
             "false";
+    }
+
+     /**
+     * @param Request $request
+     * @return array
+     */
+    public function ajaxSelectComponentPage(Request $request)
+    {
+	if(($route = $this->component_file->find($request->get('id'))->route)!="")
+	{
+	   $route_aar = explode(",",$route);
+		foreach($route_aar as $k=>$v){
+			if ($k>0){
+				$params[$v] = route_input_render($v,$route_aar[0]);
+/*"".($v=="content_page"?"<input type=\"hidden\" name=\"route[name]\" value=\"".$route_aar[0]."\" />":"")."<input ".($v=="content_page"?"readonly":"")." class=\"form-control\" style=\"width:100px;display:inline;\" type=\"text\" name=\"route[{$v}]\" value=\"".($v=="content_page"?"this.id":$v)."\"/>";*/
+ 				}
+                  }
+	   return route($route_aar[0],$params);
+	}
+	
+	return false;
+	
     }
 }

@@ -13,6 +13,7 @@
  * */
 Route::get('/',['as'=>'master_page','uses'=>'\Whole\Core\Http\Controllers\IndexController@index']);
 Route::get('/{slug}-{id}',['as'=>'content_page','uses'=>'\Whole\Core\Http\Controllers\IndexController@contentPages'])->where(['id' => '[\d+]+', 'slug' => '[a-z0-9-]+']);
+///Route::get('/urunler/{slug}-{id}',['as'=>'content_page','uses'=>'\Whole\Core\Http\Controllers\IndexController@contentPages'])->where(['id' => '[\d+]+', 'slug' => '[a-z0-9-]+']);
 
 
 
@@ -71,6 +72,8 @@ Route::group(['middleware'=>['is_admin','permitted_page'],'prefix' => 'admin'],f
 
     Route::resource('page','\Whole\Core\Http\Controllers\Admin\PagesController');
     Route::post('/page/ajax/update',['as'=>'admin.page.ajax_update','uses'=>'\Whole\Core\Http\Controllers\Admin\PagesController@ajaxUpdate']);
+    Route::post('/page/ajax/select_component_page',['as'=>'admin.page.ajax_select_component_page','uses'=>'\Whole\Core\Http\Controllers\Admin\PagesController@ajaxSelectComponentPage']);
+
 
     Route::resource('setting','\Whole\Core\Http\Controllers\Admin\SettingsController',['only'=>['index','update']]);
 
