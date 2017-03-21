@@ -6,10 +6,6 @@
         {
             "name": "Furkan Çelik",
             "email": "furkan.celik32@gmail.com"
-        },
-        {
-            "name": "Öner Çiller",
-            "email": "onerciller@gmail.com"
         }
     ],
     "minimum-stability": "dev",
