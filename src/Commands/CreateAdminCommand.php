@@ -9,6 +9,7 @@
 namespace Whole\Core\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class CreateAdminCommand extends Command
 {
